@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+@theme {
+  /* Katie's approved palette — build-spec.md tokens. No raw hex in components. */
+  --color-cream: #f7f0e4;
+  --color-warm-white: #fdfaf4;
+  --color-tint: #f2e9da;
+  --color-brown: #3e2b23;
+  --color-brown-deep: #2e1f18;
+  --color-body: #5c4a3f;
+  --color-muted: #7d695c;
+  --color-orange: #e08a3c;
+  --color-orange-hover: #c97426;
+  --color-orange-ink: #995c26;
+  --color-rose: #e79a94;
+  --color-rose-ink: #92615d;
+  --color-olive: #7c7551;
+  --color-label: #5e5940;
+  --color-border-soft: #e5d9c6;
+  --color-border-strong: #cdbca4;
+  --color-error: #9e2b25;
+
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-warm: 0 10px 32px rgba(62, 43, 35, 0.12);
+  --shadow-warm-sm: 0 4px 18px rgba(62, 43, 35, 0.06);
+  --shadow-warm-lg: 0 18px 44px rgba(62, 43, 35, 0.16);
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-cream);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--color-rose);
+    color: var(--color-brown);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brown);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-variation-settings: "SOFT" 80;
+    color: var(--color-brown);
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  /* Tracked small-caps label */
+  .caps {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-label);
+  }
+
+  /* Display face with the SOFT axis raised */
+  .font-display {
+    font-family: var(--font-display);
+    font-variation-settings: "SOFT" 80;
+  }
+
+  /* Accent word inside display headings */
+  .accent-word {
+    color: var(--color-orange-ink);
+    font-style: italic;
+    font-weight: 440;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 999px;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    text-align: center;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s var(--ease-soft),
+      box-shadow 0.2s ease;
+  }
+  .btn-orange {
+    background: var(--color-orange);
+    border-color: var(--color-orange);
+    color: var(--color-brown);
+  }
+  .btn-orange:hover {
+    background: var(--color-orange-hover);
+    border-color: var(--color-orange-hover);
+    color: var(--color-cream);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-warm);
+  }
+  .btn-orange:active {
+    transform: none;
+  }
+  .btn-brown {
+    background: var(--color-brown);
+    border-color: var(--color-brown);
+    color: var(--color-cream);
+  }
+  .btn-brown:hover {
+    background: var(--color-brown-deep);
+    border-color: var(--color-brown-deep);
+  }
+  .btn-ghost-light {
+    background: transparent;
+    border-color: rgba(253, 250, 244, 0.7);
+    color: var(--color-warm-white);
+  }
+  .btn-ghost-light:hover {
+    background: rgba(253, 250, 244, 0.16);
+    border-color: var(--color-warm-white);
+  }
+  .btn[disabled],
+  .btn:disabled {
+    background: var(--color-border-soft);
+    border-color: var(--color-border-soft);
+    color: var(--color-muted);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+@layer utilities {
+  /* Scroll reveal — activated by the <Reveal> IntersectionObserver wrapper.
+     Below-the-fold only; the hero stays server-rendered and static. */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity 0.9s var(--ease-soft),
+        transform 0.9s var(--ease-soft);
+    }
+    .reveal.is-inview {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-d1.is-inview { transition-delay: 0.12s; }
+    .reveal-d2.is-inview { transition-delay: 0.24s; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

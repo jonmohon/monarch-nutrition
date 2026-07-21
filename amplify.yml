@@ -1,0 +1,21 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+    build:
+      commands:
+        # Amplify exposes console env vars to the build shell but NOT to the
+        # Next.js SSR runtime. Persist the ones the API routes need at request
+        # time into .env.production so Next loads them when the server boots.
+        - env | grep -E '^(RESEND_API_KEY|CONTACT_TO_EMAIL|CONTACT_FROM_EMAIL|NEXT_PUBLIC_GA_ID)=' >> .env.production || true
+        - npm run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+      - .next/cache/**/*

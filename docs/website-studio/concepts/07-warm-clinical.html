@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept 07 v2 — Warm Clinical · Monarch Nutrition Counseling</title>
+<!--
+  CONCEPT: Warm Clinical v2 (approved direction, elevated to the Tasty bar)
+  Home structure per RCD handoff p.3, plus the band rhythm that makes the
+  reference feel finished: cinematic hero → in-network strip → curved
+  statement band → orange statement band → service tiles → 1-2-3 steps →
+  about split with butterfly line ornament → FAQ accordion.
+  Palette: Katie's approved targets verbatim. Fraunces SOFT + Source Sans 3.
+  Techniques (§B): #6 choreographed reveals, #12 brown-tinted shadows,
+  #19 tracked small caps + hairlines, #17 brand selection/focus,
+  CSS-only details/summary accordion.
+  Imagery: licensed Unsplash, swappable for Katie's shoot.
+  Level 2 (Premium).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,wght@0,9..144,80,440;0,9..144,80,560;1,9..144,80,440&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F7F0E4; --white:#FDFAF4; --tint:#F2E9DA;
+  --brown:#3E2B23; --brown-deep:#2E1F18;
+  --ink:#3E2B23; --body:#5C4A3F; --muted:#7D695C;
+  --orange:#E08A3C; --orange-hover:#C97426; --orange-ink:#995C26;
+  --rose:#E79A94; --rose-ink:#92615D;
+  --olive:#7C7551; --label:#5E5940;
+  --border:#E5D9C6; --border-strong:#CDBCA4;
+  --shadow:0 10px 32px rgba(62,43,35,.12);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--body);font-family:"Source Sans 3",system-ui,sans-serif;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+::selection{background:var(--rose);color:var(--brown)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brown);outline-offset:2px;border-radius:3px}
+h1,h2,h3{font-family:Fraunces,serif;font-weight:560;color:var(--ink);text-wrap:balance}
+img{display:block;max-width:100%}
+.caps{font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;color:var(--label)}
+.caps.rose{color:var(--rose-ink)}
+.accent{color:var(--orange-ink);font-style:italic;font-weight:440}
+
+.concept-note{background:var(--brown-deep);color:#C9B6A6;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding:9px 20px;text-align:center}
+.concept-note strong{color:var(--cream)}
+
+/* announce */
+.announce{background:var(--brown);color:var(--cream);text-align:center;padding:10px 16px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600}
+.announce span{color:var(--rose);padding:0 8px}
+
+/* ============ HEADER — centered lockup, split nav ============ */
+header.site{background:var(--cream);border-bottom:1px solid var(--border);position:relative;z-index:9}
+.head-in{max-width:1340px;margin:0 auto;padding:0 40px;height:96px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px}
+.nav-l{display:flex;gap:30px;justify-content:flex-start}
+.nav-r{display:flex;gap:30px;justify-content:flex-end;align-items:center}
+.nav-l a,.nav-r a.nl{text-decoration:none;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--body);padding:6px 0;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s}
+.nav-l a:hover,.nav-r a.nl:hover{color:var(--ink);border-color:var(--rose)}
+.lockup{display:flex;flex-direction:column;align-items:center;text-decoration:none;gap:6px}
+.lockup .wm{font-family:Fraunces,serif;font-weight:560;font-size:26px;color:var(--ink);line-height:1;display:flex;align-items:center;gap:10px}
+.lockup .sub{font-size:9.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--label);font-weight:600}
+.btn{display:inline-block;background:var(--orange);color:var(--brown);font-family:"Source Sans 3";font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:999px;border:1.5px solid var(--orange);cursor:pointer;white-space:nowrap;transition:background .2s ease,color .2s ease,transform .2s var(--ease),box-shadow .2s ease}
+.btn:hover{background:var(--orange-hover);border-color:var(--orange-hover);color:var(--cream);transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn:active{transform:none}
+.btn[disabled]{background:var(--border);border-color:var(--border);color:var(--muted);cursor:not-allowed;transform:none;box-shadow:none}
+.btn.ghost{background:transparent;border-color:rgba(253,250,244,.7);color:var(--white)}
+.btn.ghost:hover{background:rgba(253,250,244,.16);border-color:var(--white);color:var(--white);box-shadow:none}
+.btn.dark{background:var(--brown);border-color:var(--brown);color:var(--cream)}
+.btn.dark:hover{background:var(--brown-deep);border-color:var(--brown-deep)}
+
+/* ============ HERO — cinematic ============ */
+.hero{position:relative;min-height:660px;height:92vh;max-height:860px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero .bg{position:absolute;inset:0}
+.hero .bg img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
+.hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(46,31,24,.30) 0%, rgba(46,31,24,.26) 45%, rgba(46,31,24,.52) 100%)}
+.hero-in{position:relative;z-index:2;max-width:880px;padding:0 32px;color:var(--cream)}
+.hero .eyebrow{font-size:12px;letter-spacing:.34em;text-transform:uppercase;font-weight:600;color:#F5E7D6;margin-bottom:26px;display:block}
+.hero h1{font-size:clamp(2.7rem,1.7rem + 4vw,4.9rem);font-weight:440;line-height:1.12;color:#FDFAF4;letter-spacing:.01em;margin-bottom:22px;text-shadow:0 2px 30px rgba(46,31,24,.4)}
+.hero h1 em{font-style:italic;font-weight:440}
+.hero .sub{font-size:17.5px;line-height:1.7;max-width:54ch;margin:0 auto 36px;color:#F4EADD}
+.hero .ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cred-banner{position:absolute;left:50%;bottom:38px;transform:translateX(-50%);z-index:3;background:rgba(46,31,24,.72);backdrop-filter:blur(8px);border:1px solid rgba(247,240,228,.16);color:var(--cream);font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;padding:15px 34px;border-radius:999px;white-space:nowrap}
+.cred-banner span{color:var(--rose);padding:0 10px}
+
+/* ============ IN-NETWORK STRIP ============ */
+.ins-strip{background:var(--white);text-align:center;padding:54px 24px 50px}
+.ins-strip .caps{display:block;margin-bottom:26px}
+.ins-line{font-family:Fraunces,serif;font-weight:440;font-size:clamp(21px,1.1rem + 1.1vw,29px);color:var(--ink);max-width:38ch;margin:0 auto 10px}
+.ins-line em{font-style:italic}
+.ins-strip .foot{font-size:13px;font-style:italic;color:var(--muted)}
+.ins-strip .selfpay{margin-top:6px;font-size:15px;color:var(--body)}
+
+/* ============ STATEMENT BANDS ============ */
+.band-brown{background:var(--brown);color:var(--cream);text-align:center;padding:74px 24px 66px;position:relative}
+.band-brown::before{content:"";position:absolute;top:-1px;left:-6%;width:112%;height:56px;background:var(--white);border-radius:0 0 60% 60%/0 0 100% 100%}
+.band-brown .caps{color:var(--rose);display:block;margin-bottom:14px}
+.band-brown .line{font-family:Fraunces,serif;font-weight:440;font-size:clamp(24px,1.3rem + 1.6vw,36px);color:var(--white);max-width:30ch;margin:0 auto}
+.band-brown .line em{font-style:italic}
+.band-orange{background:var(--orange);color:var(--brown);text-align:center;padding:20px 24px;font-family:Fraunces,serif;font-weight:560;font-size:clamp(14px,.8rem + .6vw,18px);letter-spacing:.18em;text-transform:uppercase}
+
+/* ============ SERVICE TILES ============ */
+.services{max-width:1280px;margin:0 auto;padding:96px 40px 30px;text-align:center}
+.services .caps{display:block;margin-bottom:14px}
+.services h2{font-size:clamp(2rem,1.4rem + 2.2vw,3.2rem);font-weight:560;line-height:1.1;max-width:26ch;margin:0 auto 16px}
+.services h2 .accent{font-size:.98em}
+.services .lede{max-width:58ch;margin:0 auto}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:60px}
+.svc{background:var(--white);border:1px solid var(--border);border-radius:18px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;text-align:left;box-shadow:0 4px 18px rgba(62,43,35,.06);transition:transform .25s var(--ease),box-shadow .25s ease}
+.svc:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(62,43,35,.16)}
+.svc .im{height:250px;overflow:hidden}
+.svc .im img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.svc:hover .im img{transform:scale(1.045)}
+.svc .body{padding:28px 30px 30px;display:flex;flex-direction:column;flex:1}
+.svc .who{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;color:var(--rose-ink);margin-bottom:9px}
+.svc h3{font-size:23px;font-weight:560;margin-bottom:9px}
+.svc p{font-size:15.5px;color:var(--body);flex:1}
+.svc .go{margin-top:18px;font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-ink);display:inline-flex;align-items:center;gap:8px;transition:gap .25s var(--ease),color .2s}
+.svc:hover .go{gap:13px;color:var(--brown)}
+
+/* ============ STEPS — easy as 1,2,3 ============ */
+.steps{max-width:1180px;margin:0 auto;padding:84px 40px 100px;text-align:center}
+.steps .caps{display:block;margin-bottom:14px}
+.steps h2{font-size:clamp(1.9rem,1.4rem + 1.9vw,2.9rem);font-weight:560;margin-bottom:52px}
+.step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;text-align:center}
+.step .n{font-family:Fraunces,serif;font-style:italic;font-weight:440;font-size:44px;color:var(--orange-ink);line-height:1}
+.step .rule{width:36px;height:1.5px;background:var(--border-strong);margin:16px auto 18px}
+.step h3{font-size:21px;font-weight:560;margin-bottom:8px}
+.step p{font-size:15px;color:var(--body);max-width:34ch;margin:0 auto}
+
+/* ============ ABOUT SPLIT ============ */
+.about-band{background:var(--tint);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.about{max-width:1180px;margin:0 auto;padding:96px 40px;display:grid;grid-template-columns:1.12fr .88fr;gap:76px;align-items:center;position:relative}
+.about .orn{position:absolute;top:44px;right:-30px;opacity:.16;pointer-events:none}
+.about .caps{display:block;margin-bottom:16px}
+.about h2{font-size:clamp(1.9rem,1.4rem + 1.9vw,3rem);font-weight:560;line-height:1.12;margin-bottom:20px;max-width:20ch}
+.about p{font-size:16.5px;max-width:56ch}
+.about p + p{margin-top:14px}
+.about .tlink{display:inline-block;margin-top:24px;font-weight:600;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-ink);text-decoration:none;border-bottom:1.5px solid var(--border-strong);padding-bottom:4px;transition:border-color .2s,color .2s}
+.about .tlink:hover{color:var(--brown);border-color:var(--orange)}
+.kcard{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:36px 38px;box-shadow:var(--shadow);position:relative;z-index:2}
+.kcard .mark{margin-bottom:18px}
+.kcard .name{font-family:Fraunces,serif;font-weight:560;font-size:25px;color:var(--ink)}
+.kcard .cred{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--rose-ink);margin:5px 0 22px}
+.kcard ul{list-style:none;border-top:1px solid var(--border)}
+.kcard li{display:flex;justify-content:space-between;gap:16px;padding:12px 2px;border-bottom:1px solid var(--border);font-size:14.5px}
+.kcard li .k{color:var(--muted);font-weight:600;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;padding-top:2px}
+.kcard li .v{text-align:right;color:var(--ink);font-weight:600}
+.kcard .note{margin-top:16px;font-size:12.5px;font-style:italic;color:var(--muted)}
+
+/* ============ FAQ ============ */
+.faq{max-width:840px;margin:0 auto;padding:96px 40px 104px}
+.faq .caps{display:block;text-align:center;margin-bottom:14px}
+.faq h2{font-size:clamp(1.9rem,1.4rem + 1.9vw,2.9rem);font-weight:560;text-align:center;margin-bottom:12px}
+.faq .lede{text-align:center;max-width:52ch;margin:0 auto 46px}
+.faq details{background:var(--white);border:1px solid var(--border);border-radius:14px;margin-bottom:12px;overflow:hidden;transition:box-shadow .25s ease}
+.faq details[open]{box-shadow:var(--shadow)}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 26px;font-family:Fraunces,serif;font-weight:560;font-size:19px;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .ind{flex:none;width:27px;height:27px;border-radius:50%;border:1.5px solid var(--border-strong);display:grid;place-items:center;color:var(--orange-ink);font-family:"Source Sans 3";font-size:16px;font-weight:600;transition:transform .3s var(--ease),background .2s,color .2s,border-color .2s}
+.faq details[open] summary .ind{transform:rotate(45deg);background:var(--brown);border-color:var(--brown);color:var(--cream)}
+.faq summary:hover .ind{border-color:var(--orange)}
+.faq .a{padding:0 26px 22px;font-size:15.5px;color:var(--body);max-width:64ch}
+.faq .schema-note{text-align:center;margin-top:20px;font-size:12.5px;font-style:italic;color:var(--muted)}
+.faq .cta-row{text-align:center;margin-top:38px}
+
+/* ============ STYLE TILE ============ */
+.tile{background:var(--white);border-top:1px solid var(--border);padding:84px 0}
+.tile-in{max-width:1160px;margin:0 auto;padding:0 40px}
+.tile h2{font-size:clamp(1.8rem,1.4rem+1.5vw,2.5rem);margin-bottom:6px}
+.tile .sub{color:var(--muted);margin-bottom:36px;font-size:14.5px}
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.sw{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--cream)}
+.sw .c{height:70px}
+.sw .m{padding:10px 12px;font-size:12px;line-height:1.55}
+.sw .m b{display:block;color:var(--ink)}
+.type-scale{margin-top:46px;display:flex;flex-direction:column;gap:16px}
+.ts-row{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:baseline;border-bottom:1px dashed var(--border-strong);padding-bottom:14px}
+.ts-row .meta{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.states{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:30px;margin-top:46px}
+.state-col h4{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--label);margin-bottom:14px;font-weight:600}
+.state-col .stack{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.btn.hovd{background:var(--orange-hover);border-color:var(--orange-hover);color:var(--cream);box-shadow:var(--shadow)}
+.btn.focd{outline:2px solid var(--brown);outline-offset:2px}
+.input{width:100%;max-width:290px;padding:13px 16px;font-size:16px;font-family:"Source Sans 3";border:1px solid var(--border-strong);border-radius:10px;background:var(--white);color:var(--ink)}
+.input:focus{outline:2px solid var(--brown);outline-offset:1px}
+.input.err{border-color:#9E2B25;border-width:1.5px}
+.err-msg{font-size:13px;color:#9E2B25;font-weight:600}
+.space{display:flex;flex-direction:column;gap:8px}
+.space .bar{background:var(--olive);opacity:.5;height:11px;border-radius:3px}
+.space .lab{font-size:11.5px;color:var(--muted)}
+.motion-note{margin-top:46px;font-size:14.5px;color:var(--body);border-left:2px solid var(--orange);padding-left:18px;max-width:66ch}
+
+/* footer */
+footer.site{background:var(--brown);color:#D9C6B4;padding:64px 0 54px;text-align:center}
+footer.site .wm{font-family:Fraunces,serif;font-weight:560;font-size:24px;color:var(--cream)}
+footer.site .s{font-size:9.5px;letter-spacing:.42em;text-transform:uppercase;color:#B99F8A;margin-top:7px}
+footer.site .cred{margin:26px auto 0;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;line-height:2.4;max-width:680px}
+footer.site .cred b{color:var(--cream);font-weight:600}
+footer.site .disc{margin:22px auto 0;font-size:12.5px;max-width:64ch;font-style:italic;opacity:.85}
+
+/* reveals */
+@media (prefers-reduced-motion: no-preference){
+  .reveal{opacity:0;transform:translateY(1.5rem);animation:rise .9s var(--ease) forwards}
+  .reveal.d1{animation-delay:.12s}.reveal.d2{animation-delay:.24s}.reveal.d3{animation-delay:.36s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @supports (animation-timeline: view()){
+    .svc,.step,.faq details{opacity:0;transform:translateY(1.2rem);animation:risev linear both;animation-timeline:view();animation-range:entry 0% entry 48%}
+    .svc-grid .svc:nth-child(2),.step-grid .step:nth-child(2){animation-range:entry 6% entry 54%}
+    .svc-grid .svc:nth-child(3),.step-grid .step:nth-child(3){animation-range:entry 12% entry 60%}
+    @keyframes risev{to{opacity:1;transform:none}}
+  }
+}
+
+/* ============ MOBILE ============ */
+@media (max-width:920px){
+  .head-in{grid-template-columns:auto 1fr auto;height:76px;padding:0 20px}
+  .nav-l{display:none}
+  .nav-r a.nl{display:none}
+  .lockup{align-items:flex-start;order:-1}
+  .lockup .wm{font-size:20px}
+  .lockup .sub{letter-spacing:.3em;font-size:8.5px}
+  .head-in .btn{padding:11px 18px;font-size:11.5px}
+  .announce{font-size:9.5px;letter-spacing:.14em}
+  .hero{height:auto;min-height:0;padding:96px 0 128px}
+  .hero h1{font-size:clamp(2.3rem,9vw,2.8rem)}
+  .hero .sub{font-size:16.5px}
+  .hero .ctas{flex-direction:column;align-items:center}
+  .hero .ctas .btn{width:min(320px,84vw);text-align:center}
+  .cred-banner{white-space:normal;width:88vw;text-align:center;line-height:2.1;padding:11px 18px;letter-spacing:.14em;font-size:9.5px;bottom:20px}
+  .ins-line{font-size:19px}
+  .services{padding:68px 20px 20px}
+  .svc-grid{grid-template-columns:1fr;gap:22px;max-width:440px;margin-left:auto;margin-right:auto}
+  .steps{padding:64px 20px 76px}
+  .step-grid{grid-template-columns:1fr;gap:38px}
+  .about{grid-template-columns:1fr;gap:46px;padding:68px 20px}
+  .faq{padding:68px 20px 76px}
+  .faq summary{font-size:17px;padding:17px 18px}
+  .faq .a{padding:0 18px 18px}
+  .tile-in{padding:0 20px}
+  .ts-row{grid-template-columns:1fr;gap:7px}
+}
+</style>
+</head>
+<body>
+
+<div class="concept-note"><strong>Concept 07 v2 · Warm Clinical</strong> &nbsp;·&nbsp; Approved direction, elevated to the reference bar &nbsp;·&nbsp; Level 2 Premium</div>
+
+<div class="announce">Registered Dietitian <span>·</span> Licensed in Missouri &amp; New Jersey <span>·</span> Virtual Nutrition Counseling</div>
+
+<header class="site">
+  <div class="head-in">
+    <nav class="nav-l" aria-label="Primary left">
+      <a href="#about">About Katie</a>
+      <a href="#services">Individual</a>
+      <a href="#services">Child &amp; Teen</a>
+    </nav>
+    <a class="lockup" href="#">
+      <span class="wm">
+        <svg width="27" height="27" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <line x1="16" y1="4" x2="16" y2="28" stroke="#3E2B23" stroke-width="1.4"/>
+          <path d="M16 12.5 C10.5 3, 3 5, 4.3 11.5 C5.2 16, 11 17, 16 14.8" stroke="#3E2B23" stroke-width="1.4" fill="none"/>
+          <path d="M16 12.5 C21.5 3, 29 5, 27.7 11.5 C26.8 16, 21 17, 16 14.8" stroke="#3E2B23" stroke-width="1.4" fill="none"/>
+          <path d="M16 17.5 C12.5 15.8, 7.5 17.6, 8.4 21.6 C9.2 25.2, 14 24.8, 16 21.6" stroke="#3E2B23" stroke-width="1.4" fill="none"/>
+          <path d="M16 17.5 C19.5 15.8, 24.5 17.6, 23.6 21.6 C22.8 25.2, 18 24.8, 16 21.6" stroke="#3E2B23" stroke-width="1.4" fill="none"/>
+        </svg>
+        Monarch
+      </span>
+      <span class="sub">Nutrition Counseling</span>
+    </a>
+    <nav class="nav-r" aria-label="Primary right">
+      <a class="nl" href="#services">Corporate</a>
+      <a class="nl" href="#">Blog</a>
+      <a class="btn" href="#contact">Contact Katie</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="bg"><img src="assets/hero-cooking.jpg" alt="A woman smiling while cooking fresh vegetables in a bright kitchen" width="2200" height="1467"></div>
+  <div class="hero-in">
+    <span class="eyebrow reveal">Katie Sengheiser, RD &nbsp;·&nbsp; Registered Dietitian</span>
+    <h1 class="reveal d1">Nutrition counseling from your <em>own</em> kitchen table.</h1>
+    <p class="sub reveal d2">Virtual nutrition care for adults, children &amp; teens, and workplaces — licensed in Missouri and New Jersey, with in-network insurance billing.</p>
+    <div class="ctas reveal d3">
+      <a class="btn" href="#contact">Contact Katie</a>
+      <a class="btn ghost" href="#insurance">Insurance &amp; Coverage</a>
+    </div>
+  </div>
+  <div class="cred-banner">Registered Dietitian Care <span>·</span> Licensed MO + NJ <span>·</span> In-Network Billing</div>
+</section>
+
+<!-- IN-NETWORK STRIP -->
+<section class="ins-strip" id="insurance">
+  <span class="caps">In-Network With</span>
+  <p class="ins-line">Major insurance plans, billed directly — <em>coverage verified before your first visit.</em></p>
+  <p class="selfpay">Self-pay packages are also available for out-of-network plans.</p>
+  <p class="foot">Carrier logo strip drops in here at launch, from Katie’s credentialing.</p>
+</section>
+
+<!-- CURVED BROWN STATEMENT BAND -->
+<section class="band-brown">
+  <span class="caps">Why Telehealth</span>
+  <p class="line">Real nutrition care,<br><em>without the waiting room.</em></p>
+</section>
+
+<!-- ORANGE STATEMENT BAND -->
+<div class="band-orange">Expert nutrition care · In network and online · Wherever your table is</div>
+
+<!-- SERVICE TILES -->
+<section class="services" id="services">
+  <span class="caps">Three Ways to Work Together</span>
+  <h2>Nutrition services with <span class="accent">room for real life.</span></h2>
+  <p class="lede">Reach out, get clear answers about coverage, and book your first telehealth visit — scheduling and intake happen in Katie’s secure client portal.</p>
+  <div class="svc-grid">
+    <a class="svc" href="#insurance">
+      <div class="im"><img src="assets/patient-cooking.jpg" alt="A woman preparing a fresh vegetarian meal at home" width="800" height="1200"></div>
+      <div class="body">
+        <span class="who">For Myself</span>
+        <h3>Individual Nutrition Counseling</h3>
+        <p>One-on-one care for adults — weight management and pre- or post-bariatric nutrition, built around your actual week.</p>
+        <span class="go">Learn more →</span>
+      </div>
+    </a>
+    <a class="svc" href="#insurance">
+      <div class="im"><img src="assets/child-baking.jpg" alt="A child's hands pressing a cookie cutter into rolled dough" width="800" height="534"></div>
+      <div class="body">
+        <span class="who">For My Child</span>
+        <h3>Child &amp; Teen Nutrition</h3>
+        <p>Family-centered care with parents in the room — growth questions, selective eating, and teenage appetites, met calmly.</p>
+        <span class="go">Learn more →</span>
+      </div>
+    </a>
+    <a class="svc" href="#insurance">
+      <div class="im"><img src="assets/corporate-call.jpg" alt="A professional smiling on a video call at her workplace" width="1200" height="675"></div>
+      <div class="body">
+        <span class="who">For My Workplace</span>
+        <h3>Corporate Nutrition</h3>
+        <p>Employer wellness programming, lunch-and-learns, and group contracts — delivered virtually to your team.</p>
+        <span class="go">Learn more →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="steps">
+  <span class="caps">Getting Started</span>
+  <h2>Easy as <span class="accent">one, two, three.</span></h2>
+  <div class="step-grid">
+    <div class="step">
+      <div class="n">1</div>
+      <div class="rule"></div>
+      <h3>Reach out</h3>
+      <p>Send your name, email, and phone — or have your provider’s office send a referral the same way.</p>
+    </div>
+    <div class="step">
+      <div class="n">2</div>
+      <div class="rule"></div>
+      <h3>Coverage, verified</h3>
+      <p>Katie checks your benefits and gives you clear answers about cost before anything is scheduled.</p>
+    </div>
+    <div class="step">
+      <div class="n">3</div>
+      <div class="rule"></div>
+      <h3>Meet Katie</h3>
+      <p>Your first telehealth visit is booked through her secure client portal — from your own kitchen table.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SPLIT -->
+<div class="about-band" id="about">
+  <section class="about">
+    <svg class="orn" width="360" height="360" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <line x1="16" y1="4" x2="16" y2="28" stroke="#7C7551" stroke-width=".5"/>
+      <path d="M16 12.5 C10.5 3, 3 5, 4.3 11.5 C5.2 16, 11 17, 16 14.8" stroke="#7C7551" stroke-width=".5" fill="none"/>
+      <path d="M16 12.5 C21.5 3, 29 5, 27.7 11.5 C26.8 16, 21 17, 16 14.8" stroke="#7C7551" stroke-width=".5" fill="none"/>
+      <path d="M16 17.5 C12.5 15.8, 7.5 17.6, 8.4 21.6 C9.2 25.2, 14 24.8, 16 21.6" stroke="#7C7551" stroke-width=".5" fill="none"/>
+      <path d="M16 17.5 C19.5 15.8, 24.5 17.6, 23.6 21.6 C22.8 25.2, 18 24.8, 16 21.6" stroke="#7C7551" stroke-width=".5" fill="none"/>
+    </svg>
+    <div>
+      <span class="caps rose">About Katie</span>
+      <h2>A dietitian your practice can refer to.</h2>
+      <p>Katie Sengheiser is a Registered Dietitian licensed in Missouri and New Jersey, practicing entirely by telehealth from St. Peters, Missouri. Her clinical focus is weight management and bariatric nutrition, with a genuine interest in helping children and teens build a workable relationship with food.</p>
+      <p>The practice is deliberately solo: the clinician who takes your call, verifies your coverage, and sits across the screen at every visit is the same person. Physician, therapist, and PT referrals are welcome.</p>
+      <a class="tlink" href="#">More About Katie</a>
+    </div>
+    <div class="kcard reveal">
+      <svg class="mark" width="40" height="40" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <line x1="16" y1="4" x2="16" y2="28" stroke="#E08A3C" stroke-width="1.5"/>
+        <path d="M16 12.5 C10.5 3, 3 5, 4.3 11.5 C5.2 16, 11 17, 16 14.8" stroke="#E08A3C" stroke-width="1.5" fill="none"/>
+        <path d="M16 12.5 C21.5 3, 29 5, 27.7 11.5 C26.8 16, 21 17, 16 14.8" stroke="#E08A3C" stroke-width="1.5" fill="none"/>
+        <path d="M16 17.5 C12.5 15.8, 7.5 17.6, 8.4 21.6 C9.2 25.2, 14 24.8, 16 21.6" stroke="#E08A3C" stroke-width="1.5" fill="none"/>
+        <path d="M16 17.5 C19.5 15.8, 24.5 17.6, 23.6 21.6 C22.8 25.2, 18 24.8, 16 21.6" stroke="#E08A3C" stroke-width="1.5" fill="none"/>
+      </svg>
+      <div class="name">Katie Sengheiser</div>
+      <div class="cred">Registered Dietitian (RD)</div>
+      <ul>
+        <li><span class="k">Licensed</span><span class="v">Missouri + New Jersey</span></li>
+        <li><span class="k">Visits</span><span class="v">Telehealth only</span></li>
+        <li><span class="k">Billing</span><span class="v">In-network + self-pay</span></li>
+        <li><span class="k">Based in</span><span class="v">St. Peters, MO</span></li>
+      </ul>
+      <p class="note">Katie’s headshot from her shoot drops in here.</p>
+    </div>
+  </section>
+</div>
+
+<!-- FAQ -->
+<section class="faq">
+  <span class="caps">Common Questions</span>
+  <h2>Answers before you ask.</h2>
+  <p class="lede">The questions referring offices and families ask most — answered plainly.</p>
+
+  <details open>
+    <summary>Do you accept insurance? <span class="ind">+</span></summary>
+    <p class="a">Yes — Monarch Nutrition Counseling bills participating insurance plans directly, and your coverage is verified before your first appointment. Self-pay packages are available for out-of-network plans. The complete plan list will be published here at launch.</p>
+  </details>
+  <details>
+    <summary>Which states can you see clients in? <span class="ind">+</span></summary>
+    <p class="a">Katie is licensed in Missouri and New Jersey, and can see residents of either state by telehealth.</p>
+  </details>
+  <details>
+    <summary>Are appointments in person or virtual? <span class="ind">+</span></summary>
+    <p class="a">All visits are virtual. You’ll meet with Katie by secure video from home — no office, no waiting room, no commute.</p>
+  </details>
+  <details>
+    <summary>Do you work with children and teens? <span class="ind">+</span></summary>
+    <p class="a">Yes — child and teen nutrition is one of Katie’s core services, with parents in the room and pediatrician referrals welcome.</p>
+  </details>
+  <details>
+    <summary>How do I refer a patient? <span class="ind">+</span></summary>
+    <p class="a">Send your patient’s name and contact information through the contact form or by phone. Katie verifies coverage, handles intake in her secure client portal, and takes it from there.</p>
+  </details>
+  <p class="schema-note">Marked up with FAQPage schema in the build, so search and AI assistants can quote these answers.</p>
+  <div class="cta-row"><a class="btn dark" href="#contact">Contact Katie</a></div>
+</section>
+
+<!-- STYLE TILE -->
+<section class="tile">
+  <div class="tile-in">
+    <span class="caps" style="display:block;margin-bottom:12px">Style Tile — for review, not part of the site</span>
+    <h2>The system</h2>
+    <p class="sub">Fraunces SOFT (display) · Source Sans 3 (text) · Katie's approved palette verbatim — deep brown does the heavy lifting; orange and rose never dominate.</p>
+    <div class="swatches">
+      <div class="sw"><div class="c" style="background:#F7F0E4;border-bottom:1px solid #E5D9C6"></div><div class="m"><b>#F7F0E4 · cream</b>Approved — page ground</div></div>
+      <div class="sw"><div class="c" style="background:#3E2B23"></div><div class="m"><b>#3E2B23 · deep brown</b>Approved — text, bands, footer · 11.8:1</div></div>
+      <div class="sw"><div class="c" style="background:#E08A3C"></div><div class="m"><b>#E08A3C · orange</b>Approved — CTAs + statement band; brown text 5.0:1</div></div>
+      <div class="sw"><div class="c" style="background:#E79A94"></div><div class="m"><b>#E79A94 · rose</b>Approved (brightened) — accents, never text on cream</div></div>
+      <div class="sw"><div class="c" style="background:#7C7551"></div><div class="m"><b>#7C7551 · green-brown</b>Approved — supporting neutral, ornament</div></div>
+      <div class="sw"><div class="c" style="background:#92615D"></div><div class="m"><b>#92615D · rose-ink</b>Derived text-safe rose · 4.5:1</div></div>
+      <div class="sw"><div class="c" style="background:#995C26"></div><div class="m"><b>#995C26 · orange-ink</b>Derived text-safe orange · 4.7:1</div></div>
+      <div class="sw"><div class="c" style="background:#FDFAF4;border-bottom:1px solid #E5D9C6"></div><div class="m"><b>#FDFAF4 · white</b>Cards, strip band</div></div>
+    </div>
+    <div class="type-scale">
+      <div class="ts-row"><span class="meta">Hero · Fraunces 440 · clamp(2.7–4.9rem) · lh 1.12</span><span style="font-family:Fraunces,serif;font-weight:440;font-size:47px;line-height:1.12;color:#3E2B23">Your <em style="font-weight:440">own</em> kitchen table.</span></div>
+      <div class="ts-row"><span class="meta">H2 · Fraunces 560 · 3.2rem/51px</span><span style="font-family:Fraunces,serif;font-weight:560;font-size:51px;color:#3E2B23">Room for <em style="font-weight:440;color:#995C26">real life.</em></span></div>
+      <div class="ts-row"><span class="meta">H3 · Fraunces 560 · 23px</span><span style="font-family:Fraunces,serif;font-weight:560;font-size:23px;color:#3E2B23">Individual Nutrition Counseling</span></div>
+      <div class="ts-row"><span class="meta">Body · Source Sans 3 400 · 17px · lh 1.7</span><span>Katie Sengheiser, RD, sees patients virtually across Missouri and New Jersey.</span></div>
+      <div class="ts-row"><span class="meta">Label · Source Sans 3 600 · 12px caps +0.24em</span><span class="caps">In-Network With</span></div>
+    </div>
+    <div class="states">
+      <div class="state-col"><h4>Button states</h4>
+        <div class="stack">
+          <button class="btn">Contact Katie</button>
+          <button class="btn hovd">Hover</button>
+          <button class="btn focd">Focus-visible</button>
+          <button class="btn" disabled>Disabled</button>
+        </div>
+      </div>
+      <div class="state-col"><h4>Input states</h4>
+        <div class="stack">
+          <input class="input" placeholder="Rest" aria-label="Rest state example">
+          <input class="input" placeholder="Focus (click me)" aria-label="Focus state example">
+          <input class="input err" value="(555) 12" aria-label="Error state example">
+          <span class="err-msg">Error: enter a 10-digit phone number.</span>
+        </div>
+      </div>
+      <div class="state-col"><h4>Spacing scale (px)</h4>
+        <div class="space">
+          <div class="lab">8</div><div class="bar" style="width:8px"></div>
+          <div class="lab">16</div><div class="bar" style="width:16px"></div>
+          <div class="lab">24</div><div class="bar" style="width:24px"></div>
+          <div class="lab">40</div><div class="bar" style="width:40px"></div>
+          <div class="lab">64</div><div class="bar" style="width:64px"></div>
+          <div class="lab">96</div><div class="bar" style="width:96px"></div>
+        </div>
+      </div>
+    </div>
+    <p class="motion-note"><strong>Motion.</strong> Hero rises once on load (900ms, soft-out, 120ms stagger). Tiles, steps, and FAQ items reveal on scroll where supported; cards lift with brown-tinted shadows; the FAQ indicator rotates 45° on open (pure CSS <code>details/summary</code>). Everything rests still under <code>prefers-reduced-motion</code>. The full build swaps scroll-timeline for IntersectionObserver — no animation library.</p>
+  </div>
+</section>
+
+<footer class="site" id="contact">
+  <div class="wm">Monarch</div>
+  <div class="s">Nutrition Counseling</div>
+  <p class="cred"><b>Katie Sengheiser, RD · Registered Dietitian</b><br>Telehealth Nutrition Counseling for Missouri &amp; New Jersey Residents · St. Peters, MO<br>Physician, Therapist &amp; PT Referrals Welcome</p>
+  <p class="disc">The contact form collects name, email &amp; phone only — no health information. Clinical intake and scheduling live in Katie’s secure client portal. Content on this site is for general information and is not medical advice or a substitute for care from your physician. Concept photography: Unsplash license, swappable for Katie’s photos.</p>
+</footer>
+
+</body>
+</html>

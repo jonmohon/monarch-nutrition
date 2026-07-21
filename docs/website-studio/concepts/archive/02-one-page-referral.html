@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept 02 — The One-Page Referral · Monarch Nutrition Counseling</title>
+<!--
+  CONCEPT: The One-Page Referral
+  Archetype: Dense index (clinical spec sheet — everything visible immediately)
+  Tier: Vercel/Geist brutal restraint, re-warmed with cream + rose
+  Techniques (cutting-edge §B): #4 oversized type bleeding off-canvas,
+  #15 :has()-driven living index, #20 CSS carrier ticker (pausable),
+  #13 noise-textured color fields, #19 folio numbering, #12 tinted shadows.
+  Level 2 (Premium).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F0E4; --masthead:#3E2B23; --footer:#2E1F18;
+  --ink:#3E2B23; --ink-muted:#6C594D; --ink-inv:#F7F0E4; --ink-inv-muted:#B8B18C;
+  --accent:#E08A3C; --accent-ink:#995C26; --accent-hi:#F09E52;
+  --rose:#E79A94; --rose-ink:#92615D; --mono-label:#575234; --olive:#7C7551;
+  --surface:#F0E8D8; --row-hover:#F2E6CE;
+  --border:#DCCEB4; --border-dark:#5A463C;
+  --shadow:0 8px 28px rgba(62,43,35,.10);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--rose);color:var(--masthead)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:2px}
+.on-dark :focus-visible{outline-color:var(--ink-inv)}
+h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;text-wrap:balance}
+.mono{font-family:"IBM Plex Mono",monospace}
+
+/* concept masthead */
+.concept-note{background:var(--footer);color:var(--ink-inv-muted);font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:10px 20px;display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
+.concept-note strong{color:var(--ink-inv)}
+
+/* grain utility */
+.grain{position:relative;isolation:isolate}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.wrap{max-width:1240px;width:100%;margin:0 auto;padding:0 48px}
+
+/* ============ MASTHEAD ============ */
+.masthead{background:var(--masthead);color:var(--ink-inv);min-height:560px;display:flex;flex-direction:column}
+.masthead .nav{display:flex;align-items:center;justify-content:space-between;height:72px;border-bottom:1px solid var(--border-dark)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink-inv)}
+.brand .wm{font-family:"Bricolage Grotesque";font-weight:700;font-size:17px}
+.nav-links{display:flex;gap:26px;font-family:"IBM Plex Mono",monospace;font-size:13px}
+.nav-links a{color:var(--ink-inv);text-decoration:none;padding:4px 0;border-bottom:1px solid transparent;transition:border-color .18s ease,color .18s ease}
+.nav-links a:hover{color:#fff;border-color:var(--accent)}
+.hero{flex:1;display:flex;flex-direction:column;justify-content:center;padding:64px 0 56px;position:relative;z-index:2}
+.hero h1{font-weight:700;font-size:clamp(3.5rem,1.9rem + 9vw,10rem);line-height:.98;letter-spacing:-.025em;max-width:none;position:relative}
+@media (max-width:900px){.db{display:none}.hero h1 .l2{white-space:normal}}
+.hero h1 .bleed{color:var(--accent)}
+.hero h1 .l2{white-space:nowrap}
+.facts{margin-top:34px;font-family:"IBM Plex Mono",monospace;font-size:14px;color:var(--ink-inv-muted);letter-spacing:.02em;line-height:1.9}
+.facts b{color:var(--ink-inv);font-weight:500}
+.hero .ctas{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap}
+.btn{display:inline-block;font-family:"Source Sans 3";background:var(--accent);color:var(--masthead);font-weight:600;font-size:16px;text-decoration:none;padding:14px 26px;border-radius:8px;border:0;cursor:pointer;transition:background .18s ease,transform .18s var(--ease)}
+.btn:hover{background:var(--accent-hi);transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn[disabled]{background:var(--border);color:var(--ink-muted);cursor:not-allowed}
+.btn-ghost{background:transparent;color:var(--ink-inv);border:1px solid var(--ink-inv);transition:border-color .18s ease,color .18s ease,background .18s ease}
+.btn-ghost:hover{background:rgba(247,240,228,.08);border-color:#fff;color:#fff;transform:none}
+
+/* ============ TICKER ============ */
+.ticker{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;overflow:hidden;position:relative}
+.ticker .track{display:flex;gap:0;white-space:nowrap;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.06em;color:var(--mono-label)}
+.ticker .seq{display:inline-flex;padding-right:0}
+@media (prefers-reduced-motion: no-preference){
+  .ticker .track{animation:scroll-t 36s linear infinite}
+  .ticker:hover .track,.ticker:focus-within .track{animation-play-state:paused}
+  @keyframes scroll-t{to{transform:translateX(-50%)}}
+}
+.ticker .item{padding:0 26px;border-right:1px solid var(--border)}
+.ticker .item.note{color:var(--rose-ink);font-style:italic}
+
+/* ============ INDEX ============ */
+.index-head{padding:72px 0 8px;display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap}
+.index-head h2{font-weight:700;font-size:clamp(1.625rem,1.15rem + 1.7vw,2.55rem);line-height:1.15;letter-spacing:-.01em}
+.index-head .mono{font-size:13px;color:var(--mono-label)}
+ol.index{list-style:none;border-top:1px solid var(--ink);margin-bottom:88px}
+ol.index li{border-bottom:1px solid var(--border);transition:opacity .25s ease}
+ol.index:has(li:hover) li:not(:hover),ol.index:has(li:focus-within) li:not(:focus-within){opacity:.45}
+ol.index a{display:block;text-decoration:none;color:var(--ink);padding:0 8px;position:relative;transition:background .2s ease}
+ol.index li:hover a,ol.index li:focus-within a{background:var(--row-hover)}
+ol.index a::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .3s var(--ease)}
+ol.index li:hover a::before,ol.index li:focus-within a::before{transform:scaleY(1)}
+.row-top{display:grid;grid-template-columns:70px 34px 1fr auto;gap:18px;align-items:center;padding:28px 8px}
+.row-top .num{font-family:"IBM Plex Mono",monospace;font-size:14px;color:var(--mono-label)}
+.row-top .wing{width:20px;height:20px}
+.row-top .t{font-family:"Bricolage Grotesque";font-weight:500;font-size:clamp(1.5rem,1rem + 2.2vw,2.75rem);line-height:1.05;letter-spacing:-.01em}
+.row-top .meta{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--mono-label);text-align:right;line-height:1.7}
+.row-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease)}
+ol.index li:hover .row-more,ol.index li:focus-within .row-more{grid-template-rows:1fr}
+.row-more>div{overflow:hidden}
+.row-more p{padding:0 8px 26px 122px;max-width:70ch;color:var(--ink-muted);font-size:16px}
+.row-more p b{color:var(--accent-ink);font-weight:600}
+
+/* ============ SPEC SHEET (insurance + fees) — hardest section ============ */
+.spec{background:var(--surface);border-top:1px solid var(--border);padding:84px 0}
+.spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.spec h2{font-weight:700;font-size:clamp(1.625rem,1.15rem + 1.7vw,2.55rem);line-height:1.15;margin-bottom:14px}
+.spec .lede{color:var(--ink-muted);max-width:54ch}
+.spec-table{border-top:1px solid var(--ink);margin-top:28px}
+.spec-row{display:grid;grid-template-columns:190px 1fr;gap:18px;padding:16px 4px;border-bottom:1px solid var(--border);font-size:15.5px}
+.spec-row .k{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--mono-label);padding-top:2px}
+.spec-row .v b{font-weight:600}
+.slot{font-family:"IBM Plex Mono",monospace;font-size:13px;background:var(--bg);border:1px dashed var(--border);border-radius:4px;padding:2px 8px;color:var(--rose-ink)}
+.fee-cards{display:flex;flex-direction:column;gap:14px;margin-top:28px}
+.fee-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:20px 22px;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:baseline;box-shadow:var(--shadow)}
+.fee-card .t{font-family:"Bricolage Grotesque";font-weight:500;font-size:20px}
+.fee-card .p{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--rose-ink)}
+.fee-card .d{grid-column:1/-1;color:var(--ink-muted);font-size:14.5px}
+
+/* ============ STYLE TILE ============ */
+.tile{padding:84px 0;border-top:1px solid var(--border)}
+.tile h2{font-weight:700;font-size:clamp(1.625rem,1.15rem+1.7vw,2.55rem);margin-bottom:6px}
+.tile .sub{color:var(--ink-muted);margin-bottom:36px}
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.sw{border:1px solid var(--border);border-radius:8px;overflow:hidden;background:#FCF8F0}
+.sw .c{height:70px}
+.sw .m{padding:10px 12px;font-size:12.5px;line-height:1.5}
+.sw .m b{display:block;font-family:"IBM Plex Mono",monospace;font-size:11.5px}
+.type-scale{margin-top:48px;display:flex;flex-direction:column;gap:16px}
+.ts-row{display:grid;grid-template-columns:190px 1fr;gap:18px;align-items:baseline;border-bottom:1px dashed var(--border);padding-bottom:13px}
+.ts-row .meta{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--mono-label)}
+.states{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px;margin-top:48px}
+.state-col h4{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mono-label);margin-bottom:14px}
+.state-col .stack{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.btn.hov{background:var(--accent-hi)}
+.btn.foc{outline:2px solid var(--ink);outline-offset:2px}
+.input{width:100%;max-width:280px;padding:12px 14px;font-size:16px;font-family:"Source Sans 3";border:1px solid var(--olive);border-radius:6px;background:#FCF8F0;color:var(--ink)}
+.input:focus{outline:2px solid var(--ink);outline-offset:1px}
+.input.err{border-color:#9E2B25;border-width:1.5px}
+.err-msg{font-size:13.5px;color:#9E2B25;font-weight:600}
+.space{display:flex;flex-direction:column;gap:8px}
+.space .bar{background:var(--olive);opacity:.55;height:12px;border-radius:2px}
+.space .lab{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--mono-label)}
+
+/* motion sample + reveals */
+@media (prefers-reduced-motion: no-preference){
+  .reveal{opacity:0;transform:translateY(2rem);animation:rise .65s var(--ease) forwards}
+  .reveal.d1{animation-delay:.07s}.reveal.d2{animation-delay:.14s}.reveal.d3{animation-delay:.21s}
+  @keyframes rise{to{opacity:1;transform:none}}
+}
+.motion-note{font-size:14.5px;color:var(--ink-muted);border-left:2px solid var(--accent);padding-left:16px;max-width:66ch}
+
+/* footer */
+.site-footer{background:var(--footer);color:var(--ink-inv-muted);padding:56px 0;position:relative;overflow:hidden}
+.site-footer .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;position:relative;z-index:2}
+.site-footer b{color:var(--ink-inv);font-weight:600}
+.site-footer p{font-size:14px;line-height:1.7}
+.site-footer .mono{font-size:12.5px;line-height:2}
+.wing-split{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);opacity:.12;z-index:1}
+
+/* ============ MOBILE ============ */
+@media (max-width:760px){
+  .wrap{padding:0 20px}
+  .masthead{min-height:78vh}
+  .nav-links{display:none}
+  .db{display:none}
+  .hero h1 .l2{white-space:normal}
+  .hero h1{font-size:clamp(3.1rem,15vw,3.5rem)}
+  .facts{font-size:12px}
+  .hero .ctas .btn{width:100%;text-align:center}
+  .hero .ctas{flex-direction:column}
+  .row-top{grid-template-columns:44px 24px 1fr;row-gap:4px}
+  .row-top .meta{grid-column:3;text-align:left}
+  .row-more p{padding-left:8px}
+  .spec-grid{grid-template-columns:1fr;gap:48px}
+  .spec-row{grid-template-columns:1fr;gap:4px}
+  .ts-row{grid-template-columns:1fr;gap:6px}
+  .site-footer .wrap{grid-template-columns:1fr}
+  .index-head{padding-top:56px}
+}
+</style>
+</head>
+<body>
+
+<div class="concept-note">
+  <span><strong>Concept 02 · The One-Page Referral</strong></span>
+  <span>The referral sheet a front desk actually wants</span>
+  <span>Dense index · Level 2 Premium</span>
+</div>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="masthead grain on-dark">
+  <div class="wrap nav">
+    <a class="brand" href="#">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M11 3 C6 1, 2 4, 3 8.5 C3.8 12, 8 12.5, 11 10.5 Z" fill="#F7F0E4"/>
+        <path d="M13 3 C18 1, 22 4, 21 8.5 C20.2 12, 16 12.5, 13 10.5 Z" fill="#F7F0E4"/>
+        <path d="M11 13 C8 11.5, 4.5 13, 5.5 17 C6.3 20, 10 19.5, 11 16.5 Z" fill="#F7F0E4"/>
+        <path d="M13 13 C16 11.5, 19.5 13, 18.5 17 C17.7 20, 14 19.5, 13 16.5 Z" fill="#F7F0E4"/>
+      </svg>
+      <span class="wm">Monarch Nutrition Counseling</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#services">services</a>
+      <a href="#insurance">insurance+fees</a>
+      <a href="#about">about</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </div>
+  <div class="wrap hero">
+    <h1 class="reveal">Everything your<br class="db"><span class="l2"> office needs to <span class="bleed">refer.</span></span></h1>
+    <p class="facts mono reveal d1"><b>KATIE SENGHEISER, RD</b> / VIRTUAL NUTRITION COUNSELING<br>LICENSED MO + NJ / BASED IN ST. PETERS, MO / IN-NETWORK BILLING</p>
+    <div class="ctas reveal d2">
+      <a class="btn" href="#contact">Refer a patient</a>
+      <a class="btn btn-ghost" href="#insurance">Fees &amp; insurance</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ CARRIER TICKER ============ -->
+<div class="ticker" tabindex="0" aria-label="Accepted insurance plans — list pending confirmation. Hover or focus to pause.">
+  <div class="track">
+    <span class="seq">
+      <span class="item">[ CARRIER 01 ]</span><span class="item">[ CARRIER 02 ]</span><span class="item">[ CARRIER 03 ]</span><span class="item">[ CARRIER 04 ]</span><span class="item">[ CARRIER 05 ]</span><span class="item">[ CARRIER 06 ]</span><span class="item note">CARRIER LIST PENDING · FROM KATIE'S CREDENTIALING</span>
+    </span>
+    <span class="seq" aria-hidden="true">
+      <span class="item">[ CARRIER 01 ]</span><span class="item">[ CARRIER 02 ]</span><span class="item">[ CARRIER 03 ]</span><span class="item">[ CARRIER 04 ]</span><span class="item">[ CARRIER 05 ]</span><span class="item">[ CARRIER 06 ]</span><span class="item note">CARRIER LIST PENDING · FROM KATIE'S CREDENTIALING</span>
+    </span>
+  </div>
+</div>
+
+<!-- ============ THE INDEX ============ -->
+<main>
+  <div class="wrap" id="services">
+    <div class="index-head">
+      <h2>Three service lines. One phone call.</h2>
+      <span class="mono">SCHEDULING + INTAKE LIVE IN THE SECURE CLIENT PORTAL — NOT ON THIS SITE</span>
+    </div>
+    <ol class="index">
+      <li>
+        <a href="#insurance">
+          <div class="row-top">
+            <span class="num">01</span>
+            <svg class="wing" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3 C6 1, 2 4, 3 8.5 C3.8 12, 8 12.5, 11 10.5 Z" fill="#E08A3C"/><path d="M13 3 C18 1, 22 4, 21 8.5 C20.2 12, 16 12.5, 13 10.5 Z" fill="#E08A3C"/><path d="M11 13 C8 11.5, 4.5 13, 5.5 17 C6.3 20, 10 19.5, 11 16.5 Z" fill="#E08A3C"/><path d="M13 13 C16 11.5, 19.5 13, 18.5 17 C17.7 20, 14 19.5, 13 16.5 Z" fill="#E08A3C"/></svg>
+            <span class="t">Individual Nutrition Counseling</span>
+            <span class="meta">WEIGHT MANAGEMENT · BARIATRICS<br>TELEHEALTH · MO + NJ</span>
+          </div>
+          <div class="row-more"><div><p>Adults working on weight management and pre- or post-bariatric nutrition. <b>In-network billing;</b> coverage is verified before the first visit, and self-pay packages are available.</p></div></div>
+        </a>
+      </li>
+      <li>
+        <a href="#insurance">
+          <div class="row-top">
+            <span class="num">02</span>
+            <svg class="wing" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3 C6 1, 2 4, 3 8.5 C3.8 12, 8 12.5, 11 10.5 Z" fill="#E79A94"/><path d="M13 3 C18 1, 22 4, 21 8.5 C20.2 12, 16 12.5, 13 10.5 Z" fill="#E79A94"/><path d="M11 13 C8 11.5, 4.5 13, 5.5 17 C6.3 20, 10 19.5, 11 16.5 Z" fill="#E79A94"/><path d="M13 13 C16 11.5, 19.5 13, 18.5 17 C17.7 20, 14 19.5, 13 16.5 Z" fill="#E79A94"/></svg>
+            <span class="t">Child &amp; Teen Nutrition</span>
+            <span class="meta">FAMILY-BASED · PARENTS IN SESSION<br>OWN REFERRAL PAGE</span>
+          </div>
+          <div class="row-more"><div><p>Family-centered nutrition care for kids and teens, by telehealth, with parents in the room. Katie's differentiator — <b>pediatric referrals welcome.</b></p></div></div>
+        </a>
+      </li>
+      <li>
+        <a href="#insurance">
+          <div class="row-top">
+            <span class="num">03</span>
+            <svg class="wing" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3 C6 1, 2 4, 3 8.5 C3.8 12, 8 12.5, 11 10.5 Z" fill="#7C7551"/><path d="M13 3 C18 1, 22 4, 21 8.5 C20.2 12, 16 12.5, 13 10.5 Z" fill="#7C7551"/><path d="M11 13 C8 11.5, 4.5 13, 5.5 17 C6.3 20, 10 19.5, 11 16.5 Z" fill="#7C7551"/><path d="M13 13 C16 11.5, 19.5 13, 18.5 17 C17.7 20, 14 19.5, 13 16.5 Z" fill="#7C7551"/></svg>
+            <span class="t">Corporate Nutrition</span>
+            <span class="meta">LUNCH-AND-LEARNS · WELLNESS<br>GROUP CONTRACTS</span>
+          </div>
+          <div class="row-more"><div><p>Employer wellness programming, lunch-and-learns, and group contracts — delivered virtually to teams. <b>Inquiries by email.</b></p></div></div>
+        </a>
+      </li>
+    </ol>
+  </div>
+
+  <!-- ============ SPEC SHEET — hardest section ============ -->
+  <section class="spec" id="insurance">
+    <div class="wrap spec-grid">
+      <div>
+        <h2>Insurance &amp; referral facts</h2>
+        <p class="lede">The details a front desk checks before adding anyone to a referral list — in one table, no phone tag required.</p>
+        <div class="spec-table">
+          <div class="spec-row"><span class="k">Clinician</span><span class="v"><b>Katie Sengheiser, RD</b> — Registered Dietitian</span></div>
+          <div class="spec-row"><span class="k">Licensure</span><span class="v">Missouri + New Jersey</span></div>
+          <div class="spec-row"><span class="k">Modality</span><span class="v">Telehealth only · patients seen from home</span></div>
+          <div class="spec-row"><span class="k">Billing</span><span class="v">In-network insurance billing · self-pay available</span></div>
+          <div class="spec-row"><span class="k">Carriers</span><span class="v"><span class="slot">PENDING — KATIE'S CREDENTIALING LIST</span></span></div>
+          <div class="spec-row"><span class="k">NPI / Fax</span><span class="v"><span class="slot">PENDING CONFIRMATION</span></span></div>
+          <div class="spec-row"><span class="k">Referral flow</span><span class="v">Send name + contact → coverage verified → first visit scheduled in the client portal</span></div>
+        </div>
+      </div>
+      <div>
+        <h2>Self-pay fees</h2>
+        <p class="lede">For out-of-network plans and patients who prefer to pay directly. Rates publish here the day Katie confirms them.</p>
+        <div class="fee-cards">
+          <div class="fee-card">
+            <span class="t">Initial consultation</span><span class="p">[ $ — PENDING ]</span>
+            <span class="d">Full nutrition assessment; plan built with the patient.</span>
+          </div>
+          <div class="fee-card">
+            <span class="t">Follow-up visit</span><span class="p">[ $ — PENDING ]</span>
+            <span class="d">Progress review and plan adjustments, cadence set clinically.</span>
+          </div>
+          <div class="fee-card">
+            <span class="t">Package options</span><span class="p">[ $ — PENDING ]</span>
+            <span class="d">Multi-visit pricing; names and rates from Katie's fee schedule.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STYLE TILE ============ -->
+  <section class="tile" id="about">
+    <div class="wrap">
+      <h2>Style tile</h2>
+      <p class="sub">For review — the system behind the page. Not part of the site.</p>
+      <div class="swatches">
+        <div class="sw"><div class="c" style="background:#F7F0E4;border-bottom:1px solid #DCCEB4"></div><div class="m"><b>#F7F0E4 · bg</b>Cream field</div></div>
+        <div class="sw"><div class="c" style="background:#3E2B23"></div><div class="m"><b>#3E2B23 · masthead/ink</b>11.8:1 on cream</div></div>
+        <div class="sw"><div class="c" style="background:#2E1F18"></div><div class="m"><b>#2E1F18 · footer</b>Brown −5% L</div></div>
+        <div class="sw"><div class="c" style="background:#E08A3C"></div><div class="m"><b>#E08A3C · accent</b>Display type on brown 5.0:1; CTA fill + brown text</div></div>
+        <div class="sw"><div class="c" style="background:#995C26"></div><div class="m"><b>#995C26 · accent-ink</b>Text-safe orange, 4.7:1 on cream</div></div>
+        <div class="sw"><div class="c" style="background:#E79A94"></div><div class="m"><b>#E79A94 · rose</b>Wing glyph + selection only</div></div>
+        <div class="sw"><div class="c" style="background:#92615D"></div><div class="m"><b>#92615D · rose-ink</b>Pending-slot text, 4.5:1</div></div>
+        <div class="sw"><div class="c" style="background:#575234"></div><div class="m"><b>#575234 · mono-label</b>Metadata, 6.5:1 on cream</div></div>
+      </div>
+
+      <div class="type-scale">
+        <div class="ts-row"><span class="meta">HERO · BRICOLAGE 700 · clamp(3.5–9rem) · LH 0.98</span><span style="font-family:'Bricolage Grotesque';font-weight:700;font-size:56px;line-height:.98;letter-spacing:-.025em">Refer with confidence.</span></div>
+        <div class="ts-row"><span class="meta">H2 · BRICOLAGE 700 · 2.55rem/40.8px</span><span style="font-family:'Bricolage Grotesque';font-weight:700;font-size:40.8px;line-height:1.15">Insurance &amp; referral facts</span></div>
+        <div class="ts-row"><span class="meta">INDEX ROW · BRICOLAGE 500 · clamp(1.5–2.75rem)</span><span style="font-family:'Bricolage Grotesque';font-weight:500;font-size:34px;line-height:1.05">Child &amp; Teen Nutrition</span></div>
+        <div class="ts-row"><span class="meta">BODY · SOURCE SANS 3 400 · 1.0625rem/17px · LH 1.55</span><span>Katie Sengheiser, RD, sees patients virtually across Missouri and New Jersey.</span></div>
+        <div class="ts-row"><span class="meta">DATA · IBM PLEX MONO 400 · 13px +0.04em</span><span class="mono" style="font-size:13px;letter-spacing:.04em;color:#575234">LICENSED MO + NJ / TELEHEALTH / IN-NETWORK</span></div>
+      </div>
+
+      <div class="states">
+        <div class="state-col">
+          <h4>Button states</h4>
+          <div class="stack">
+            <button class="btn">Refer a patient</button>
+            <button class="btn hov">Hover</button>
+            <button class="btn foc">Focus-visible</button>
+            <button class="btn" disabled>Disabled</button>
+          </div>
+        </div>
+        <div class="state-col">
+          <h4>Input states</h4>
+          <div class="stack">
+            <input class="input" placeholder="Rest" aria-label="Rest state example">
+            <input class="input" placeholder="Focus (click me)" aria-label="Focus state example">
+            <input class="input err" value="katie@" aria-label="Error state example">
+            <span class="err-msg">Error: enter a complete email address.</span>
+          </div>
+        </div>
+        <div class="state-col">
+          <h4>Spacing scale (px)</h4>
+          <div class="space">
+            <div class="lab">8</div><div class="bar" style="width:8px"></div>
+            <div class="lab">16</div><div class="bar" style="width:16px"></div>
+            <div class="lab">24</div><div class="bar" style="width:24px"></div>
+            <div class="lab">40</div><div class="bar" style="width:40px"></div>
+            <div class="lab">64</div><div class="bar" style="width:64px"></div>
+            <div class="lab">88</div><div class="bar" style="width:88px"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:48px">
+        <h4 class="mono" style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#575234;margin-bottom:14px">Motion</h4>
+        <p class="motion-note">The masthead type rises once on load (650ms, soft-out, 70ms stagger). Index rows expand on hover/focus via CSS grid transitions while <code>:has()</code> dims the siblings — the "living index" is pure CSS, keyboard-included. The carrier ticker pauses on hover and focus, and renders as a static wrapped row under <code>prefers-reduced-motion</code>. Full build adds spring-eased row heights and a View Transition where each row's number morphs into its service page folio.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer grain on-dark" id="contact">
+    <svg class="wing-split" width="360" height="360" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M11 3 C6 1, 2 4, 3 8.5 C3.8 12, 8 12.5, 11 10.5 Z" fill="#7C7551"/>
+      <path d="M13 3 C18 1, 22 4, 21 8.5 C20.2 12, 16 12.5, 13 10.5 Z" fill="#7C7551"/>
+      <path d="M11 13 C8 11.5, 4.5 13, 5.5 17 C6.3 20, 10 19.5, 11 16.5 Z" fill="#7C7551"/>
+      <path d="M13 13 C16 11.5, 19.5 13, 18.5 17 C17.7 20, 14 19.5, 13 16.5 Z" fill="#7C7551"/>
+    </svg>
+    <div class="wrap">
+      <div>
+        <p><b>Monarch Nutrition Counseling</b><br>Katie Sengheiser, RD — Registered Dietitian.<br>Telehealth nutrition counseling for Missouri and New Jersey residents.</p>
+        <p style="margin-top:18px;font-size:12.5px">Content on this site is for general information and is not medical advice or a substitute for care from your physician.</p>
+      </div>
+      <div class="mono">
+        CONTACT — NAME / EMAIL / PHONE ONLY<br>
+        NO SELF-SCHEDULING · BOOKING LIVES IN THE CLIENT PORTAL<br>
+        PHONE + EMAIL [ PENDING CONFIRMATION ]<br>
+        ST. PETERS, MO
+      </div>
+    </div>
+  </footer>
+</main>
+
+</body>
+</html>

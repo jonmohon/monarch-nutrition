@@ -1,0 +1,29 @@
+/** Curved brown statement band + orange spaced-caps band (Tasty rhythm). */
+export function StatementBands() {
+  return (
+    <>
+      <section className="relative bg-brown text-cream text-center px-6 pt-[74px] pb-16 overflow-hidden">
+        <span
+          aria-hidden="true"
+          className="absolute -top-px left-[-6%] w-[112%] h-14 bg-warm-white"
+          style={{ borderRadius: "0 0 60% 60% / 0 0 100% 100%" }}
+        />
+        <p className="caps !text-rose mb-3.5">Why Telehealth</p>
+        <p
+          className="font-display font-[440] text-warm-white max-w-[30ch] mx-auto leading-snug"
+          style={{ fontSize: "clamp(24px, 1.3rem + 1.6vw, 36px)" }}
+        >
+          Real nutrition care,
+          <br />
+          <em>without the waiting room.</em>
+        </p>
+      </section>
+      <div
+        className="bg-orange text-brown text-center px-6 py-5 font-display font-[560] tracking-[0.18em] uppercase"
+        style={{ fontSize: "clamp(13px, 0.8rem + 0.6vw, 18px)" }}
+      >
+        Expert nutrition care · In network and online · Wherever your table is
+      </div>
+    </>
+  );
+}

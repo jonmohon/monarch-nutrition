@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept 04 — The Sunroom · Monarch Nutrition Counseling</title>
+<!--
+  CONCEPT: The Sunroom
+  Archetype: Warm split (asymmetric hero + confident color blocking — Jenny
+  Mahoney's color courage, made clinical; zero funnel).
+  Tier: elevated wellness-practice genre, brighter register than Concept 03.
+  Techniques (cutting-edge §B): #20 pausable marquee band, #6 choreographed
+  reveals, #13 noise-textured color fields, #12 tinted shadows, #15 :has()
+  form-focus card lift, #19 small-caps details.
+  Photography: no stock — treatment blocks carry captions naming the shoot.
+  Level 2 (Premium).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F0E4; --white:#FCF8F0; --surface:#F1E7D6;
+  --brown:#3E2B23; --ink:#3E2B23; --ink-muted:#6C594D;
+  --cream-on-brown:#F7F0E4; --muted-on-brown:#D9C6B4;
+  --orange:#E08A3C; --orange-hover:#C97426; --orange-ink:#995C26;
+  --rose:#E79A94; --rose-soft:#F3D2CE; --rose-ink:#92615D;
+  --olive:#7C7551; --olive-soft:#E3DFC8; --label:#5E5940;
+  --orange-soft:#F5DDC0;
+  --border:#E3D6C0; --border-strong:#C9B7A0;
+  --shadow:0 10px 30px rgba(62,43,35,.12);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;font-size:17.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+::selection{background:var(--rose);color:var(--brown)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brown);outline-offset:2px;border-radius:3px}
+h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;text-wrap:balance}
+.caps{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+
+.concept-note{background:var(--brown);color:var(--muted-on-brown);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;padding:9px 20px;text-align:center}
+.concept-note strong{color:var(--cream-on-brown)}
+
+.grain{position:relative;isolation:isolate}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px}
+
+/* header */
+header.site{background:var(--bg);position:relative;z-index:5}
+.head-in{max-width:1200px;margin:0 auto;padding:0 40px;height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.lockup{display:flex;align-items:center;gap:11px;text-decoration:none}
+.lockup .wm{font-family:"Bricolage Grotesque";font-weight:700;font-size:19px;color:var(--ink);line-height:1.05}
+.lockup .wm small{display:block;font-family:"Source Sans 3";font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--label);font-weight:600;margin-top:2px}
+nav.main{display:flex;align-items:center;gap:28px}
+nav.main a{text-decoration:none;color:var(--ink-muted);font-size:15px;font-weight:600;padding:6px 0;border-bottom:2px solid transparent;transition:color .18s ease,border-color .18s ease}
+nav.main a:hover{color:var(--ink);border-color:var(--rose)}
+.btn{display:inline-block;background:var(--orange);color:var(--brown);font-family:"Source Sans 3";font-weight:600;font-size:16px;text-decoration:none;padding:13px 26px;border-radius:12px;border:0;cursor:pointer;transition:background .18s ease,transform .18s var(--ease),box-shadow .18s ease}
+.btn:hover{background:var(--orange-hover);color:var(--cream-on-brown);transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn:active{transform:translateY(0)}
+.btn[disabled]{background:var(--border);color:var(--ink-muted);cursor:not-allowed;transform:none;box-shadow:none}
+.btn.dark{background:var(--brown);color:var(--cream-on-brown)}
+.btn.dark:hover{background:#54392e}
+.btn.line{background:transparent;border:1.5px solid var(--border-strong);color:var(--ink)}
+.btn.line:hover{border-color:var(--brown);background:var(--white);color:var(--ink);box-shadow:none}
+
+/* ============ HERO — warm split ============ */
+.hero{max-width:1200px;margin:0 auto;padding:44px 40px 84px;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;position:relative}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:10px;background:var(--rose-soft);color:var(--rose-ink);border-radius:999px;padding:8px 18px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:26px}
+.hero h1{font-weight:700;font-size:clamp(2.7rem,1.6rem + 3.9vw,4.6rem);line-height:1.04;letter-spacing:-.015em;margin-bottom:20px}
+.hero h1 .hl{position:relative;white-space:nowrap}
+.hero h1 .hl::after{content:"";position:absolute;left:-2%;right:-2%;bottom:.06em;height:.3em;background:var(--rose);opacity:.55;z-index:-1;border-radius:4px}
+.hero .sub{font-size:18.5px;color:var(--ink-muted);max-width:52ch;margin-bottom:30px}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero .facts{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:600;color:var(--ink)}
+.chip svg{flex:none}
+.hero-art{position:relative}
+.hero-arch{position:relative;border-radius:999px 999px 20px 20px;height:520px;overflow:hidden;box-shadow:0 24px 60px rgba(62,43,35,.20);background:
+  radial-gradient(95% 65% at 30% 14%, rgba(252,246,236,.92), transparent 58%),
+  radial-gradient(70% 55% at 80% 30%, rgba(231,154,148,.5), transparent 60%),
+  radial-gradient(130% 100% at 55% 100%, #D9A26B 0%, #C08850 45%, #96622F 100%),
+  linear-gradient(165deg, #F2DDBE, #C98F55)}
+.hero-arch .ph-cap{position:absolute;left:14px;bottom:12px;z-index:3;font-size:11px;font-style:italic;letter-spacing:.04em;color:rgba(252,248,240,.92);background:rgba(62,43,35,.4);padding:5px 12px;border-radius:999px}
+.hero-badge{position:absolute;left:-26px;bottom:42px;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:16px 22px;box-shadow:var(--shadow);max-width:250px}
+.hero-badge .caps{color:var(--label);display:block;margin-bottom:4px;font-size:10.5px}
+.hero-badge .v{font-weight:600;font-size:15.5px;line-height:1.45}
+.sun{position:absolute;top:-34px;right:-30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 38% 35%, #F5DDC0, var(--orange));opacity:.9;z-index:-1}
+
+/* ============ MARQUEE ============ */
+.marquee{background:var(--rose);color:var(--brown);overflow:hidden;padding:15px 0;border-top:1px solid rgba(62,43,35,.12);border-bottom:1px solid rgba(62,43,35,.12)}
+.marquee .track{display:flex;white-space:nowrap;font-family:"Bricolage Grotesque";font-weight:600;font-size:15px;letter-spacing:.1em;text-transform:uppercase}
+.marquee .seq{display:inline-flex}
+.marquee .item{padding:0 22px;display:inline-flex;align-items:center;gap:20px}
+.marquee .item::after{content:"❋";font-size:13px;color:#7A4A44;margin-left:22px}
+@media (prefers-reduced-motion: no-preference){
+  .marquee .track{animation:mq 30s linear infinite}
+  .marquee:hover .track,.marquee:focus-within .track{animation-play-state:paused}
+  @keyframes mq{to{transform:translateX(-50%)}}
+}
+
+/* ============ SERVICES — tinted cards ============ */
+.services{max-width:1200px;margin:0 auto;padding:92px 40px 40px}
+.sec-head{max-width:640px;margin-bottom:48px}
+.sec-head .caps{color:var(--label)}
+.sec-head h2{font-weight:700;font-size:clamp(2rem,1.4rem + 2.3vw,3.2rem);line-height:1.08;letter-spacing:-.01em;margin:10px 0 12px}
+.sec-head p{color:var(--ink-muted)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.svc-card{background:var(--white);border:1px solid var(--border);border-radius:22px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:transform .25s var(--ease),box-shadow .25s ease}
+.svc-card:hover{transform:translateY(-6px);box-shadow:0 18px 44px rgba(62,43,35,.16)}
+.svc-top{height:150px;position:relative;display:flex;align-items:center;justify-content:center}
+.svc-top.t1{background:linear-gradient(150deg,var(--orange-soft),#EDBE8C)}
+.svc-top.t2{background:linear-gradient(150deg,var(--rose-soft),#EBAFA8)}
+.svc-top.t3{background:linear-gradient(150deg,var(--olive-soft),#C6C09A)}
+.svc-top .num{position:absolute;top:14px;left:18px;font-family:"Bricolage Grotesque";font-weight:600;font-size:13px;color:rgba(62,43,35,.55);letter-spacing:.1em}
+.svc-body{padding:26px 26px 28px;display:flex;flex-direction:column;flex:1}
+.svc-body h3{font-weight:600;font-size:22px;margin-bottom:8px}
+.svc-body p{color:var(--ink-muted);font-size:15.5px;flex:1}
+.svc-body .go{margin-top:18px;font-weight:600;font-size:14.5px;color:var(--orange-ink);display:inline-flex;align-items:center;gap:8px;transition:gap .25s var(--ease),color .18s ease}
+.svc-card:hover .go{gap:14px;color:var(--brown)}
+
+/* ============ INSURANCE + FEES (hardest) ============ */
+.ins{max-width:1200px;margin:0 auto;padding:56px 40px 90px}
+.ins-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.panel{border-radius:22px;padding:40px 40px 36px;position:relative;overflow:hidden}
+.panel.dark{background:var(--brown);color:var(--cream-on-brown)}
+.panel.light{background:var(--white);border:1px solid var(--border)}
+.panel .caps{display:block;margin-bottom:12px}
+.panel.dark .caps{color:var(--rose)}
+.panel.light .caps{color:var(--label)}
+.panel h3{font-weight:700;font-size:clamp(1.5rem,1.2rem + 1.1vw,2rem);line-height:1.15;margin-bottom:12px}
+.panel.dark p{color:var(--muted-on-brown);font-size:15.5px}
+.panel.light p{color:var(--ink-muted);font-size:15.5px}
+.carrier-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.cpill{background:rgba(247,240,228,.1);border:1px solid rgba(247,240,228,.3);border-radius:999px;padding:8px 18px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-on-brown);font-weight:600}
+.panel .pending{margin-top:14px;font-size:12.5px;font-style:italic;color:var(--rose)}
+.fee-rows{margin-top:22px;border-top:1px solid var(--border)}
+.fee-row{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:16px 2px;border-bottom:1px solid var(--border);align-items:baseline}
+.fee-row .t{font-weight:600;font-size:16.5px}
+.fee-row .p{font-size:12.5px;font-style:italic;color:var(--rose-ink);white-space:nowrap;border-bottom:1.5px dashed var(--border-strong)}
+.fee-row .d{grid-column:1/-1;color:var(--ink-muted);font-size:14px}
+.ins-cta{grid-column:1/-1;background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:34px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.ins-cta .h{font-family:"Bricolage Grotesque";font-weight:600;font-size:21px;max-width:34ch}
+.ins-cta .sub2{color:var(--ink-muted);font-size:14.5px;margin-top:4px}
+
+/* ============ CONTACT PREVIEW (form :has demo) ============ */
+.contact{max-width:1200px;margin:0 auto;padding:0 40px 96px}
+.contact-card{background:var(--white);border:1px solid var(--border);border-radius:22px;padding:44px 48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;transition:box-shadow .3s ease,border-color .3s ease}
+.contact-card:has(input:focus){box-shadow:0 18px 48px rgba(62,43,35,.16);border-color:var(--border-strong)}
+.contact-card .caps{color:var(--label);display:block;margin-bottom:10px}
+.contact-card h2{font-weight:700;font-size:clamp(1.7rem,1.3rem + 1.4vw,2.4rem);line-height:1.1;margin-bottom:12px}
+.contact-card p{color:var(--ink-muted);font-size:15.5px;max-width:46ch}
+.contact-card .note{margin-top:16px;font-size:13.5px;color:var(--ink-muted);font-style:italic}
+.f-field{margin-bottom:16px}
+.f-field label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.f-field input{width:100%;padding:14px 16px;font-size:16px;font-family:"Source Sans 3";border:1px solid var(--border-strong);border-radius:12px;background:var(--bg);color:var(--ink);transition:border-color .18s ease,background .18s ease}
+.f-field input:focus{outline:2px solid var(--brown);outline-offset:1px;background:var(--white)}
+.contact-card .btn{width:100%;text-align:center;margin-top:6px}
+.contact-card .after{font-size:13px;color:var(--ink-muted);margin-top:12px;text-align:center}
+
+/* ============ STYLE TILE ============ */
+.tile{background:var(--surface);border-top:1px solid var(--border);padding:80px 0}
+.tile h2{font-weight:700;font-size:clamp(1.8rem,1.4rem+1.6vw,2.6rem);margin-bottom:4px}
+.tile .sub{color:var(--ink-muted);margin-bottom:34px;font-size:15px}
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:14px}
+.sw{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--white)}
+.sw .c{height:70px}
+.sw .m{padding:10px 12px;font-size:12px;line-height:1.5}
+.sw .m b{display:block}
+.type-scale{margin-top:44px;display:flex;flex-direction:column;gap:16px}
+.ts-row{display:grid;grid-template-columns:190px 1fr;gap:18px;align-items:baseline;border-bottom:1px dashed var(--border-strong);padding-bottom:13px}
+.ts-row .meta{font-size:12px;color:var(--ink-muted)}
+.states{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px;margin-top:44px}
+.state-col h4{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--label);margin-bottom:14px;font-weight:600}
+.state-col .stack{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.btn.hov{background:var(--orange-hover);color:var(--cream-on-brown);box-shadow:var(--shadow)}
+.btn.foc{outline:2px solid var(--brown);outline-offset:2px}
+.input{width:100%;max-width:280px;padding:13px 16px;font-size:16px;font-family:"Source Sans 3";border:1px solid var(--border-strong);border-radius:12px;background:var(--white);color:var(--ink)}
+.input:focus{outline:2px solid var(--brown);outline-offset:1px}
+.input.err{border-color:#9E2B25;border-width:1.5px}
+.err-msg{font-size:13px;color:#9E2B25;font-weight:600}
+.space{display:flex;flex-direction:column;gap:8px}
+.space .bar{background:var(--olive);opacity:.5;height:12px;border-radius:3px}
+.space .lab{font-size:11.5px;color:var(--ink-muted)}
+.motion-note{margin-top:48px;font-size:14.5px;color:var(--ink-muted);border-left:2px solid var(--rose);padding-left:16px;max-width:66ch}
+
+/* footer */
+footer.site{background:var(--brown);color:var(--muted-on-brown);padding:52px 0;font-size:14px}
+footer.site .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px}
+footer.site b{color:var(--cream-on-brown)}
+footer.site .disc{font-size:12.5px;margin-top:14px;opacity:.85;max-width:60ch}
+footer.site .caps{color:var(--rose)}
+
+/* reveals */
+@media (prefers-reduced-motion: no-preference){
+  .reveal{opacity:0;transform:translateY(1.6rem);animation:rise .7s var(--ease) forwards}
+  .reveal.d1{animation-delay:.09s}.reveal.d2{animation-delay:.18s}.reveal.d3{animation-delay:.27s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @supports (animation-timeline: view()){
+    .svc-card,.panel,.contact-card{opacity:0;transform:translateY(1.4rem);animation:risev linear both;animation-timeline:view();animation-range:entry 0% entry 50%}
+    .svc-grid .svc-card:nth-child(2){animation-range:entry 6% entry 56%}
+    .svc-grid .svc-card:nth-child(3){animation-range:entry 12% entry 62%}
+    @keyframes risev{to{opacity:1;transform:none}}
+  }
+}
+
+/* ============ MOBILE ============ */
+@media (max-width:880px){
+  .wrap,.head-in{padding-left:20px;padding-right:20px}
+  .head-in{height:68px}
+  .head-in .btn{white-space:nowrap;padding:11px 18px;font-size:15px}
+  nav.main{display:none}
+  .hero{grid-template-columns:1fr;padding:28px 20px 64px;gap:44px}
+  .hero h1{font-size:clamp(2.1rem,8.6vw,2.6rem)}
+  .hero .sub{font-size:16.5px}
+  .hero .ctas .btn{flex:1;text-align:center;min-width:150px}
+  .hero-arch{height:400px;max-width:400px;margin:0 auto}
+  .hero-arch .ph-cap{bottom:auto;top:120px;left:16px;right:16px;text-align:center}
+  .hero-badge{left:8px;bottom:-18px}
+  .sun{right:6px;top:-22px;width:84px;height:84px}
+  .services{padding:72px 20px 28px}
+  .svc-grid{grid-template-columns:1fr;gap:20px}
+  .ins{padding:36px 20px 64px}
+  .ins-grid{grid-template-columns:1fr}
+  .panel{padding:30px 24px}
+  .ins-cta{padding:26px 24px}
+  .contact{padding:0 20px 72px}
+  .contact-card{grid-template-columns:1fr;padding:30px 24px;gap:30px}
+  .tile .wrap{padding:0 20px}
+  .ts-row{grid-template-columns:1fr;gap:6px}
+  footer.site .wrap{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="concept-note"><strong>Concept 04 · The Sunroom</strong> &nbsp;·&nbsp; Color-confident warm practice site — Jenny's courage, clinician's voice &nbsp;·&nbsp; Level 2 Premium</div>
+
+<header class="site">
+  <div class="head-in">
+    <a class="lockup" href="#">
+      <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <line x1="16" y1="4" x2="16" y2="28" stroke="#3E2B23" stroke-width="1.5"/>
+        <path d="M16 12.5 C10.5 3, 3 5, 4.3 11.5 C5.2 16, 11 17, 16 14.8" stroke="#3E2B23" stroke-width="1.5" fill="none"/>
+        <path d="M16 12.5 C21.5 3, 29 5, 27.7 11.5 C26.8 16, 21 17, 16 14.8" stroke="#3E2B23" stroke-width="1.5" fill="none"/>
+        <path d="M16 17.5 C12.5 15.8, 7.5 17.6, 8.4 21.6 C9.2 25.2, 14 24.8, 16 21.6" stroke="#3E2B23" stroke-width="1.5" fill="none"/>
+        <path d="M16 17.5 C19.5 15.8, 24.5 17.6, 23.6 21.6 C22.8 25.2, 18 24.8, 16 21.6" stroke="#3E2B23" stroke-width="1.5" fill="none"/>
+      </svg>
+      <span class="wm">Monarch<small>Nutrition Counseling</small></span>
+    </a>
+    <nav class="main" aria-label="Primary">
+      <a href="#about">About Katie</a>
+      <a href="#services">Services</a>
+      <a href="#insurance">Insurance &amp; Fees</a>
+      <a href="#">Blog</a>
+    </nav>
+    <a class="btn" href="#contact">Contact Katie</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <span class="eyebrow reveal">❋ &nbsp;Now welcoming new clients in MO &amp; NJ</span>
+    <h1 class="reveal d1">Nutrition counseling that <span class="hl">takes your insurance</span> — and takes its time.</h1>
+    <p class="sub reveal d2">Katie Sengheiser, RD, sees adults, kids &amp; teens, and workplace teams by telehealth across Missouri and New Jersey. In-network billing first; clear self-pay options too.</p>
+    <div class="ctas reveal d3">
+      <a class="btn" href="#contact">Contact Katie</a>
+      <a class="btn line" href="#insurance">Insurance &amp; Fees</a>
+    </div>
+    <div class="facts reveal d3">
+      <span class="chip"><svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6" fill="none" stroke="#7C7551" stroke-width="1.5"/><path d="M4.2 7.2 6.2 9.2 10 5.4" stroke="#7C7551" stroke-width="1.6" fill="none"/></svg> Registered Dietitian (RD)</span>
+      <span class="chip"><svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6" fill="none" stroke="#7C7551" stroke-width="1.5"/><path d="M4.2 7.2 6.2 9.2 10 5.4" stroke="#7C7551" stroke-width="1.6" fill="none"/></svg> Licensed MO + NJ</span>
+      <span class="chip"><svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6" fill="none" stroke="#7C7551" stroke-width="1.5"/><path d="M4.2 7.2 6.2 9.2 10 5.4" stroke="#7C7551" stroke-width="1.6" fill="none"/></svg> Telehealth visits</span>
+    </div>
+  </div>
+  <div class="hero-art reveal d2">
+    <div class="sun" aria-hidden="true"></div>
+    <div class="hero-arch grain">
+      <span class="ph-cap">Headshot slot — Katie in the sunroom, natural light (shoot TBD)</span>
+    </div>
+    <div class="hero-badge">
+      <span class="caps">In-Network Billing</span>
+      <span class="v">Coverage verified before your first visit.</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" tabindex="0" aria-label="Practice facts ticker — hover or focus to pause">
+  <div class="track">
+    <span class="seq">
+      <span class="item">Individual Counseling</span><span class="item">Child &amp; Teen Nutrition</span><span class="item">Corporate Wellness</span><span class="item">Licensed MO + NJ</span><span class="item">In-Network Billing</span><span class="item">Telehealth</span>
+    </span>
+    <span class="seq" aria-hidden="true">
+      <span class="item">Individual Counseling</span><span class="item">Child &amp; Teen Nutrition</span><span class="item">Corporate Wellness</span><span class="item">Licensed MO + NJ</span><span class="item">In-Network Billing</span><span class="item">Telehealth</span>
+    </span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="sec-head">
+    <span class="caps">Services</span>
+    <h2>For yourself. For your child. For your team.</h2>
+    <p>Three service lines, one straightforward path in: reach out, get coverage answers, book in the secure portal.</p>
+  </div>
+  <div class="svc-grid">
+    <a class="svc-card" href="#insurance">
+      <div class="svc-top t1 grain"><span class="num">01</span>
+        <svg width="46" height="46" viewBox="0 0 32 32" fill="none" aria-hidden="true"><line x1="16" y1="4" x2="16" y2="28" stroke="#3E2B23" stroke-width="1.3" opacity=".7"/><path d="M16 12.5 C10.5 3, 3 5, 4.3 11.5 C5.2 16, 11 17, 16 14.8" stroke="#3E2B23" stroke-width="1.3" fill="none" opacity=".7"/><path d="M16 12.5 C21.5 3, 29 5, 27.7 11.5 C26.8 16, 21 17, 16 14.8" stroke="#3E2B23" stroke-width="1.3" fill="none" opacity=".7"/><path d="M16 17.5 C12.5 15.8, 7.5 17.6, 8.4 21.6 C9.2 25.2, 14 24.8, 16 21.6" stroke="#3E2B23" stroke-width="1.3" fill="none" opacity=".7"/><path d="M16 17.5 C19.5 15.8, 24.5 17.6, 23.6 21.6 C22.8 25.2, 18 24.8, 16 21.6" stroke="#3E2B23" stroke-width="1.3" fill="none" opacity=".7"/></svg>
+      </div>
+      <div class="svc-body">
+        <h3>Individual Nutrition Counseling</h3>
+        <p>One-on-one care for adults — weight management and pre- or post-bariatric support, built around your actual week.</p>
+        <span class="go">Learn more →</span>
+      </div>
+    </a>
+    <a class="svc-card" href="#insurance">
+      <div class="svc-top t2 grain"><span class="num">02</span>
+        <svg width="46" height="46" viewBox="0 0 32 32" fill="none" aria-hidden="true"><line x1="16" y1="4" x2="16" y2="28" stroke="#3E2B23" stroke-width="1.3" opacity=".7"/><path d="M16 12.5 C10.5 3, 3 5, 4.3 11.5 C5.2 16, 11 17, 16 14.8" stroke="#3E2B23" stroke-width="1.3" fill="none" opacity=".7"/><path d="M16 12.5 C21.5 3, 29 5, 27.7 11.5 C26.8 16, 21 17, 16 14.8" stroke="#3E2B23" stroke-width="1.3" fill="none" opacity=".7"/><path d="M16 17.5 C12.5 15.8, 7.5 17.6, 8.4 21.6 C9.2 25.2, 14 24.8, 16 21.6" stroke="#3E2B23" stroke-width="1.3" fill="none" opacity=".7"/><path d="M16 17.5 C19.5 15.8, 24.5 17.6, 23.6 21.6 C22.8 25.2, 18 24.8, 16 21.6" stroke="#3E2B23" stroke-width="1.3" fill="none" opacity=".7"/></svg>
+      </div>
+      <div class="svc-body">
+        <h3>Child &amp; Teen Nutrition</h3>
+        <p>Family-centered care with parents in the room — picky plates, growth questions, and teenage appetites welcome.</p>
+        <span class="go">Learn more →</span>
+      </div>
+    </a>
+    <a class="svc-card" href="#insurance">
+      <div class="svc-top t3 grain"><span class="num">03</span>
+        <svg width="46" height="46" viewBox="0 0 32 32" fill="none" aria-hidden="true"><line x1="16" y1="4" x2="16" y2="28" stroke="#3E2B23" stroke-width="1.3" opacity=".7"/><path d="M16 12.5 C10.5 3, 3 5, 4.3 11.5 C5.2 16, 11 17, 16 14.8" stroke="#3E2B23" stroke-width="1.3" fill="none" opacity=".7"/><path d="M16 12.5 C21.5 3, 29 5, 27.7 11.5 C26.8 16, 21 17, 16 14.8" stroke="#3E2B23" stroke-width="1.3" fill="none" opacity=".7"/><path d="M16 17.5 C12.5 15.8, 7.5 17.6, 8.4 21.6 C9.2 25.2, 14 24.8, 16 21.6" stroke="#3E2B23" stroke-width="1.3" fill="none" opacity=".7"/><path d="M16 17.5 C19.5 15.8, 24.5 17.6, 23.6 21.6 C22.8 25.2, 18 24.8, 16 21.6" stroke="#3E2B23" stroke-width="1.3" fill="none" opacity=".7"/></svg>
+      </div>
+      <div class="svc-body">
+        <h3>Corporate Nutrition</h3>
+        <p>Employer wellness programming, lunch-and-learns, and group contracts — delivered virtually to your team.</p>
+        <span class="go">Learn more →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- INSURANCE + FEES -->
+<section class="ins" id="insurance">
+  <div class="ins-grid">
+    <div class="panel dark grain">
+      <span class="caps">Insurance</span>
+      <h3>In-network billing, verified up front.</h3>
+      <p>Monarch Nutrition Counseling bills participating insurance plans directly. Coverage for nutrition counseling varies by plan — you’ll get clear answers about benefits before any appointment is scheduled.</p>
+      <div class="carrier-row" aria-label="Accepted insurance plans — pending confirmation">
+        <span class="cpill">Carrier 01</span><span class="cpill">Carrier 02</span><span class="cpill">Carrier 03</span><span class="cpill">Carrier 04</span><span class="cpill">Carrier 05</span>
+      </div>
+      <p class="pending">Carrier list pending — from Katie’s credentialing.</p>
+    </div>
+    <div class="panel light">
+      <span class="caps">Self-Pay</span>
+      <h3>Clear rates for out-of-network plans.</h3>
+      <div class="fee-rows">
+        <div class="fee-row"><span class="t">Initial consultation</span><span class="p">rate pending confirmation</span><span class="d">Full nutrition assessment; a plan built with the patient.</span></div>
+        <div class="fee-row"><span class="t">Follow-up visits</span><span class="p">rate pending confirmation</span><span class="d">Progress reviews and adjustments — cadence set clinically.</span></div>
+        <div class="fee-row"><span class="t">Visit packages</span><span class="p">rates pending confirmation</span><span class="d">Multi-visit pricing from Katie’s fee schedule.</span></div>
+      </div>
+    </div>
+    <div class="ins-cta">
+      <div>
+        <div class="h">Referring a patient? Send a name and a number — Katie takes it from there.</div>
+        <div class="sub2">Coverage verification, intake, and scheduling all happen in her secure client portal.</div>
+      </div>
+      <a class="btn dark" href="#contact">Refer a Patient</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT PREVIEW -->
+<section class="contact" id="contact">
+  <div class="contact-card">
+    <div>
+      <span class="caps">Contact</span>
+      <h2>Three fields, on purpose.</h2>
+      <p>This form doesn’t ask about your health — that conversation happens privately after Katie reaches out. Clinical intake lives in her secure portal, never on this website.</p>
+      <p class="note">Referring providers: the same three fields work for you — send your patient’s name and number.</p>
+    </div>
+    <div>
+      <div class="f-field"><label for="f-name">Name</label><input id="f-name" type="text" autocomplete="name"></div>
+      <div class="f-field"><label for="f-email">Email</label><input id="f-email" type="email" autocomplete="email"></div>
+      <div class="f-field"><label for="f-phone">Phone</label><input id="f-phone" type="tel" autocomplete="tel"></div>
+      <button class="btn" type="button">Send to Katie</button>
+      <p class="after">Katie replies by phone or email — response window pending confirmation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STYLE TILE -->
+<section class="tile">
+  <div class="wrap">
+    <span class="caps" style="color:var(--label)">Style Tile — for review, not part of the site</span>
+    <h2>The system</h2>
+    <p class="sub">Bricolage Grotesque (display) · Source Sans 3 (text) · cream-first, rose &amp; orange spent confidently but never on body text.</p>
+    <div class="swatches">
+      <div class="sw"><div class="c" style="background:#F7F0E4;border-bottom:1px solid #E3D6C0"></div><div class="m"><b>#F7F0E4 · bg</b>Cream page field</div></div>
+      <div class="sw"><div class="c" style="background:#FCF8F0;border-bottom:1px solid #E3D6C0"></div><div class="m"><b>#FCF8F0 · white</b>Cards, form</div></div>
+      <div class="sw"><div class="c" style="background:#3E2B23"></div><div class="m"><b>#3E2B23 · brown/ink</b>11.8:1 on cream</div></div>
+      <div class="sw"><div class="c" style="background:#E08A3C"></div><div class="m"><b>#E08A3C · orange</b>CTAs; brown text on it 5.0:1</div></div>
+      <div class="sw"><div class="c" style="background:#E79A94"></div><div class="m"><b>#E79A94 · rose</b>Marquee band, highlight; brown text 6.0:1</div></div>
+      <div class="sw"><div class="c" style="background:#F3D2CE"></div><div class="m"><b>#F3D2CE · rose-soft</b>Eyebrow chip, card tint</div></div>
+      <div class="sw"><div class="c" style="background:#995C26"></div><div class="m"><b>#995C26 · orange-ink</b>Text-safe orange, 4.7:1</div></div>
+      <div class="sw"><div class="c" style="background:#7C7551"></div><div class="m"><b>#7C7551 · olive</b>Icons + big numerals only</div></div>
+    </div>
+    <div class="type-scale">
+      <div class="ts-row"><span class="meta">Hero · Bricolage 700 · clamp(2.7–4.6rem) · lh 1.04</span><span style="font-family:'Bricolage Grotesque';font-weight:700;font-size:46px;line-height:1.04;letter-spacing:-.015em">Takes your insurance.</span></div>
+      <div class="ts-row"><span class="meta">H2 · Bricolage 700 · 3.2rem/51px</span><span style="font-family:'Bricolage Grotesque';font-weight:700;font-size:51px;line-height:1.08">For your child.</span></div>
+      <div class="ts-row"><span class="meta">H3 · Bricolage 600 · 22px</span><span style="font-family:'Bricolage Grotesque';font-weight:600;font-size:22px">Individual Nutrition Counseling</span></div>
+      <div class="ts-row"><span class="meta">Body · Source Sans 3 400 · 17.5px · lh 1.65</span><span>Katie Sengheiser, RD, sees patients virtually across Missouri and New Jersey.</span></div>
+      <div class="ts-row"><span class="meta">Label · Source Sans 3 600 · 12.5px caps +0.18em</span><span class="caps" style="color:#5E5940">Insurance &amp; Fees</span></div>
+    </div>
+    <div class="states">
+      <div class="state-col"><h4>Button states</h4>
+        <div class="stack">
+          <button class="btn">Contact Katie</button>
+          <button class="btn hov">Hover</button>
+          <button class="btn foc">Focus-visible</button>
+          <button class="btn" disabled>Disabled</button>
+        </div>
+      </div>
+      <div class="state-col"><h4>Input states</h4>
+        <div class="stack">
+          <input class="input" placeholder="Rest" aria-label="Rest state example">
+          <input class="input" placeholder="Focus (click me)" aria-label="Focus state example">
+          <input class="input err" value="katie@" aria-label="Error state example">
+          <span class="err-msg">Error: enter a complete email address.</span>
+        </div>
+      </div>
+      <div class="state-col"><h4>Spacing scale (px)</h4>
+        <div class="space">
+          <div class="lab">8</div><div class="bar" style="width:8px"></div>
+          <div class="lab">16</div><div class="bar" style="width:16px"></div>
+          <div class="lab">24</div><div class="bar" style="width:24px"></div>
+          <div class="lab">40</div><div class="bar" style="width:40px"></div>
+          <div class="lab">64</div><div class="bar" style="width:64px"></div>
+          <div class="lab">96</div><div class="bar" style="width:96px"></div>
+        </div>
+      </div>
+    </div>
+    <p class="motion-note"><strong>Motion.</strong> Hero rises once on load (700ms, soft-out, 90ms stagger). The rose marquee drifts continuously, pauses on hover/focus, and renders static under <code>prefers-reduced-motion</code>. Cards lift with brown-tinted shadows; the contact card brightens when any field takes focus (pure CSS <code>:has()</code>). Full build adds IntersectionObserver reveals for all browsers.</p>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div>
+      <b style="font-family:'Bricolage Grotesque';font-size:19px">Monarch Nutrition Counseling</b>
+      <p style="margin-top:8px">Katie Sengheiser, RD — Registered Dietitian.<br>Telehealth nutrition counseling for Missouri and New Jersey residents · Based in St. Peters, MO.</p>
+      <p class="disc">Content on this site is for general information and is not medical advice or a substitute for care from your physician.</p>
+    </div>
+    <div>
+      <span class="caps">Contact</span>
+      <p style="margin-top:8px">Form collects name, email &amp; phone only.<br>No self-scheduling — booking lives in the secure client portal.<br>Phone &amp; email — pending confirmation.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept 06 — Golden Hour · Monarch Nutrition Counseling</title>
+<!--
+  CONCEPT: Golden Hour
+  Anchor: soft luxury wellness — warm, centered, resort-spa register.
+  Archetype: Warm classical (centered composition, arch photography, tint
+  bands, spa-menu fee list). Palette: warm muted registers of the approved
+  hues (ivory, espresso, clay, blush) — flagged for Katie's confirmation.
+  Techniques (§B): #6 choreographed reveals, #12 espresso-tinted shadows,
+  #19 tracked small caps + hairline folio details, #13 grain on tint bands,
+  #17 brand selection/focus.
+  Imagery: licensed Unsplash photography (swappable for Katie's shoot).
+  Level 2 (Premium).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBF7EF; --ivory:#F6EFE3; --blush:#F2DED8; --blush-deep:#E3BFB5;
+  --ink:#33241C; --body:#5A4A3F; --soft:#7E6C5E;
+  --clay:#A96F3D; --clay-deep:#8F5A2E; --sage:#7B765C;
+  --hairline:#E3D8C6; --hairline-dark:#CBBBA2;
+  --shadow:0 16px 48px rgba(51,36,28,.12);
+  --ease:cubic-bezier(.25,1,.4,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:Karla,system-ui,sans-serif;font-size:16.5px;font-weight:300;line-height:1.75;-webkit-font-smoothing:antialiased}
+::selection{background:var(--blush-deep);color:var(--ink)}
+a{color:inherit}
+:focus-visible{outline:1.5px solid var(--ink);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:Marcellus,serif;font-weight:400;color:var(--ink);text-wrap:balance}
+img{display:block;max-width:100%}
+.caps{font-family:Karla;font-size:11px;letter-spacing:.32em;text-transform:uppercase;font-weight:500;color:var(--soft)}
+.serif-i{font-family:"Cormorant Garamond",serif;font-style:italic}
+
+.concept-note{background:var(--ink);font-family:Karla;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:10px 20px;text-align:center;color:#BFAB96}
+.concept-note strong{color:var(--bg)}
+
+.grain{position:relative;isolation:isolate}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* header */
+.topline{background:var(--ivory);border-bottom:1px solid var(--hairline);text-align:center;padding:9px 16px}
+.topline .caps{font-size:10px}
+header.site{background:var(--bg);border-bottom:1px solid var(--hairline)}
+.head-in{max-width:1300px;margin:0 auto;padding:0 48px;height:96px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.lockup{display:flex;align-items:center;gap:14px;text-decoration:none}
+.lockup svg{flex:none}
+.lockup .wm{font-family:Marcellus,serif;font-size:23px;letter-spacing:.1em;color:var(--ink);line-height:1;text-transform:uppercase}
+.lockup .wm small{display:block;font-family:Karla;font-size:9px;letter-spacing:.42em;color:var(--soft);margin-top:5px;text-transform:uppercase;font-weight:500}
+nav.main{display:flex;gap:34px;align-items:center}
+nav.main a{text-decoration:none;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--body);font-weight:500;padding-bottom:3px;border-bottom:1px solid transparent;transition:color .25s,border-color .25s}
+nav.main a:hover{color:var(--ink);border-color:var(--hairline-dark)}
+.btn{display:inline-block;background:var(--ink);color:var(--bg);font-family:Karla;font-weight:500;font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;text-decoration:none;padding:16px 34px;border-radius:999px;border:1px solid var(--ink);cursor:pointer;transition:background .25s ease,color .25s ease,box-shadow .25s ease,transform .25s var(--ease)}
+.btn:hover{background:var(--clay-deep);border-color:var(--clay-deep);color:var(--bg);transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn:active{transform:none}
+.btn[disabled]{background:var(--hairline);border-color:var(--hairline);color:var(--soft);cursor:not-allowed;transform:none;box-shadow:none}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--bg);box-shadow:none}
+
+/* ============ HERO — centered classical ============ */
+.hero{max-width:1080px;margin:0 auto;padding:96px 48px 0;text-align:center}
+.hero .caps{display:block;margin-bottom:30px}
+.hero h1{font-size:clamp(2.8rem,1.8rem + 3.6vw,4.9rem);line-height:1.1;letter-spacing:.01em;margin-bottom:26px}
+.hero h1 .serif-i{font-size:1.04em;color:var(--clay-deep)}
+.hero .sub{font-size:17.5px;max-width:56ch;margin:0 auto 40px}
+.hero .ctas{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:64px}
+.hero-im{max-width:1300px;margin:0 auto;padding:0 48px;position:relative}
+.hero-im .arch{position:relative;border-radius:340px 340px 22px 22px;overflow:hidden;box-shadow:var(--shadow)}
+.hero-im img{width:100%;height:560px;object-fit:cover;object-position:50% 62%}
+.hero-im .cred-bar{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);background:rgba(251,247,239,.92);backdrop-filter:blur(8px);border:1px solid var(--hairline);border-radius:999px;padding:13px 34px;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink);font-weight:500;white-space:nowrap}
+.hero-im .cred-bar span{color:var(--clay);padding:0 12px}
+
+/* ============ ASSURANCE ============ */
+.assurance{text-align:center;padding:64px 24px 70px}
+.assurance .line{font-family:Marcellus,serif;font-size:clamp(20px,1rem + 1.2vw,27px);color:var(--ink)}
+.assurance .line .serif-i{color:var(--clay-deep)}
+.assurance .note{margin-top:10px;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--soft);font-weight:500}
+.assurance .rule{width:56px;height:1px;background:var(--hairline-dark);margin:0 auto 26px}
+
+/* ============ SERVICES — arch trio ============ */
+.services{background:var(--ivory);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:104px 0 110px}
+.services-in{max-width:1300px;margin:0 auto;padding:0 48px;text-align:center}
+.services .caps{display:block;margin-bottom:16px}
+.services h2{font-size:clamp(2rem,1.5rem + 2vw,3.2rem);line-height:1.12;max-width:26ch;margin:0 auto 18px}
+.services .lede{max-width:56ch;margin:0 auto}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;margin-top:70px}
+.svc{text-decoration:none;display:block}
+.svc .arch{border-radius:260px 260px 16px 16px;overflow:hidden;box-shadow:var(--shadow)}
+.svc .arch img{width:100%;height:380px;object-fit:cover;transition:transform 1.2s var(--ease)}
+.svc:hover .arch img{transform:scale(1.04)}
+.svc .num{display:block;margin-top:28px;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:19px;color:var(--clay)}
+.svc h3{font-size:24px;margin:8px 0 10px;letter-spacing:.02em}
+.svc p{font-size:15px;max-width:36ch;margin:0 auto;color:var(--body)}
+.svc .more{display:inline-block;margin-top:18px;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;color:var(--clay-deep);border-bottom:1px solid var(--hairline-dark);padding-bottom:4px;transition:border-color .25s,color .25s}
+.svc:hover .more{color:var(--ink);border-color:var(--clay)}
+
+/* ============ FEES — spa menu ============ */
+.fees{max-width:860px;margin:0 auto;padding:110px 48px;text-align:center}
+.fees .caps{display:block;margin-bottom:16px}
+.fees h2{font-size:clamp(2rem,1.5rem + 2vw,3.2rem);margin-bottom:16px}
+.fees .lede{max-width:56ch;margin:0 auto 58px}
+.menu{text-align:left;border-top:1px solid var(--hairline-dark)}
+.menu-row{display:flex;align-items:baseline;gap:20px;padding:28px 6px;border-bottom:1px solid var(--hairline);flex-wrap:wrap}
+.menu-row .t{font-family:Marcellus,serif;font-size:23px;color:var(--ink);white-space:nowrap}
+.menu-row .leader{flex:1;min-width:60px;border-bottom:1px dotted var(--hairline-dark);transform:translateY(-7px)}
+.menu-row .p{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:20px;color:var(--sage);white-space:nowrap}
+.menu-row .d{flex-basis:100%;font-size:14.5px;color:var(--soft);margin-top:4px}
+.menu-note{margin-top:24px;font-size:13px;color:var(--soft);font-style:italic}
+.fees .btn{margin-top:44px}
+
+/* ============ BLUSH REFERRAL BAND ============ */
+.blush-band{background:var(--blush);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);text-align:center;padding:92px 24px}
+.blush-band .caps{color:#9B6A5F;display:block;margin-bottom:18px}
+.blush-band h2{font-size:clamp(1.9rem,1.4rem + 1.9vw,3rem);max-width:30ch;margin:0 auto 16px}
+.blush-band p{max-width:56ch;margin:0 auto 34px;color:#6B5148}
+.blush-band .btn{background:var(--ink);border-color:var(--ink)}
+
+/* ============ ABOUT ============ */
+.about{max-width:1140px;margin:0 auto;padding:110px 48px;display:grid;grid-template-columns:.9fr 1.1fr;gap:88px;align-items:center}
+.about .arch{border-radius:300px 300px 18px 18px;overflow:hidden;box-shadow:var(--shadow)}
+.about .arch img{width:100%;height:500px;object-fit:cover}
+.about .caps{display:block;margin-bottom:20px}
+.about h2{font-size:clamp(1.9rem,1.4rem + 1.9vw,3rem);line-height:1.14;margin-bottom:22px;max-width:20ch}
+.about p{font-size:16px;max-width:50ch}
+.about p + p{margin-top:16px}
+.about .sig{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:24px;color:var(--clay-deep);margin-top:28px}
+
+/* ============ STYLE TILE ============ */
+.tile{background:var(--ivory);border-top:1px solid var(--hairline);padding:96px 0}
+.tile-in{max-width:1160px;margin:0 auto;padding:0 48px}
+.tile h2{font-size:clamp(1.8rem,1.4rem+1.4vw,2.5rem);margin-bottom:6px}
+.tile .sub{color:var(--soft);margin-bottom:40px;font-size:14px}
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+.sw{border:1px solid var(--hairline);background:var(--bg)}
+.sw .c{height:72px}
+.sw .m{padding:10px 12px;font-size:11.5px;line-height:1.6}
+.sw .m b{display:block;font-weight:500;color:var(--ink)}
+.type-scale{margin-top:52px;display:flex;flex-direction:column;gap:18px}
+.ts-row{display:grid;grid-template-columns:210px 1fr;gap:20px;align-items:baseline;border-bottom:1px solid var(--hairline);padding-bottom:15px}
+.ts-row .meta{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.states{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;margin-top:52px}
+.state-col h4{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--soft);margin-bottom:16px;font-weight:500}
+.state-col .stack{display:flex;flex-direction:column;gap:13px;align-items:flex-start}
+.btn.hovd{background:var(--clay-deep);border-color:var(--clay-deep);box-shadow:var(--shadow)}
+.btn.focd{outline:1.5px solid var(--ink);outline-offset:3px}
+.input{width:100%;max-width:290px;padding:14px 18px;font-size:15px;font-family:Karla;font-weight:300;border:1px solid var(--hairline-dark);border-radius:999px;background:var(--bg);color:var(--ink)}
+.input:focus{outline:1.5px solid var(--ink);outline-offset:2px}
+.input.err{border-color:#8E3B2C}
+.err-msg{font-size:12.5px;color:#8E3B2C}
+.space{display:flex;flex-direction:column;gap:9px}
+.space .bar{background:var(--sage);opacity:.45;height:10px;border-radius:999px}
+.space .lab{font-size:11px;color:var(--soft);letter-spacing:.1em}
+.motion-note{margin-top:52px;font-size:14px;color:var(--body);border-left:1px solid var(--clay);padding-left:20px;max-width:64ch}
+
+/* footer */
+footer.site{background:var(--ink);color:#C8B6A4;text-align:center;padding:78px 24px 62px}
+footer.site .wm{font-family:Marcellus,serif;font-size:24px;letter-spacing:.14em;text-transform:uppercase;color:var(--bg)}
+footer.site .s{font-size:9px;letter-spacing:.42em;text-transform:uppercase;color:#9A8674;margin-top:6px}
+footer.site .cred{margin:26px auto 0;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;line-height:2.4;max-width:680px}
+footer.site .disc{margin:22px auto 0;font-size:12.5px;max-width:64ch;font-style:italic;opacity:.8}
+
+/* reveals */
+@media (prefers-reduced-motion: no-preference){
+  .reveal{opacity:0;transform:translateY(1.4rem);animation:rise 1s var(--ease) forwards}
+  .reveal.d1{animation-delay:.12s}.reveal.d2{animation-delay:.24s}.reveal.d3{animation-delay:.36s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @supports (animation-timeline: view()){
+    .svc,.menu-row{opacity:0;transform:translateY(1.2rem);animation:risev linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+    .svc-grid .svc:nth-child(2){animation-range:entry 6% entry 51%}
+    .svc-grid .svc:nth-child(3){animation-range:entry 12% entry 57%}
+    @keyframes risev{to{opacity:1;transform:none}}
+  }
+}
+
+/* ============ MOBILE ============ */
+@media (max-width:900px){
+  .head-in{padding:0 20px;height:78px}
+  nav.main{display:none}
+  .hero{padding:64px 20px 0}
+  .hero h1{font-size:clamp(2.3rem,9.4vw,2.8rem)}
+  .hero .ctas{flex-direction:column;align-items:center;margin-bottom:48px}
+  .hero .ctas .btn{width:min(320px,86vw);text-align:center}
+  .hero-im{padding:0 20px}
+  .hero-im .arch{border-radius:190px 190px 16px 16px}
+  .hero-im img{height:420px}
+  .hero-im .cred-bar{white-space:normal;width:82vw;line-height:2.1;padding:10px 20px;letter-spacing:.16em;font-size:9.5px;bottom:16px}
+  .services{padding:72px 0 80px}
+  .services-in{padding:0 20px}
+  .svc-grid{grid-template-columns:1fr;gap:52px;max-width:420px;margin-left:auto;margin-right:auto}
+  .fees{padding:78px 20px}
+  .menu-row .t{font-size:20px}
+  .about{grid-template-columns:1fr;gap:56px;padding:78px 20px}
+  .about .arch{max-width:340px;margin:0 auto}
+  .about .arch img{height:420px}
+  .tile-in{padding:0 20px}
+  .ts-row{grid-template-columns:1fr;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<div class="concept-note"><strong>Concept 06 · Golden Hour</strong> &nbsp;·&nbsp; Warm classical luxury — ivory, clay, blush &nbsp;·&nbsp; Level 2 Premium</div>
+
+<div class="topline"><span class="caps">Registered Dietitian &nbsp;—&nbsp; Licensed in Missouri &amp; New Jersey &nbsp;—&nbsp; Telehealth</span></div>
+
+<header class="site">
+  <div class="head-in">
+    <a class="lockup" href="#">
+      <svg width="34" height="34" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <line x1="16" y1="4" x2="16" y2="28" stroke="#33241C" stroke-width="1.2"/>
+        <path d="M16 12.5 C10.5 3, 3 5, 4.3 11.5 C5.2 16, 11 17, 16 14.8" stroke="#33241C" stroke-width="1.2" fill="none"/>
+        <path d="M16 12.5 C21.5 3, 29 5, 27.7 11.5 C26.8 16, 21 17, 16 14.8" stroke="#33241C" stroke-width="1.2" fill="none"/>
+        <path d="M16 17.5 C12.5 15.8, 7.5 17.6, 8.4 21.6 C9.2 25.2, 14 24.8, 16 21.6" stroke="#33241C" stroke-width="1.2" fill="none"/>
+        <path d="M16 17.5 C19.5 15.8, 24.5 17.6, 23.6 21.6 C22.8 25.2, 18 24.8, 16 21.6" stroke="#33241C" stroke-width="1.2" fill="none"/>
+      </svg>
+      <span class="wm">Monarch<small>Nutrition Counseling</small></span>
+    </a>
+    <nav class="main" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#fees">Fees &amp; Insurance</a>
+      <a href="#about">About Katie</a>
+      <a href="#">Journal</a>
+    </nav>
+    <a class="btn ghost" href="#contact">Contact</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="caps reveal">Katie Sengheiser, RD &nbsp;·&nbsp; Virtual Nutrition Counseling</span>
+  <h1 class="reveal d1">Nourishment, <span class="serif-i">unhurried.</span></h1>
+  <p class="sub reveal d2">Insurance-based nutrition counseling for adults, children &amp; teens, and workplaces — by telehealth, at your own table, across Missouri and New Jersey.</p>
+  <div class="ctas reveal d3">
+    <a class="btn" href="#contact">Begin a conversation</a>
+    <a class="btn ghost" href="#fees">Fees &amp; insurance</a>
+  </div>
+</section>
+<div class="hero-im reveal d3">
+  <div class="arch">
+    <img src="assets/orange-paper.jpg" alt="Peaches and a halved orange spilling from a kraft paper bag in warm light" width="1200" height="1800">
+    <div class="cred-bar">Registered Dietitian <span>·</span> Licensed MO + NJ <span>·</span> In-Network Billing</div>
+  </div>
+</div>
+
+<!-- ASSURANCE -->
+<div class="assurance">
+  <div class="rule" aria-hidden="true"></div>
+  <p class="line">In-network with major insurance plans — <span class="serif-i">coverage confirmed before your first visit.</span></p>
+  <p class="note">Full plan list published at launch &nbsp;·&nbsp; Self-pay available</p>
+</div>
+
+<!-- SERVICES -->
+<section class="services grain" id="services">
+  <div class="services-in">
+    <span class="caps">Services</span>
+    <h2>For yourself, for your child, for your team.</h2>
+    <p class="lede">Every engagement begins the same way — a conversation, a benefits check, and a plan that suits the life it belongs to.</p>
+    <div class="svc-grid">
+      <a class="svc" href="#fees">
+        <div class="arch"><img src="assets/pear-plate.jpg" alt="A ceramic plate with folded linen and a pear on a linen tablecloth" width="800" height="1200"></div>
+        <span class="num">No. I</span>
+        <h3>Individual Counseling</h3>
+        <p>Weight management and pre- or post-bariatric nutrition for adults — one clinician, unhurried visits.</p>
+        <span class="more">Learn more</span>
+      </a>
+      <a class="svc" href="#fees">
+        <div class="arch"><img src="assets/child-baking.jpg" alt="A child's hands pressing a cookie cutter into rolled dough" width="800" height="534"></div>
+        <span class="num">No. II</span>
+        <h3>Child &amp; Teen Nutrition</h3>
+        <p>Family-centered care with parents in the room — growth, selective eating, and teenage appetites, met calmly.</p>
+        <span class="more">Learn more</span>
+      </a>
+      <a class="svc" href="#fees">
+        <div class="arch"><img src="assets/workspace.jpg" alt="A sunlit desk with plants by a bright window" width="800" height="1066"></div>
+        <span class="num">No. III</span>
+        <h3>Corporate Nutrition</h3>
+        <p>Employer wellness programming, lunch-and-learns, and group contracts, delivered virtually.</p>
+        <span class="more">Learn more</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FEES — spa menu -->
+<section class="fees" id="fees">
+  <span class="caps">Fees &amp; Insurance</span>
+  <h2>A clear menu of care.</h2>
+  <p class="lede">Monarch bills participating insurance plans directly, and benefits are verified before anything is scheduled. For plans out of network, self-pay visits and packages are available.</p>
+  <div class="menu">
+    <div class="menu-row"><span class="t">Initial consultation</span><span class="leader"></span><span class="p">$ —<sup>*</sup></span><span class="d">A full nutrition assessment, and a plan built with you.</span></div>
+    <div class="menu-row"><span class="t">Follow-up visit</span><span class="leader"></span><span class="p">$ —<sup>*</sup></span><span class="d">Progress, refinement, and course-correction — cadence set clinically.</span></div>
+    <div class="menu-row"><span class="t">Visit packages</span><span class="leader"></span><span class="p">$ —<sup>*</sup></span><span class="d">Multi-visit pricing for continuing care.</span></div>
+    <div class="menu-row"><span class="t">Insurance visits</span><span class="leader"></span><span class="p">per plan</span><span class="d">Billed in-network; coverage confirmed before your first appointment.</span></div>
+  </div>
+  <p class="menu-note">*Self-pay rates and the in-network plan list are finalized with Katie and published at launch.</p>
+  <a class="btn" href="#contact">Begin a conversation</a>
+</section>
+
+<!-- BLUSH REFERRAL BAND -->
+<section class="blush-band grain">
+  <span class="caps">For Referring Providers</span>
+  <h2>Referrals, received with care.</h2>
+  <p>Physicians, physical therapists, chiropractors, and therapists — send a name and a number. Katie verifies coverage, handles intake in her secure portal, and keeps you in the loop.</p>
+  <a class="btn" href="#contact">Refer a Patient</a>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="arch"><img src="assets/olive-vase.jpg" alt="An olive branch in a porcelain jug against a bright window" width="800" height="1000"></div>
+  <div>
+    <span class="caps">About Katie</span>
+    <h2>The same person, at every step.</h2>
+    <p>Katie Sengheiser is a Registered Dietitian licensed in Missouri and New Jersey, practicing entirely by telehealth from St. Peters, Missouri. Her clinical focus is weight management and bariatric nutrition, with a particular devotion to helping children and teens build an easy relationship with food.</p>
+    <p>She keeps the practice deliberately small: the person who answers your first call, verifies your coverage, and sits across the screen at every visit is the same clinician — by design.</p>
+    <p class="sig">— Katie Sengheiser, RD</p>
+  </div>
+</section>
+
+<!-- STYLE TILE -->
+<section class="tile">
+  <div class="tile-in">
+    <span class="caps" style="display:block;margin-bottom:14px">Style tile — for review, not part of the site</span>
+    <h2>The system</h2>
+    <p class="sub">Marcellus (display) · Cormorant Garamond italic (accents) · Karla 300/400/500 (text) · warm muted registers of the approved palette, flagged for Katie's confirmation.</p>
+    <div class="swatches">
+      <div class="sw"><div class="c" style="background:#FBF7EF;border-bottom:1px solid #E3D8C6"></div><div class="m"><b>#FBF7EF · ivory</b>Page ground</div></div>
+      <div class="sw"><div class="c" style="background:#F6EFE3"></div><div class="m"><b>#F6EFE3 · warm tint</b>Services band</div></div>
+      <div class="sw"><div class="c" style="background:#F2DED8"></div><div class="m"><b>#F2DED8 · blush</b>Referral band</div></div>
+      <div class="sw"><div class="c" style="background:#33241C"></div><div class="m"><b>#33241C · espresso</b>Display ink · 13.3:1 on ivory</div></div>
+      <div class="sw"><div class="c" style="background:#5A4A3F"></div><div class="m"><b>#5A4A3F · body</b>Text · 7.1:1 on ivory</div></div>
+      <div class="sw"><div class="c" style="background:#A96F3D"></div><div class="m"><b>#A96F3D · clay</b>Folio numerals · 4.4:1 (large/accents)</div></div>
+      <div class="sw"><div class="c" style="background:#8F5A2E"></div><div class="m"><b>#8F5A2E · clay-deep</b>Accent text · 6.0:1</div></div>
+      <div class="sw"><div class="c" style="background:#7B765C"></div><div class="m"><b>#7B765C · sage</b>Menu prices · 4.3:1 (≥19px)</div></div>
+    </div>
+    <div class="type-scale">
+      <div class="ts-row"><span class="meta">Hero · Marcellus · clamp(2.8–4.9rem) · lh 1.1</span><span style="font-family:Marcellus,serif;font-size:50px;line-height:1.1;color:#33241C">Nourishment, <em style="font-family:'Cormorant Garamond',serif;color:#8F5A2E">unhurried.</em></span></div>
+      <div class="ts-row"><span class="meta">H2 · Marcellus · 3.2rem/51px</span><span style="font-family:Marcellus,serif;font-size:51px;color:#33241C">A clear menu of care.</span></div>
+      <div class="ts-row"><span class="meta">H3 · Marcellus · 24px</span><span style="font-family:Marcellus,serif;font-size:24px;color:#33241C">Individual Counseling</span></div>
+      <div class="ts-row"><span class="meta">Body · Karla 300 · 16.5px · lh 1.75</span><span>Katie Sengheiser, RD, sees patients virtually across Missouri and New Jersey.</span></div>
+      <div class="ts-row"><span class="meta">Caps · Karla 500 · 11px · +0.32em</span><span class="caps">Fees &amp; Insurance</span></div>
+    </div>
+    <div class="states">
+      <div class="state-col"><h4>Button states</h4>
+        <div class="stack">
+          <button class="btn">Begin a conversation</button>
+          <button class="btn hovd">Hover</button>
+          <button class="btn focd">Focus-visible</button>
+          <button class="btn" disabled>Disabled</button>
+        </div>
+      </div>
+      <div class="state-col"><h4>Input states</h4>
+        <div class="stack">
+          <input class="input" placeholder="Rest" aria-label="Rest state example">
+          <input class="input" placeholder="Focus (click me)" aria-label="Focus state example">
+          <input class="input err" value="katie@" aria-label="Error state example">
+          <span class="err-msg">Please enter a complete email address.</span>
+        </div>
+      </div>
+      <div class="state-col"><h4>Spacing scale (px)</h4>
+        <div class="space">
+          <div class="lab">8</div><div class="bar" style="width:8px"></div>
+          <div class="lab">16</div><div class="bar" style="width:16px"></div>
+          <div class="lab">24</div><div class="bar" style="width:24px"></div>
+          <div class="lab">48</div><div class="bar" style="width:48px"></div>
+          <div class="lab">72</div><div class="bar" style="width:72px"></div>
+          <div class="lab">110</div><div class="bar" style="width:110px"></div>
+        </div>
+      </div>
+    </div>
+    <p class="motion-note"><strong>Motion.</strong> Slow, warm fades — content rises 22px over 1s, staggered 120ms; arch images breathe on hover (scale 1.04 over 1.2s). Services and menu rows reveal on scroll where supported; everything rests still under <code>prefers-reduced-motion</code>. Full build swaps scroll-timeline for IntersectionObserver — no animation library.</p>
+  </div>
+</section>
+
+<footer class="site" id="contact">
+  <div class="wm">Monarch</div>
+  <div class="s">Nutrition Counseling</div>
+  <p class="cred">Katie Sengheiser, RD · Registered Dietitian<br>Telehealth for Missouri &amp; New Jersey residents · St. Peters, MO<br>Contact collects name, email &amp; phone only — clinical intake lives in the secure client portal.</p>
+  <p class="disc">Content on this site is for general information and is not medical advice or a substitute for care from your physician. Photography: Unsplash license, swappable for practice photography.</p>
+</footer>
+
+</body>
+</html>
