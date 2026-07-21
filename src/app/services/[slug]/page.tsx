@@ -1,9 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { SERVICES, SITE } from "@/data/site";
+import { FAQ, SERVICES, SITE } from "@/data/site";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { Steps } from "@/components/sections/Steps";
 import { CtaBand } from "@/components/sections/CtaBand";
+import { EmpathyList } from "@/components/sections/EmpathyList";
+import { SessionCards } from "@/components/sections/SessionCards";
+import { TopicFormats } from "@/components/sections/TopicFormats";
+import { FaqAccordion } from "@/components/sections/FaqAccordion";
 import { Reveal } from "@/components/ui/Reveal";
 import { generatePageMetadata } from "@/lib/metadata";
 import { JsonLd, breadcrumbSchema } from "@/lib/schema";
@@ -93,6 +97,40 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </Reveal>
       </section>
 
+      {"empathy" in service ? (
+        <EmpathyList
+          items={service.empathy}
+          closer={
+            service.slug === "child-teen-nutrition"
+              ? "Nothing on that list means you're doing it wrong — and neither is your kid. It's exactly where the work starts."
+              : undefined
+          }
+        />
+      ) : null}
+
+      {isCorporate ? (
+        <section className="max-w-[1180px] mx-auto px-5 lg:px-10 py-20 lg:py-24 grid lg:grid-cols-[240px_1fr] gap-8 lg:gap-16 items-start">
+          <Reveal className="reveal-micro">
+            <div className="folio-num pt-3">Formats</div>
+          </Reveal>
+          <div>
+            <Reveal>
+              <h2
+                className="font-[560] leading-[1.08] mb-10 max-w-[20ch]"
+                style={{ fontSize: "clamp(1.9rem, 1.3rem + 2.2vw, 3.1rem)", letterSpacing: "-0.01em" }}
+              >
+                Pick the shape that <span className="accent-word accent-sweep">fits your team.</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={1}>
+              <TopicFormats />
+            </Reveal>
+          </div>
+        </section>
+      ) : (
+        <SessionCards />
+      )}
+
       {/* Insurance & fees */}
       <section id="insurance" className="max-w-[1080px] mx-auto px-5 lg:px-10 py-16">
         <Reveal>
@@ -148,6 +186,24 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       <div className="bg-tint border-y border-border-soft">
         <Steps overrides={"stepsOverride" in service ? service.stepsOverride : undefined} />
       </div>
+
+      {/* Quick answers — page-scoped FAQ subset (schema stays Home-only) */}
+      <section className="max-w-[900px] mx-auto px-5 lg:px-10 pt-4 pb-16">
+        <Reveal>
+          <p className="caps mb-4">Quick Answers</p>
+        </Reveal>
+        <Reveal delay={1}>
+          <FaqAccordion
+            items={
+              isCorporate
+                ? [FAQ[1], FAQ[2]]
+                : service.slug === "child-teen-nutrition"
+                  ? [FAQ[3], FAQ[1], FAQ[2]]
+                  : [FAQ[0], FAQ[2], FAQ[5]]
+            }
+          />
+        </Reveal>
+      </section>
 
       {/* Cross-links */}
       <section className="max-w-[1080px] mx-auto px-5 lg:px-10 py-16 text-center">

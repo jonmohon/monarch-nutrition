@@ -38,6 +38,12 @@ export const SERVICES = [
     image: "/images/service-individual.jpg",
     imageAlt: "A woman preparing a fresh vegetarian meal at home",
     heroLine: "One clinician, unhurried visits, and a plan shaped to your actual week.",
+    empathy: [
+      "You've tried the app, the plan, and the printout.",
+      "The conversation with your doctor keeps ending at “eat better.”",
+      "Surgery is scheduled — or behind you — and food feels complicated.",
+      "You want a plan that survives a Tuesday.",
+    ],
     scope: [
       "Weight management that starts from where you are",
       "Nutrition support before and after bariatric surgery",
@@ -57,6 +63,12 @@ export const SERVICES = [
     stepsOverride: {
       2: "Your first telehealth visit happens with your kid at the table — booked through Katie's secure portal.",
     },
+    empathy: [
+      "Dinner has become a negotiation.",
+      "The growth-chart conversation left more questions than answers.",
+      "Snacks run the house.",
+      "There's a teenager involved who won't eat what you cook.",
+    ],
     scope: [
       "Selective and picky eating, without mealtime battles",
       "Growth and appetite questions, answered plainly",
@@ -83,6 +95,41 @@ export const SERVICES = [
 ] as const;
 
 export type Service = (typeof SERVICES)[number];
+
+/** What visits look like — structure only; durations/cadence await Katie. */
+export const SESSIONS = [
+  {
+    title: "The first visit",
+    body: "A full picture — history, patterns, what's been tried, and what actually matters to you. The plan gets built with you, not handed to you.",
+  },
+  {
+    title: "Follow-ups",
+    body: "Adjustments, not judgment. Progress gets reviewed, the plan bends to your real week, and the cadence is set clinically — not by a package.",
+  },
+  {
+    title: "Between visits",
+    body: "Notes, plans, and next steps live in Katie's secure client portal — one place, nothing lost to a printout.",
+  },
+] as const;
+
+/** Corporate formats — categories from the engagement scope. */
+export const CORPORATE_FORMATS = [
+  {
+    title: "Lunch-and-Learns",
+    tag: "Single Session",
+    body: "A focused, practical virtual session for your team on a real-world nutrition topic — built for a lunch hour, with time for questions.",
+  },
+  {
+    title: "Wellness Programming",
+    tag: "Series",
+    body: "Multi-session programming across weeks — a through-line your team can actually build habits around, not a one-off talk.",
+  },
+  {
+    title: "Group Contracts",
+    tag: "Ongoing",
+    body: "A standing arrangement scoped to your organization — formats, group size, and cadence set with you in a scoping call.",
+  },
+] as const;
 
 export const STEPS = [
   {

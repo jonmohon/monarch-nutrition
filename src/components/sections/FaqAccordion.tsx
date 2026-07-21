@@ -5,7 +5,11 @@ import { FAQ } from "@/data/site";
 
 /** Editorial hairline accordion — folio numbers, Fraunces questions,
     APG disclosure semantics. Items cascade in on first view. */
-export function FaqAccordion() {
+export function FaqAccordion({
+  items = FAQ,
+}: {
+  items?: readonly (typeof FAQ)[number][];
+}) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -28,7 +32,7 @@ export function FaqAccordion() {
 
   return (
     <div ref={listRef} className="faq-list border-t border-border-strong">
-      {FAQ.map((item, i) => {
+      {items.map((item, i) => {
         const open = openIndex === i;
         return (
           <div

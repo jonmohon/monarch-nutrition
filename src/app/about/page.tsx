@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { KatieCard } from "@/components/sections/KatieCard";
 import { CtaBand } from "@/components/sections/CtaBand";
+import { PullQuote } from "@/components/ui/PullQuote";
 import { Reveal } from "@/components/ui/Reveal";
 import { generatePageMetadata } from "@/lib/metadata";
 import { JsonLd, breadcrumbSchema, personSchema } from "@/lib/schema";
@@ -88,6 +89,11 @@ export default function AboutPage() {
           </Reveal>
         </div>
       </section>
+
+      <PullQuote
+        quote="The clinician who takes your call, verifies your coverage, and sits across the screen at every visit is the same person."
+        cite="The practice model, in one sentence"
+      />
 
       <section className="max-w-[1080px] mx-auto px-5 lg:px-10 py-16 lg:py-20 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-16 items-start">
         <div>
