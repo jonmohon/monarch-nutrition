@@ -52,7 +52,13 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       <section className="max-w-[1080px] mx-auto px-5 lg:px-10 pt-20 pb-6 grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-20">
         <Reveal>
           <div>
-            <p className="caps mb-3.5">{isCorporate ? "For Your Team" : "What We Work On"}</p>
+            <p className="caps mb-3.5">
+              {service.slug === "child-teen-nutrition"
+                ? "Sound Familiar?"
+                : isCorporate
+                  ? "For Your Team"
+                  : "What We Work On"}
+            </p>
             <h2
               className="font-[560] leading-[1.12] max-w-[18ch]"
               style={{ fontSize: "clamp(1.8rem, 1.3rem + 1.8vw, 2.7rem)" }}

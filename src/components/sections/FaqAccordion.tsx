@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { FAQ } from "@/data/site";
 
-/** APG disclosure pattern: h3 > button[aria-expanded] controlling a region.
-    The list cascades in item-by-item (70ms stagger) once scrolled into view. */
+/** Editorial hairline accordion — folio numbers, Fraunces questions,
+    APG disclosure semantics. Items cascade in on first view. */
 export function FaqAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const listRef = useRef<HTMLDivElement>(null);
@@ -16,8 +16,6 @@ export function FaqAccordion() {
       (entries) => {
         if (entries.some((e) => e.isIntersecting)) {
           el.classList.add("is-inview");
-          // After the cascade lands, clear stagger delays so open/close
-          // shadows aren't lagged on later items.
           setTimeout(() => el.classList.add("cascade-done"), 1000);
           io.disconnect();
         }
@@ -29,13 +27,13 @@ export function FaqAccordion() {
   }, []);
 
   return (
-    <div ref={listRef} className="faq-list">
+    <div ref={listRef} className="faq-list border-t border-border-strong">
       {FAQ.map((item, i) => {
         const open = openIndex === i;
         return (
           <div
             key={item.q}
-            className={`faq-item relative bg-warm-white border border-border-soft rounded-[14px] mb-3 overflow-hidden transition-shadow ${open ? "shadow-warm" : ""}`}
+            className="faq-item relative border-b border-border-soft"
             style={{ transitionDelay: `${i * 70}ms` }}
           >
             <span
@@ -50,16 +48,21 @@ export function FaqAccordion() {
                 aria-controls={`faq-panel-${i}`}
                 id={`faq-button-${i}`}
                 onClick={() => setOpenIndex(open ? null : i)}
-                className="w-full flex items-center justify-between gap-4 px-5 sm:px-6 py-5 text-left cursor-pointer font-display font-[560] text-[17px] sm:text-[19px] text-brown group"
-                style={{ fontVariationSettings: '"SOFT" 80' }}
+                className="w-full grid grid-cols-[52px_1fr_auto] items-baseline gap-4 py-6 pl-4 pr-1 text-left cursor-pointer group"
               >
-                {item.q}
+                <span className="text-[12px] tracking-[0.18em] font-semibold text-olive [font-variant-numeric:tabular-nums]">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span
+                  className="font-display font-[560] text-[19px] sm:text-[21px] leading-snug text-brown"
+                  style={{ fontVariationSettings: '"SOFT" 80' }}
+                >
+                  {item.q}
+                </span>
                 <span
                   aria-hidden="true"
-                  className={`flex-none w-[27px] h-[27px] rounded-full border-[1.5px] grid place-items-center font-sans text-base font-semibold transition-all duration-[320ms] ease-[var(--ease-soft)] motion-reduce:transition-none ${
-                    open
-                      ? "rotate-45 bg-brown border-brown text-cream"
-                      : "border-border-strong text-orange-ink group-hover:border-orange"
+                  className={`self-center font-sans text-[19px] font-semibold transition-transform duration-[320ms] ease-[var(--ease-soft)] motion-reduce:transition-none ${
+                    open ? "rotate-45 text-brown" : "text-orange-ink group-hover:text-brown"
                   }`}
                 >
                   +
@@ -75,7 +78,7 @@ export function FaqAccordion() {
             >
               <div className="overflow-hidden">
                 <p
-                  className="px-5 sm:px-6 pb-5 text-[15.5px] max-w-[64ch] transition-[opacity,transform] duration-300 delay-100 motion-reduce:transition-none"
+                  className="pl-[68px] pr-6 pb-7 text-[15.5px] max-w-[62ch] transition-[opacity,transform] duration-300 delay-100 motion-reduce:transition-none"
                   style={{
                     opacity: open ? 1 : 0,
                     transform: open ? "none" : "translateY(6px)",

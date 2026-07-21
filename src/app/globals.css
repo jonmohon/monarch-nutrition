@@ -397,6 +397,45 @@
   }
   .band-orange-settle { letter-spacing: 0.18em; }
 
+  /* Kinetic marquee — reference-site color confidence, clinicalized.
+     Pausable on hover/focus; static single line under reduced motion. */
+  .marquee-track {
+    display: flex;
+    white-space: nowrap;
+    width: max-content;
+  }
+  .marquee-seq {
+    display: inline-flex;
+    align-items: center;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .marquee-track {
+      animation: marquee-x 38s linear infinite;
+    }
+    .marquee-band:hover .marquee-track,
+    .marquee-band:focus-within .marquee-track {
+      animation-play-state: paused;
+    }
+    @keyframes marquee-x {
+      to { transform: translateX(-50%); }
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { justify-content: center; width: 100%; }
+    .marquee-seq:nth-child(2) { display: none; }
+  }
+
+  /* The clinician card sits like a note clipped over the collage. */
+  @media (min-width: 1024px) {
+    .kcard-tilt {
+      transform: rotate(-1.4deg);
+      transition: transform 400ms var(--ease-soft);
+    }
+    .kcard-tilt:hover {
+      transform: rotate(0deg);
+    }
+  }
+
   /* FAQ list cascade — items arrive one by one once the list is in view. */
   @media (prefers-reduced-motion: no-preference) {
     .js .faq-list .faq-item {
