@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // Native page-to-page crossfade + shared-element morphs (wave 2 wow).
+    // Degrades to instant navigation where unsupported.
+    viewTransition: true,
+  },
   // Load-bearing SEO config (house rule): trailing-slash canonicals must stay
   // consistent across sitemap + metadata. Removing this caused a Google
   // canonical loop + de-indexing on sub-zero (commit b0643a4). Do not remove.

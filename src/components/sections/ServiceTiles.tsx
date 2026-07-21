@@ -26,15 +26,20 @@ export function ServiceTiles() {
               href={`/services/${svc.slug}/`}
               className="group bg-warm-white border border-border-soft rounded-[18px] overflow-hidden no-underline flex flex-col text-left h-full shadow-warm-sm transition-[transform,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-warm-lg"
             >
-              <div className="h-[250px] overflow-hidden">
-                <Image
-                  src={svc.image}
-                  alt={svc.imageAlt}
-                  width={800}
-                  height={500}
-                  sizes="(min-width: 1024px) 400px, 90vw"
-                  className="tile-photo w-full h-full object-cover group-hover:scale-[1.045]"
-                />
+              <div
+                className="h-[250px] overflow-hidden"
+                style={{ viewTransitionName: `svc-${svc.slug}` }}
+              >
+                <div className="img-zoom w-full h-full">
+                  <Image
+                    src={svc.image}
+                    alt={svc.imageAlt}
+                    width={800}
+                    height={500}
+                    sizes="(min-width: 1024px) 400px, 90vw"
+                    className="tile-photo w-full h-full object-cover group-hover:scale-[1.045]"
+                  />
+                </div>
               </div>
               <div className="p-7 pb-8 flex flex-col flex-1">
                 <p className="text-[11px] tracking-[0.24em] uppercase font-semibold text-rose-ink mb-2">

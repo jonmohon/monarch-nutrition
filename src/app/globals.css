@@ -227,6 +227,35 @@
     letter-spacing: 0.06em;
   }
 
+  /* View Transitions — soft crossfade + 8px rise between pages; the header
+     stays anchored. Service tile photos morph into their page heroes via
+     matching view-transition-names. No-ops entirely where unsupported. */
+  @media (prefers-reduced-motion: no-preference) {
+    ::view-transition-old(root) {
+      animation: vt-out 220ms var(--ease-soft) both;
+    }
+    ::view-transition-new(root) {
+      animation: vt-in 300ms var(--ease-soft) both;
+    }
+    @keyframes vt-out {
+      to { opacity: 0; transform: translateY(-6px); }
+    }
+    @keyframes vt-in {
+      from { opacity: 0; transform: translateY(8px); }
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root),
+    ::view-transition-group(*) {
+      animation: none !important;
+    }
+  }
+  ::view-transition-old(site-header),
+  ::view-transition-new(site-header) {
+    animation: none;
+  }
+
   /* 404 only: after inking in, the monarch departs. The one page licensed
      for the fuller expression of the motif. */
   @media (prefers-reduced-motion: no-preference) {
@@ -289,6 +318,37 @@
         animation: bfly-ink linear both;
         animation-timeline: view();
         animation-range: entry 0% contain 50%;
+      }
+
+      /* Scrolling zoom: imagery settles from 1.12 to rest as it enters. */
+      .img-zoom {
+        animation: img-settle linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 45%;
+      }
+      @keyframes img-settle {
+        from { transform: scale(1.12); }
+        to { transform: scale(1); }
+      }
+
+      /* Counter-scroll drift — parallax for ornaments and band content. */
+      .drift-slow {
+        animation: drift-y linear both;
+        animation-timeline: view();
+        animation-range: entry 0% exit 100%;
+      }
+      @keyframes drift-y {
+        from { transform: translateY(48px); }
+        to { transform: translateY(-48px); }
+      }
+      .band-lift {
+        animation: band-y linear both;
+        animation-timeline: view();
+        animation-range: entry 0% exit 100%;
+      }
+      @keyframes band-y {
+        from { transform: translateY(22px); }
+        to { transform: translateY(-22px); }
       }
     }
   }

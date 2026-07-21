@@ -5,12 +5,9 @@ import { ButterflyMark } from "@/components/ui/ButterflyMark";
 export function Footer() {
   return (
     <footer className="relative bg-brown text-[#D9C6B4] text-center px-6 pt-20 pb-12 overflow-hidden">
-      <ButterflyMark
-        size={520}
-        color="#F7F0E4"
-        strokeWidth={0.35}
-        className="absolute left-1/2 -translate-x-1/2 -top-24 opacity-[0.07] pointer-events-none"
-      />
+      <div className="drift-slow absolute left-1/2 -translate-x-1/2 -top-24 pointer-events-none">
+        <ButterflyMark size={520} color="#F7F0E4" strokeWidth={0.35} className="opacity-[0.07]" />
+      </div>
       <div
         className="relative font-display font-[440] text-cream leading-none"
         style={{ fontSize: "clamp(3.4rem, 2.4rem + 5.5vw, 7.5rem)", fontVariationSettings: '"SOFT" 80' }}

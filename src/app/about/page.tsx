@@ -59,7 +59,7 @@ export default function AboutPage() {
                 width={800}
                 height={1000}
                 sizes="(min-width: 1024px) 480px, 90vw"
-                className="w-full h-[420px] lg:h-[500px] object-cover"
+                className="img-zoom w-full h-[420px] lg:h-[500px] object-cover"
               />
             </div>
             <p className="mt-3 text-[12.5px] italic text-muted text-center">

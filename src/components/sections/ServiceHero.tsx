@@ -4,7 +4,10 @@ import type { Service } from "@/data/site";
 export function ServiceHero({ service }: { service: Service }) {
   return (
     <section className="relative flex items-center justify-center text-center overflow-hidden min-h-[380px] h-[52vh] max-h-[520px]">
-      <div className="absolute inset-0">
+      <div
+        className="absolute inset-0 hero-parallax"
+        style={{ viewTransitionName: `svc-${service.slug}` }}
+      >
         <Image
           src={service.image}
           alt={service.imageAlt}
