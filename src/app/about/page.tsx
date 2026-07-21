@@ -78,7 +78,7 @@ export default function AboutPage() {
               className="font-[560] max-w-[26ch] mx-auto mb-4"
               style={{ fontSize: "clamp(1.8rem, 1.3rem + 1.8vw, 2.7rem)" }}
             >
-              Send a name and a number — <span className="accent-word">Katie takes it from there.</span>
+              Send a name and a number — <span className="accent-word accent-sweep">Katie takes it from there.</span>
             </h2>
             <p className="max-w-[58ch] mx-auto">
               Physicians, physical therapists, chiropractors, and therapists: coverage

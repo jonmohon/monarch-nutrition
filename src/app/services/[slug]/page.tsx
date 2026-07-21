@@ -65,11 +65,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             >
               {isCorporate ? (
                 <>
-                  Programming that <span className="accent-word">earns its calendar slot.</span>
+                  Programming that <span className="accent-word accent-sweep">earns its calendar slot.</span>
                 </>
               ) : (
                 <>
-                  Care built around <span className="accent-word">your actual week.</span>
+                  Care built around <span className="accent-word accent-sweep">your actual week.</span>
                 </>
               )}
             </h2>

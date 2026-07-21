@@ -349,15 +349,28 @@
         animation-range: entry 0% contain 50%;
       }
 
-      /* Scrolling zoom: imagery settles from 1.12 to rest as it enters. */
+      /* Scrolling zoom + inner parallax: imagery settles as it enters, then
+         drifts inside its frame for the rest of its scroll life. */
       .img-zoom {
         animation: img-settle linear both;
         animation-timeline: view();
-        animation-range: entry 0% cover 45%;
+        animation-range: entry 0% exit 100%;
       }
       @keyframes img-settle {
-        from { transform: scale(1.12); }
-        to { transform: scale(1); }
+        from { transform: scale(1.18) translateY(-3%); }
+        to { transform: scale(1.06) translateY(3%); }
+      }
+
+      /* Zoom-bleed scene: an inset, rounded image expands to full-bleed
+         as the section crosses the viewport. */
+      .zoom-bleed {
+        animation: bleed linear both;
+        animation-timeline: view();
+        animation-range: entry 5% cover 55%;
+      }
+      @keyframes bleed {
+        from { clip-path: inset(10% 13% round 28px); transform: scale(0.985); }
+        to { clip-path: inset(0% 0% round 0px); transform: scale(1); }
       }
 
       /* Counter-scroll drift — parallax for ornaments and band content. */
@@ -423,6 +436,60 @@
   @media (prefers-reduced-motion: reduce) {
     .marquee-track { justify-content: center; width: 100%; }
     .marquee-seq:nth-child(2) { display: none; }
+  }
+
+  /* Masked word reveals — words rise out of their own clips. */
+  .split-mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+  }
+  .split-word {
+    display: inline-block;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .split-load .split-word {
+      transform: translateY(112%);
+      animation: word-rise 0.85s var(--ease-soft) forwards;
+    }
+    @keyframes word-rise {
+      to { transform: translateY(0); }
+    }
+    .js .split-view .split-word {
+      transform: translateY(112%);
+      transition: transform 0.8s var(--ease-soft);
+    }
+    .js .is-inview .split-view .split-word {
+      transform: translateY(0);
+    }
+    /* Rose highlighter sweeps under accent words once revealed. */
+    .js .accent-sweep {
+      background-image: linear-gradient(to top, color-mix(in srgb, var(--color-rose) 55%, transparent) 0.32em, transparent 0.32em);
+      background-repeat: no-repeat;
+      background-size: 0% 100%;
+      transition: background-size 0.7s var(--ease-soft) 0.35s;
+    }
+    .js .is-inview .accent-sweep {
+      background-size: 100% 100%;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .accent-sweep {
+      background-image: linear-gradient(to top, color-mix(in srgb, var(--color-rose) 55%, transparent) 0.32em, transparent 0.32em);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+
+  /* Footer curtain — content scrolls up to uncover the footer. */
+  .curtain-content {
+    position: relative;
+    z-index: 10;
+  }
+  .curtain-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 0;
   }
 
   /* The clinician card sits like a note clipped over the collage. */

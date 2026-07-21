@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { SplitWords } from "@/components/ui/SplitWords";
 
 /** Editorial left-composed hero — headline owns the negative space, the
     photo's subject holds the right third. Server-rendered, static on paint. */
@@ -40,7 +41,11 @@ export function Hero() {
               textShadow: "0 2px 34px rgba(46,31,24,.45)",
             }}
           >
-            Nutrition counseling from your <em className="font-[440]">own</em> kitchen table.
+            <SplitWords
+              text="Nutrition counseling from your own kitchen table."
+              italicWords={["own"]}
+              startDelay={120}
+            />
           </h1>
           <p className="text-[16.5px] sm:text-[18px] leading-[1.7] max-w-[46ch] mb-9 text-[#F4EADD]">
             Virtual nutrition care for adults, children &amp; teens, and workplaces — licensed in

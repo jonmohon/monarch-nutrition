@@ -43,7 +43,7 @@ export default function HomePage() {
               className="font-[560] mb-10 max-w-[18ch]"
               style={{ fontSize: "clamp(2rem, 1.3rem + 2.6vw, 3.4rem)", letterSpacing: "-0.01em" }}
             >
-              Answers <span className="accent-word">before you ask.</span>
+              Answers <span className="accent-word accent-sweep">before you ask.</span>
             </h2>
           </Reveal>
           <Reveal delay={1}>

@@ -16,7 +16,7 @@ export function ServiceTiles() {
               className="font-[560] leading-[1.06] max-w-[16ch]"
               style={{ fontSize: "clamp(2.2rem, 1.4rem + 3vw, 3.9rem)", letterSpacing: "-0.01em" }}
             >
-              Nutrition services with <span className="accent-word">room for real life.</span>
+              Nutrition services with <span className="accent-word accent-sweep">room for real life.</span>
             </h2>
           </div>
         </Reveal>

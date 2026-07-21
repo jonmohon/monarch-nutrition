@@ -16,7 +16,7 @@ export function Steps({ overrides }: { overrides?: Partial<Record<number, string
               className="font-[560] leading-[1.06]"
               style={{ fontSize: "clamp(2rem, 1.3rem + 2.6vw, 3.4rem)", letterSpacing: "-0.01em" }}
             >
-              Easy as <span className="accent-word">one, two, three.</span>
+              Easy as <span className="accent-word accent-sweep">one, two, three.</span>
             </h2>
           </div>
         </Reveal>
