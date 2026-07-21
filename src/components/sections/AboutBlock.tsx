@@ -13,12 +13,15 @@ const FACTS = [
 export function AboutBlock() {
   return (
     <div className="bg-tint border-y border-border-soft relative overflow-hidden" id="about">
-      <ButterflyMark
-        size={360}
-        color="var(--color-olive)"
-        strokeWidth={0.5}
-        className="absolute top-11 -right-8 opacity-[0.16] pointer-events-none hidden md:block"
-      />
+      <Reveal className="absolute top-11 -right-8 pointer-events-none hidden md:block">
+        <ButterflyMark
+          size={360}
+          color="var(--color-olive)"
+          strokeWidth={0.5}
+          draw="view"
+          className="opacity-[0.16]"
+        />
+      </Reveal>
       <section className="max-w-[1180px] mx-auto px-5 lg:px-10 py-20 lg:py-24 grid lg:grid-cols-[1.12fr_0.88fr] gap-11 lg:gap-[76px] items-center relative">
         <Reveal>
           <div>
@@ -68,6 +71,24 @@ export function AboutBlock() {
                 </li>
               ))}
             </ul>
+            <div className="mt-5 flex flex-wrap gap-2.5">
+              <a
+                href="https://pr.mo.gov/licensee-search.asp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[10.5px] tracking-[0.14em] uppercase font-semibold text-brown no-underline border border-border-strong rounded-full px-4 py-2 transition-colors hover:border-orange hover:text-orange-ink"
+              >
+                Verify MO License ↗
+              </a>
+              <a
+                href="https://newjersey.mylicense.com/verification/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[10.5px] tracking-[0.14em] uppercase font-semibold text-brown no-underline border border-border-strong rounded-full px-4 py-2 transition-colors hover:border-orange hover:text-orange-ink"
+              >
+                Verify NJ License ↗
+              </a>
+            </div>
             <p className="mt-4 text-[12.5px] italic text-muted">
               Katie&rsquo;s headshot from her shoot drops in here.
             </p>

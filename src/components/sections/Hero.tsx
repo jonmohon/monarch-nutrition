@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 
-/** Server-rendered static hero — no entrance motion (LCP rule). */
+/** Server-rendered static hero — no entrance motion (LCP rule);
+    parallax drift is scroll-linked only, so it never delays paint. */
 export function Hero() {
   return (
     <section className="relative flex items-center justify-center text-center overflow-hidden min-h-[560px] h-[86vh] max-h-[860px]">
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 hero-parallax">
         <Image
           src="/images/hero-kitchen.jpg"
           alt="A woman smiling while cooking fresh vegetables in a bright kitchen"
@@ -42,9 +44,11 @@ export function Hero() {
           Missouri and New Jersey, with in-network insurance billing.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Link href="/contact/" className="btn btn-orange w-full max-w-[320px] sm:w-auto">
-            Contact Katie
-          </Link>
+          <MagneticButton>
+            <Link href="/contact/" className="btn btn-orange w-full max-w-[320px] sm:w-auto">
+              Contact Katie
+            </Link>
+          </MagneticButton>
           <Link
             href="/services/individual-nutrition-counseling/#insurance"
             className="btn btn-ghost-light w-full max-w-[320px] sm:w-auto"

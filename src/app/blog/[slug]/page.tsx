@@ -43,7 +43,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {post.title}
       </h1>
       <div
-        className="prose-monarch text-[17px] leading-[1.75] [&_h2]:font-display [&_h2]:text-[26px] [&_h2]:mt-9 [&_h2]:mb-3 [&_h3]:font-display [&_h3]:text-[21px] [&_h3]:mt-7 [&_h3]:mb-2 [&_p]:mb-4 [&_ul]:mb-4 [&_ul]:pl-5 [&_li]:list-disc [&_li]:mb-1"
+        className="prose-monarch editorial-intro text-[17px] leading-[1.75] [&_h2]:font-display [&_h2]:text-[26px] [&_h2]:mt-9 [&_h2]:mb-3 [&_h3]:font-display [&_h3]:text-[21px] [&_h3]:mt-7 [&_h3]:mb-2 [&_p]:mb-4 [&_ul]:mb-4 [&_ul]:pl-5 [&_li]:list-disc [&_li]:mb-1"
         dangerouslySetInnerHTML={{ __html: renderMarkdown(post.body) }}
       />
       <footer className="mt-12 border-t border-border-soft pt-7">

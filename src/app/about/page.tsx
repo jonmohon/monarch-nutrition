@@ -33,6 +33,7 @@ export default function AboutPage() {
           >
             Written for the clinician doing the referring.
           </h1>
+          <div className="editorial-intro">
           <p className="mt-5 text-[16.5px] max-w-[56ch]">
             Katie Sengheiser is a Registered Dietitian licensed in Missouri and New Jersey. Her
             clinical focus is weight management and bariatric nutrition; her favorite work is
@@ -47,6 +48,7 @@ export default function AboutPage() {
             Katie&rsquo;s training and clinical background, in her own words, land here from her
             draft copy — this page is structured for it.
           </p>
+          </div>
         </div>
         <Reveal delay={1}>
           <div className="relative">

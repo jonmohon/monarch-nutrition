@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import { Fraunces, Source_Sans_3 } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { TabFavicon } from "@/components/ui/TabFavicon";
 import { SITE } from "@/data/site";
 import "./globals.css";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
-  axes: ["SOFT", "opsz"],
+  axes: ["SOFT", "WONK", "opsz"],
   display: "swap",
 });
 
@@ -38,6 +39,15 @@ export default function RootLayout({
       className={`${fraunces.variable} ${sourceSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        {/* Progressive-enhancement gate: reveal-hiding only applies with JS. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
+        <div className="grain-layer" aria-hidden="true" />
+        <div className="progress-rail" aria-hidden="true" />
+        <TabFavicon />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

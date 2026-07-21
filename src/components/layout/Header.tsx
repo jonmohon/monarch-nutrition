@@ -38,7 +38,7 @@ export function Header() {
             aria-label={`${SITE.name} — home`}
           >
             <span className="font-display font-[560] text-brown text-xl lg:text-[26px] leading-none flex items-center gap-2.5">
-              <ButterflyMark size={26} />
+              <ButterflyMark size={26} draw="load" />
               {SITE.shortName}
             </span>
             <span className="text-[8.5px] lg:text-[9.5px] tracking-[0.42em] uppercase text-label font-semibold">

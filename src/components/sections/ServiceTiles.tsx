@@ -33,7 +33,7 @@ export function ServiceTiles() {
                   width={800}
                   height={500}
                   sizes="(min-width: 1024px) 400px, 90vw"
-                  className="w-full h-full object-cover transition-transform duration-1000 ease-[var(--ease-soft)] group-hover:scale-[1.045]"
+                  className="tile-photo w-full h-full object-cover group-hover:scale-[1.045]"
                 />
               </div>
               <div className="p-7 pb-8 flex flex-col flex-1">

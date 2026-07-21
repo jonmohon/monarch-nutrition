@@ -152,18 +152,174 @@
   }
 }
 
+@layer components {
+  /* ---- Wave 1 wow pass (see docs/website-studio/wow-menu notes) ---- */
+
+  /* Whisper grain — the page reads as warm paper, not a flat hex.
+     Keep opacity <= .05; anything more reads as dirt. */
+  .grain-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    mix-blend-mode: multiply;
+  }
+
+  /* Butterfly ink draw-in. Runs ONCE, small, brown. Do not loop, retrigger,
+     or enlarge — that is the line between signature and mascot. */
+  @media (prefers-reduced-motion: no-preference) {
+    .bfly-draw path,
+    .bfly-draw line {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+    .bfly-draw.draw-now path,
+    .bfly-draw.draw-now line,
+    .is-inview .bfly-draw path,
+    .is-inview .bfly-draw line {
+      animation: bfly-ink 1.1s var(--ease-soft) forwards;
+    }
+    .bfly-draw path:nth-of-type(1),
+    .bfly-draw path:nth-of-type(2) { animation-delay: 0.15s; }
+    .bfly-draw path:nth-of-type(3),
+    .bfly-draw path:nth-of-type(4) { animation-delay: 0.3s; }
+    @keyframes bfly-ink {
+      to { stroke-dashoffset: 0; }
+    }
+  }
+
+  /* Editorial folio numbering — leading zero + hairline reads as print. */
+  .folio-num {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-variant-numeric: tabular-nums;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    font-weight: 600;
+    color: var(--color-olive);
+  }
+  .folio-num::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--color-border-strong);
+  }
+
+  /* Drop cap — long-form bio/blog openers only (never the 45s scan). */
+  .editorial-intro > p:first-of-type::first-letter {
+    font-family: var(--font-display);
+    font-variation-settings: "SOFT" 100;
+    font-style: italic;
+    font-weight: 480;
+    color: var(--color-orange-ink);
+    float: left;
+    font-size: 3.6em;
+    line-height: 0.82;
+    padding: 0.04em 0.12em 0 0;
+  }
+
+  .small-caps {
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.06em;
+  }
+
+  /* 404 only: after inking in, the monarch departs. The one page licensed
+     for the fuller expression of the motif. */
+  @media (prefers-reduced-motion: no-preference) {
+    .mark-migrate {
+      animation: migrate 1.4s var(--ease-soft) 2s forwards;
+    }
+    @keyframes migrate {
+      to {
+        transform: translate(52px, -72px) rotate(9deg);
+        opacity: 0;
+      }
+    }
+  }
+}
+
 @layer utilities {
+  /* Fraunces WONK warmth on hover — motion at the level of ink. */
+  .accent-word {
+    font-variation-settings: "SOFT" 80, "WONK" 0;
+    transition: font-variation-settings 320ms var(--ease-soft);
+  }
+  a:hover .accent-word,
+  .accent-word:hover {
+    font-variation-settings: "SOFT" 100, "WONK" 1;
+  }
+
+  /* Scroll-progress rail + hero parallax + connector draw:
+     progressive enhancement only, invisible where unsupported. */
+  .progress-rail { display: none; }
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .progress-rail {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2.5px;
+        z-index: 70;
+        background: linear-gradient(90deg, var(--color-orange), var(--color-rose));
+        transform-origin: left;
+        animation: rail-grow linear both;
+        animation-timeline: scroll(root);
+      }
+      @keyframes rail-grow {
+        from { transform: scaleX(0); }
+        to { transform: scaleX(1); }
+      }
+      .hero-parallax {
+        animation: hero-drift linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0 60vh;
+      }
+      @keyframes hero-drift {
+        to { transform: scale(1.06) translateY(14px); }
+      }
+      .steps-connector {
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        animation: bfly-ink linear both;
+        animation-timeline: view();
+        animation-range: entry 0% contain 50%;
+      }
+    }
+  }
+  @supports not (animation-timeline: scroll()) {
+    .steps-connector { stroke-dashoffset: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .steps-connector { stroke-dashoffset: 0; }
+  }
+
+  /* Service tile photos: warm ink at rest, full color on attention. */
+  .tile-photo {
+    filter: sepia(0.14) saturate(0.82) brightness(0.99);
+    transition: filter 700ms var(--ease-soft), transform 1000ms var(--ease-soft);
+  }
+  .group:hover .tile-photo,
+  .group:focus-visible .tile-photo {
+    filter: none;
+  }
+
   /* Scroll reveal — activated by the <Reveal> IntersectionObserver wrapper.
      Below-the-fold only; the hero stays server-rendered and static. */
   @media (prefers-reduced-motion: no-preference) {
-    .reveal {
+    .js .reveal {
       opacity: 0;
       transform: translateY(24px);
       transition:
         opacity 0.9s var(--ease-soft),
         transform 0.9s var(--ease-soft);
     }
-    .reveal.is-inview {
+    .js .reveal.is-inview {
       opacity: 1;
       transform: none;
     }

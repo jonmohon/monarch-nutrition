@@ -13,16 +13,16 @@ export function Steps() {
           Easy as <span className="accent-word">one, two, three.</span>
         </h2>
       </Reveal>
-      <div className="grid sm:grid-cols-3 gap-10">
+      <div className="grid sm:grid-cols-3 gap-10 text-left">
         {STEPS.map((step, i) => (
           <Reveal key={step.title} delay={(i % 3) as 0 | 1 | 2}>
             <div>
-              <div className="font-display italic font-[440] text-[44px] leading-none text-orange-ink">
+              <div className="folio-num">{String(i + 1).padStart(2, "0")}</div>
+              <div className="font-display italic font-[440] text-[40px] leading-none text-orange-ink mt-5">
                 {i + 1}
               </div>
-              <div className="w-9 h-[1.5px] bg-border-strong mx-auto mt-4 mb-4.5" />
-              <h3 className="text-[21px] font-[560] mb-2">{step.title}</h3>
-              <p className="text-[15px] max-w-[34ch] mx-auto">{step.body}</p>
+              <h3 className="text-[21px] font-[560] mt-3.5 mb-2">{step.title}</h3>
+              <p className="text-[15px] max-w-[36ch]">{step.body}</p>
             </div>
           </Reveal>
         ))}

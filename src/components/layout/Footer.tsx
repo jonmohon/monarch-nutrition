@@ -1,11 +1,23 @@
 import Link from "next/link";
 import { SITE, NAV, DISCLAIMER } from "@/data/site";
+import { ButterflyMark } from "@/components/ui/ButterflyMark";
 
 export function Footer() {
   return (
-    <footer className="bg-brown text-[#D9C6B4] text-center px-6 pt-16 pb-12">
-      <div className="font-display font-[560] text-2xl text-cream">{SITE.shortName}</div>
-      <div className="text-[9.5px] tracking-[0.42em] uppercase text-[#B99F8A] mt-2 font-semibold">
+    <footer className="relative bg-brown text-[#D9C6B4] text-center px-6 pt-20 pb-12 overflow-hidden">
+      <ButterflyMark
+        size={520}
+        color="#F7F0E4"
+        strokeWidth={0.35}
+        className="absolute left-1/2 -translate-x-1/2 -top-24 opacity-[0.07] pointer-events-none"
+      />
+      <div
+        className="relative font-display font-[440] text-cream leading-none"
+        style={{ fontSize: "clamp(3.4rem, 2.4rem + 5.5vw, 7.5rem)", fontVariationSettings: '"SOFT" 80' }}
+      >
+        {SITE.shortName}
+      </div>
+      <div className="relative text-[10px] tracking-[0.42em] uppercase text-[#B99F8A] mt-3 font-semibold">
         Nutrition Counseling
       </div>
       <nav aria-label="Footer" className="flex flex-wrap justify-center gap-x-7 gap-y-2 mt-8">
