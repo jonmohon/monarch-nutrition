@@ -15,13 +15,13 @@ export function AboutBlock() {
           className="opacity-[0.16]"
         />
       </Reveal>
-      <section className="max-w-[1180px] mx-auto px-5 lg:px-10 py-20 lg:py-24 grid lg:grid-cols-[1.12fr_0.88fr] gap-11 lg:gap-[76px] items-center relative">
+      <section className="max-w-[1180px] mx-auto px-5 lg:px-10 py-24 lg:py-28 grid lg:grid-cols-[1.12fr_0.88fr] gap-11 lg:gap-[76px] items-center relative">
         <Reveal>
           <div>
             <p className="caps !text-rose-ink mb-4">About Katie</p>
             <h2
               className="font-[560] leading-[1.12] mb-5 max-w-[20ch]"
-              style={{ fontSize: "clamp(1.9rem, 1.4rem + 1.9vw, 3rem)" }}
+              style={{ fontSize: "clamp(2rem, 1.3rem + 2.6vw, 3.4rem)", letterSpacing: "-0.01em" }}
             >
               A dietitian your practice can refer to.
             </h2>

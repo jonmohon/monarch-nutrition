@@ -28,12 +28,12 @@ export default function HomePage() {
       <ServiceTiles />
       <Steps />
       <AboutBlock />
-      <section className="max-w-[840px] mx-auto px-5 lg:px-10 pt-24 pb-24">
+      <section className="max-w-[840px] mx-auto px-5 lg:px-10 pt-28 pb-28">
         <Reveal>
           <p className="caps text-center mb-3.5">Common Questions</p>
           <h2
             className="font-[560] text-center mb-3"
-            style={{ fontSize: "clamp(1.9rem, 1.4rem + 1.9vw, 2.9rem)" }}
+            style={{ fontSize: "clamp(2rem, 1.3rem + 2.6vw, 3.4rem)", letterSpacing: "-0.01em" }}
           >
             Answers before you ask.
           </h2>

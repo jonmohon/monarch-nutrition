@@ -2,7 +2,7 @@
 export function StatementBands() {
   return (
     <>
-      <section className="relative bg-brown text-cream text-center px-6 pt-[74px] pb-16 overflow-hidden">
+      <section className="relative bg-brown text-cream text-center px-6 pt-[92px] pb-20 overflow-hidden">
         <span
           aria-hidden="true"
           className="curve-pop absolute -top-px left-[-6%] w-[112%] h-14 bg-warm-white origin-top"
@@ -11,8 +11,8 @@ export function StatementBands() {
         <div className="band-lift">
           <p className="caps !text-rose mb-3.5">Why Telehealth</p>
           <p
-            className="font-display font-[440] text-warm-white max-w-[30ch] mx-auto leading-snug"
-            style={{ fontSize: "clamp(24px, 1.3rem + 1.6vw, 36px)" }}
+            className="font-display font-[440] text-warm-white max-w-[26ch] mx-auto leading-[1.16]"
+            style={{ fontSize: "clamp(27px, 1.3rem + 2.2vw, 46px)", letterSpacing: "-0.005em" }}
           >
             Real nutrition care,
             <br />
