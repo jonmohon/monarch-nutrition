@@ -24,7 +24,7 @@ export function Header() {
         New Jersey <span className="text-rose px-2">·</span> Virtual Nutrition Counseling
       </div>
       <header
-        className="bg-cream border-b border-border-soft relative z-40"
+        className="bg-cream border-b border-border-soft sticky top-0 z-40"
         style={{ viewTransitionName: "site-header" }}
       >
         <div className="max-w-[1340px] mx-auto px-5 lg:px-10 h-[76px] lg:h-24 grid grid-cols-[auto_1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center gap-5">

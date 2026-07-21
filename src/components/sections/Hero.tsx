@@ -26,9 +26,9 @@ export function Hero() {
           aria-hidden="true"
         />
       </div>
-      <div className="relative z-10 max-w-[880px] px-6 lg:px-8 text-cream pb-16 sm:pb-0">
+      <div className="hero-copy-drift relative z-10 max-w-[880px] px-6 lg:px-8 text-cream pb-16 sm:pb-0">
         <p className="text-[11px] sm:text-xs tracking-[0.34em] uppercase font-semibold text-[#F5E7D6] mb-6">
-          Katie Sengheiser, RD &nbsp;·&nbsp; Registered Dietitian
+          Katie Sengheiser, RD
         </p>
         <h1
           className="font-display text-warm-white font-[440] leading-[1.12] mb-5"
@@ -49,13 +49,20 @@ export function Hero() {
               Contact Katie
             </Link>
           </MagneticButton>
-          <Link
-            href="/services/individual-nutrition-counseling/#insurance"
-            className="btn btn-ghost-light w-full max-w-[320px] sm:w-auto"
-          >
-            Insurance &amp; Coverage
-          </Link>
+          <MagneticButton>
+            <Link href="#insurance" className="btn btn-ghost-light w-full max-w-[320px] sm:w-auto">
+              Insurance &amp; Coverage
+            </Link>
+          </MagneticButton>
         </div>
+        <p className="mt-5 text-[13px] text-[#F4EADD]">
+          <Link
+            href="/contact/#referrers"
+            className="underline decoration-[rgba(247,240,228,.5)] underline-offset-4 hover:decoration-rose transition-colors"
+          >
+            Referring a patient? Start here →
+          </Link>
+        </p>
       </div>
       <div className="absolute left-1/2 -translate-x-1/2 bottom-5 sm:bottom-9 z-10 bg-[rgba(46,31,24,.72)] backdrop-blur border border-[rgba(247,240,228,.16)] text-cream text-[9.5px] sm:text-[11px] tracking-[0.18em] sm:tracking-[0.24em] uppercase font-semibold px-5 sm:px-8 py-3 sm:py-4 rounded-full w-[90vw] sm:w-auto sm:whitespace-nowrap leading-[2] sm:leading-normal">
         Registered Dietitian Care <span className="text-rose px-2">·</span> Licensed MO + NJ{" "}

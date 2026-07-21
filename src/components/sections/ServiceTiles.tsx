@@ -24,7 +24,7 @@ export function ServiceTiles() {
           <Reveal key={svc.slug} delay={(i % 3) as 0 | 1 | 2} className="h-full">
             <Link
               href={`/services/${svc.slug}/`}
-              className="group bg-warm-white border border-border-soft rounded-[18px] overflow-hidden no-underline flex flex-col text-left h-full shadow-warm-sm transition-[transform,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-warm-lg"
+              className="group bg-warm-white border border-border-soft rounded-[18px] overflow-hidden no-underline flex flex-col text-left h-full shadow-warm-sm transition-[transform,box-shadow] duration-[260ms] ease-[var(--ease-soft)] hover:-translate-y-1.5 hover:shadow-warm-lg"
             >
               <div
                 className="h-[250px] overflow-hidden"

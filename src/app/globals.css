@@ -310,7 +310,36 @@
         animation-range: 0 60vh;
       }
       @keyframes hero-drift {
-        to { transform: scale(1.06) translateY(14px); }
+        to { transform: scale(1.07) translateY(40px); }
+      }
+      /* Counter-motion on the hero copy — the actual depth cue. */
+      .hero-copy-drift {
+        animation: hero-copy-rise linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0 40vh;
+      }
+      @keyframes hero-copy-rise {
+        to { transform: translateY(-18px); }
+      }
+      /* Statement band arrival: the curve visibly happens; the orange
+         ribbon's tracking settles like a stamp landing. */
+      .curve-pop {
+        animation: curve-grow linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 60%;
+      }
+      @keyframes curve-grow {
+        from { transform: scaleY(0.45); }
+      }
+      .band-orange-settle {
+        letter-spacing: 0.18em;
+        animation: tracking-settle linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 70%;
+      }
+      @keyframes tracking-settle {
+        from { letter-spacing: 0.3em; opacity: 0.6; }
+        to { letter-spacing: 0.18em; opacity: 1; }
       }
       .steps-connector {
         stroke-dasharray: 1;
@@ -359,10 +388,29 @@
     .steps-connector { stroke-dashoffset: 0; }
   }
 
-  /* Service tile photos: warm ink at rest, full color on attention. */
+  /* Service tile photos: warm ink at rest, full color on attention.
+     One authored gesture: card leads (260ms), scale mid (500ms),
+     color arrives last (700ms) — all on --ease-soft. */
   .tile-photo {
     filter: sepia(0.14) saturate(0.82) brightness(0.99);
-    transition: filter 700ms var(--ease-soft), transform 1000ms var(--ease-soft);
+    transition: filter 700ms var(--ease-soft), transform 500ms var(--ease-soft);
+  }
+  .band-orange-settle { letter-spacing: 0.18em; }
+
+  /* FAQ list cascade — items arrive one by one once the list is in view. */
+  @media (prefers-reduced-motion: no-preference) {
+    .js .faq-list .faq-item {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.55s var(--ease-soft), transform 0.55s var(--ease-soft);
+    }
+    .js .faq-list.is-inview .faq-item {
+      opacity: 1;
+      transform: none;
+    }
+    .js .faq-list.cascade-done .faq-item {
+      transition-delay: 0ms !important;
+    }
   }
   .group:hover .tile-photo,
   .group:focus-visible .tile-photo {
@@ -372,13 +420,17 @@
   /* Scroll reveal — activated by the <Reveal> IntersectionObserver wrapper.
      Below-the-fold only; the hero stays server-rendered and static. */
   @media (prefers-reduced-motion: no-preference) {
+    /* Reveal vocabulary: micro (labels) / default / statement (hero beats).
+       Vary --reveal-y / --reveal-dur per instance; one keyframe language. */
     .js .reveal {
       opacity: 0;
-      transform: translateY(24px);
+      transform: translateY(var(--reveal-y, 24px));
       transition:
-        opacity 0.9s var(--ease-soft),
-        transform 0.9s var(--ease-soft);
+        opacity var(--reveal-dur, 0.7s) var(--ease-soft),
+        transform var(--reveal-dur, 0.7s) var(--ease-soft);
     }
+    .reveal-micro { --reveal-y: 8px; --reveal-dur: 0.45s; }
+    .reveal-statement { --reveal-y: 36px; --reveal-dur: 1s; }
     .js .reveal.is-inview {
       opacity: 1;
       transform: none;

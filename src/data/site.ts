@@ -54,6 +54,9 @@ export const SERVICES = [
     image: "/images/service-child.jpg",
     imageAlt: "A child's hands pressing a cookie cutter into rolled dough",
     heroLine: "Family-centered nutrition care, with parents in the room at every step.",
+    stepsOverride: {
+      2: "Your first telehealth visit happens with your kid at the table — booked through Katie's secure portal.",
+    },
     scope: [
       "Selective and picky eating, without mealtime battles",
       "Growth and appetite questions, answered plainly",
@@ -115,12 +118,17 @@ export const FAQ = [
   },
   {
     q: "Do you work with children and teens?",
-    a: "Yes — child and teen nutrition is one of Katie's core services, with parents in the room and pediatrician referrals welcome.",
+    a: "Yes — child and teen nutrition is one of Katie's core services, with parents in the room, growth and appetite questions answered plainly, and sessions paced to the child, not a script. Pediatrician referrals are welcome.",
     inSchema: true,
   },
   {
     q: "How do I refer a patient?",
     a: "Send your patient's name and contact information through the contact form. Katie verifies coverage, handles intake in her secure client portal, and takes it from there.",
+    inSchema: true,
+  },
+  {
+    q: "What happens after I send a referral?",
+    a: "Katie verifies the patient's coverage, reaches out to them directly to talk through what they're looking for, and gets the first telehealth visit scheduled in her secure client portal — so your office gets the loop closed instead of a black hole.",
     inSchema: true,
   },
 ] as const;

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { AboutBlock } from "@/components/sections/AboutBlock";
+import { KatieCard } from "@/components/sections/KatieCard";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Reveal } from "@/components/ui/Reveal";
 import { generatePageMetadata } from "@/lib/metadata";
@@ -89,7 +89,35 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <AboutBlock />
+      <section className="max-w-[1080px] mx-auto px-5 lg:px-10 py-16 lg:py-20 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-16 items-start">
+        <div>
+          <p className="caps !text-rose-ink mb-4">Training &amp; Credentials</p>
+          <h2
+            className="font-[560] leading-[1.12] mb-5 max-w-[20ch]"
+            style={{ fontSize: "clamp(1.8rem, 1.3rem + 1.8vw, 2.7rem)" }}
+          >
+            The paperwork, in plain sight.
+          </h2>
+          <ul className="border-t border-border-strong">
+            {[
+              ["Credential", "Registered Dietitian (RD) — verify with the state boards at right"],
+              ["Licensure", "Missouri + New Jersey, current"],
+              ["Clinical focus", "Weight management · bariatric nutrition · child & teen nutrition"],
+              ["Practice model", "Solo, telehealth-only — one clinician at every step"],
+            ].map(([k, v]) => (
+              <li key={k} className="flex gap-5 items-baseline py-4 border-b border-border-soft">
+                <span className="folio-num !text-label w-36 flex-none">{k}</span>
+                <span className="text-[15.5px] text-brown">{v}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-[13px] italic text-muted">
+            Education, training sites, and credential history land here from Katie&rsquo;s draft
+            copy.
+          </p>
+        </div>
+        <KatieCard />
+      </section>
       <CtaBand />
     </>
   );

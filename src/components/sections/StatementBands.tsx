@@ -5,7 +5,7 @@ export function StatementBands() {
       <section className="relative bg-brown text-cream text-center px-6 pt-[74px] pb-16 overflow-hidden">
         <span
           aria-hidden="true"
-          className="absolute -top-px left-[-6%] w-[112%] h-14 bg-warm-white"
+          className="curve-pop absolute -top-px left-[-6%] w-[112%] h-14 bg-warm-white origin-top"
           style={{ borderRadius: "0 0 60% 60% / 0 0 100% 100%" }}
         />
         <div className="band-lift">
@@ -21,10 +21,10 @@ export function StatementBands() {
         </div>
       </section>
       <div
-        className="bg-orange text-brown text-center px-6 py-5 font-display font-[560] tracking-[0.18em] uppercase"
+        className="band-orange-settle bg-orange text-brown text-center px-6 py-5 font-display font-[560] uppercase"
         style={{ fontSize: "clamp(13px, 0.8rem + 0.6vw, 18px)" }}
       >
-        Expert nutrition care · In network and online · Wherever your table is
+        Expert nutrition care · In network and online · Referrals welcome
       </div>
     </>
   );

@@ -90,7 +90,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       {/* Insurance & fees */}
       <section id="insurance" className="max-w-[1080px] mx-auto px-5 lg:px-10 py-16">
         <Reveal>
-          <div className="bg-brown text-cream rounded-[22px] px-7 py-10 lg:px-12 lg:py-12 grid lg:grid-cols-2 gap-8 lg:gap-14 shadow-warm-lg">
+          <div className="bg-brown text-cream rounded-[22px] px-7 py-10 lg:px-12 lg:py-12 grid lg:grid-cols-[1.15fr_0.85fr] gap-8 lg:gap-14 shadow-warm-lg">
             <div>
               <p className="caps !text-rose mb-3">Insurance</p>
               <h2
@@ -122,9 +122,17 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   : "Initial consultations, follow-up visits, and multi-visit packages at published rates."}
               </p>
               {!isCorporate && (
-                <p className="mt-3 text-[12.5px] italic text-rose">
-                  Rates publish here the day Katie confirms her fee schedule.
-                </p>
+                <>
+                  <p className="mt-3 text-[12.5px] italic text-rose">
+                    Rates publish here the day Katie confirms her fee schedule.
+                  </p>
+                  <Link
+                    href="/contact/"
+                    className="inline-block mt-3 text-[13.5px] font-semibold text-rose underline decoration-[rgba(231,154,148,.5)] underline-offset-4 hover:decoration-rose transition-colors"
+                  >
+                    Ask Katie for current self-pay rates →
+                  </Link>
+                </>
               )}
             </div>
           </div>
@@ -132,7 +140,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       </section>
 
       <div className="bg-tint border-y border-border-soft">
-        <Steps />
+        <Steps overrides={"stepsOverride" in service ? service.stepsOverride : undefined} />
       </div>
 
       {/* Cross-links */}

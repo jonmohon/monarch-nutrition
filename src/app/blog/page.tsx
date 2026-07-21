@@ -27,15 +27,35 @@ export default function BlogIndexPage() {
       </p>
 
       {posts.length === 0 ? (
-        <div className="bg-warm-white border border-border-soft rounded-[18px] px-8 py-14 text-center">
-          <ButterflyMark size={44} color="var(--color-olive)" className="mx-auto mb-5 opacity-70" />
-          <p className="font-display font-[560] text-[22px] text-brown mb-2" style={{ fontVariationSettings: '"SOFT" 80' }}>
-            First posts arrive with launch.
-          </p>
-          <p className="text-[15.5px] max-w-[46ch] mx-auto">
-            Katie publishes here herself — the blog is wired to a lightweight editor, no code
-            required.
-          </p>
+        <div>
+          <div className="grid sm:grid-cols-3 gap-5 mb-8">
+            {[
+              ["01", "Weight Management & Bariatric Nutrition", "Before and after surgery, and the long unglamorous middle."],
+              ["02", "Feeding Kids & Teens", "Picky plates, growth questions, and calmer mealtimes."],
+              ["03", "Insurance & Getting Started", "How coverage, referrals, and first visits actually work."],
+            ].map(([n, t, d]) => (
+              <div
+                key={n}
+                className="bg-warm-white border border-border-soft rounded-[16px] p-6 text-left"
+              >
+                <div className="folio-num mb-4">{n}</div>
+                <p className="font-display font-[560] text-[19px] text-brown leading-snug mb-1.5" style={{ fontVariationSettings: '"SOFT" 80' }}>
+                  {t}
+                </p>
+                <p className="text-[14px] text-muted">{d}</p>
+              </div>
+            ))}
+          </div>
+          <div className="bg-warm-white border border-border-soft rounded-[18px] px-8 py-10 text-center">
+            <ButterflyMark size={40} color="var(--color-olive)" className="mx-auto mb-4 opacity-70" />
+            <p className="font-display font-[560] text-[20px] text-brown mb-2" style={{ fontVariationSettings: '"SOFT" 80' }}>
+              First posts arrive with launch — these are the shelves they&rsquo;ll fill.
+            </p>
+            <p className="text-[15px] max-w-[46ch] mx-auto">
+              Katie publishes here herself — the blog is wired to a lightweight editor, no code
+              required.
+            </p>
+          </div>
         </div>
       ) : (
         <div className="flex flex-col gap-5">

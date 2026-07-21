@@ -110,7 +110,7 @@ export function ContactForm() {
         {status === "sending" ? "Sending…" : "Send to Katie"}
       </button>
       <p className="mt-3.5 text-[13px] text-muted text-center">
-        Katie replies by phone or email — usually within a few business days.
+        Katie replies personally, by phone or email.
       </p>
     </form>
   );

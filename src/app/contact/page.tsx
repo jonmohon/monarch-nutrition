@@ -1,4 +1,5 @@
 import { ContactForm } from "@/components/forms/ContactForm";
+import { Steps } from "@/components/sections/Steps";
 import { Reveal } from "@/components/ui/Reveal";
 import { generatePageMetadata } from "@/lib/metadata";
 import { JsonLd, breadcrumbSchema } from "@/lib/schema";
@@ -34,9 +35,22 @@ export default function ContactPage() {
               after Katie reaches out. Clinical intake lives in her secure client portal, never on
               this website.
             </p>
-            <p className="mt-4 text-[14px] italic text-muted max-w-[46ch]">
-              Referring providers: the same three fields work for you — send your patient&rsquo;s
-              name and number, and Katie takes it from there.
+            <div
+              id="referrers"
+              className="mt-5 bg-tint border border-border-soft rounded-[12px] px-5 py-4 max-w-[46ch]"
+            >
+              <p className="text-[12px] tracking-[0.18em] uppercase font-semibold text-rose-ink mb-1.5">
+                Referring Providers
+              </p>
+              <p className="text-[14.5px] text-brown">
+                The same three fields work for your office — send your patient&rsquo;s name and
+                best contact. Katie handles consent and intake herself once she calls, and closes
+                the loop with your office.
+              </p>
+            </div>
+            <p className="mt-4 text-[13.5px] italic text-muted max-w-[46ch]">
+              Referring your child? Same three fields — Katie reaches out to set up the
+              family&rsquo;s first visit.
             </p>
             <div className="mt-7 border-t border-border-soft pt-5">
               <p className="text-[11.5px] tracking-[0.2em] uppercase font-semibold text-label leading-[2.3]">
@@ -51,7 +65,10 @@ export default function ContactPage() {
           </Reveal>
         </div>
 
-        <div className="mt-8 bg-tint border border-border-soft rounded-[16px] px-7 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="mt-2">
+          <Steps />
+        </div>
+        <div className="bg-tint border border-border-soft rounded-[16px] px-7 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <p className="font-display font-[560] text-[18px] text-brown" style={{ fontVariationSettings: '"SOFT" 80' }}>
               Already working with Katie?

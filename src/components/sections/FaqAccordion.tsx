@@ -1,20 +1,42 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FAQ } from "@/data/site";
 
-/** APG disclosure pattern: h3 > button[aria-expanded] controlling a region. */
+/** APG disclosure pattern: h3 > button[aria-expanded] controlling a region.
+    The list cascades in item-by-item (70ms stagger) once scrolled into view. */
 export function FaqAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const listRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = listRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          el.classList.add("is-inview");
+          // After the cascade lands, clear stagger delays so open/close
+          // shadows aren't lagged on later items.
+          setTimeout(() => el.classList.add("cascade-done"), 1000);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   return (
-    <div>
+    <div ref={listRef} className="faq-list">
       {FAQ.map((item, i) => {
         const open = openIndex === i;
         return (
           <div
             key={item.q}
-            className={`relative bg-warm-white border border-border-soft rounded-[14px] mb-3 overflow-hidden transition-shadow ${open ? "shadow-warm" : ""}`}
+            className={`faq-item relative bg-warm-white border border-border-soft rounded-[14px] mb-3 overflow-hidden transition-shadow ${open ? "shadow-warm" : ""}`}
+            style={{ transitionDelay: `${i * 70}ms` }}
           >
             <span
               aria-hidden="true"
@@ -34,7 +56,7 @@ export function FaqAccordion() {
                 {item.q}
                 <span
                   aria-hidden="true"
-                  className={`flex-none w-[27px] h-[27px] rounded-full border-[1.5px] grid place-items-center font-sans text-base font-semibold transition-all duration-[350ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] motion-reduce:transition-none ${
+                  className={`flex-none w-[27px] h-[27px] rounded-full border-[1.5px] grid place-items-center font-sans text-base font-semibold transition-all duration-[320ms] ease-[var(--ease-soft)] motion-reduce:transition-none ${
                     open
                       ? "rotate-45 bg-brown border-brown text-cream"
                       : "border-border-strong text-orange-ink group-hover:border-orange"
