@@ -54,7 +54,7 @@ export function AboutBlock() {
           <Reveal delay={1}>
             <div className="relative overflow-hidden rounded-[16px] shadow-warm ml-auto lg:w-[92%]">
               <Image
-                src="/images/about-table.jpg"
+                src="/images/about-table.webp"
                 alt="A pear, halved orange, and ceramic jug with an olive branch on cream linen"
                 width={800}
                 height={620}

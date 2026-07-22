@@ -22,7 +22,7 @@ export function StatementBands() {
       <section className="relative min-h-[78vh] flex items-center justify-center text-center overflow-hidden">
         <div className="zoom-bleed absolute inset-0">
           <Image
-            src="/images/scene-table.jpg"
+            src="/images/scene-table.webp"
             alt=""
             role="presentation"
             fill
@@ -58,8 +58,10 @@ export function StatementBands() {
       <div
         className="marquee-band bg-orange text-brown py-5 font-display font-[560] uppercase overflow-hidden"
         style={{ fontSize: "clamp(13px, 0.8rem + 0.6vw, 18px)", letterSpacing: "0.18em" }}
-        aria-label="Expert nutrition care · In network and online · Referrals welcome"
       >
+        <p className="sr-only">
+          Expert nutrition care · In network and online · Referrals welcome
+        </p>
         <div className="marquee-track" aria-hidden="true">
           {[0, 1].map((n) => (
             <span key={n} className="marquee-seq">

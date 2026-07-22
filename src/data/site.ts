@@ -35,9 +35,9 @@ export const SERVICES = [
     audience: "For Myself",
     short:
       "One-on-one care for adults — weight management and pre- or post-bariatric nutrition, built around your actual week.",
-    image: "/images/service-individual.jpg",
+    image: "/images/service-individual.webp",
     imageAlt: "Hands plating roasted carrots and greens on a cream ceramic plate",
-    heroImage: "/images/hero-individual.jpg",
+    heroImage: "/images/hero-individual.webp",
     heroImageAlt: "A balanced dinner plate on a warm wooden table, hands holding fork and knife in golden light",
     heroLine: "One clinician, unhurried visits, and a plan shaped to your actual week.",
     empathy: [
@@ -59,9 +59,9 @@ export const SERVICES = [
     audience: "For My Child",
     short:
       "Family-centered care with parents in the room — growth questions, selective eating, and teenage appetites, met calmly.",
-    image: "/images/service-child.jpg",
+    image: "/images/service-child.webp",
     imageAlt: "A parent's and child's hands rolling dough together at a flour-dusted counter",
-    heroImage: "/images/hero-child.jpg",
+    heroImage: "/images/hero-child.webp",
     heroImageAlt: "A parent and child washing colorful vegetables together at a farmhouse kitchen sink",
     heroLine: "Family-centered nutrition care, with parents in the room at every step.",
     stepsOverride: {
@@ -86,9 +86,9 @@ export const SERVICES = [
     audience: "For My Workplace",
     short:
       "Employer wellness programming, lunch-and-learns, and group contracts — delivered virtually to your team.",
-    image: "/images/service-corporate.jpg",
+    image: "/images/service-corporate.webp",
     imageAlt: "A healthy catering spread of grain bowls, fruit, and a grazing board on a bright office table",
-    heroImage: "/images/hero-corporate.jpg",
+    heroImage: "/images/hero-corporate.webp",
     heroImageAlt: "A sunlit office lounge with a healthy breakfast spread set for a wellness session",
     heroLine: "Practical nutrition programming your team will actually use.",
     scope: [

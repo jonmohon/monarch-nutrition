@@ -31,9 +31,9 @@ export default function BlogIndexPage() {
         <div>
           <div className="grid sm:grid-cols-3 gap-5 mb-8">
             {[
-              ["01", "Weight Management & Bariatric Nutrition", "Before and after surgery, and the long unglamorous middle.", "/images/blog-weight.jpg", "A plate of seared salmon with roasted vegetables and lemon"],
-              ["02", "Feeding Kids & Teens", "Picky plates, growth questions, and calmer mealtimes.", "/images/blog-kids.jpg", "A colorful bento lunchbox being packed, a child's hand reaching for a strawberry"],
-              ["03", "Insurance & Getting Started", "How coverage, referrals, and first visits actually work.", "/images/blog-start.jpg", "A tidy desk with blank forms, a fountain pen, and a cup of coffee"],
+              ["01", "Weight Management & Bariatric Nutrition", "Before and after surgery, and the long unglamorous middle.", "/images/blog-weight.webp", "A plate of seared salmon with roasted vegetables and lemon"],
+              ["02", "Feeding Kids & Teens", "Picky plates, growth questions, and calmer mealtimes.", "/images/blog-kids.webp", "A colorful bento lunchbox being packed, a child's hand reaching for a strawberry"],
+              ["03", "Insurance & Getting Started", "How coverage, referrals, and first visits actually work.", "/images/blog-start.webp", "A tidy desk with blank forms, a fountain pen, and a cup of coffee"],
             ].map(([n, t, d, img, alt]) => (
               <div
                 key={n}

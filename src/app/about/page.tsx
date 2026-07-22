@@ -55,7 +55,7 @@ export default function AboutPage() {
           <div className="relative">
             <div className="rounded-[18px] overflow-hidden shadow-warm">
               <Image
-                src="/images/about-desk.jpg"
+                src="/images/about-desk.webp"
                 alt="A warm desk with a steaming cup of tea, blank planner, and a vase holding an olive branch"
                 width={800}
                 height={1000}

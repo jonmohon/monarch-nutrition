@@ -12,12 +12,22 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: {
     formats: ["image/avif", "image/webp"],
-    qualities: [70, 75],
+    qualities: [60, 70, 75],
+    // Transformed variants are content-addressed by source — cache long.
+    minimumCacheTTL: 31536000,
   },
   async headers() {
     // CSP only in production: React dev mode needs eval() for debugging.
     if (process.env.NODE_ENV === "development") return [];
     return [
+      {
+        // Bespoke imagery is fingerprint-stable (replaced by filename) —
+        // cache immutably at the CDN and browser.
+        source: "/images/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
       {
         // HIPAA-conscious hard rule (handoff p.4): no ad pixels, no session
         // replay. CSP makes any future pixel paste fail loudly. GA4 only.

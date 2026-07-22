@@ -10,12 +10,13 @@ export function Hero() {
     <section className="relative flex items-end lg:items-center overflow-hidden min-h-[600px] h-[88vh] max-h-[900px]">
       <div className="absolute inset-0 hero-parallax">
         <Image
-          src="/images/hero-kitchen.jpg"
+          src="/images/hero-kitchen.webp"
           alt="A woman preparing fresh vegetables at a sunlit kitchen island, oranges and fresh bread on the counter"
           fill
           priority
+          fetchPriority="high"
           sizes="100vw"
-          quality={70}
+          quality={60}
           className="object-cover object-[74%_42%]"
         />
         <div
