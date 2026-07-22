@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
     // Native page-to-page crossfade + shared-element morphs (wave 2 wow).
     // Degrades to instant navigation where unsupported.
     viewTransition: true,
+    // Inline CSS into the HTML — removes the render-blocking stylesheet
+    // request that dominates simulated-mobile LCP (CSS is ~30KB, small
+    // enough to inline within budget).
+    inlineCss: true,
   },
   // Load-bearing SEO config (house rule): trailing-slash canonicals must stay
   // consistent across sitemap + metadata. Removing this caused a Google

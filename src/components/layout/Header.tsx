@@ -38,7 +38,6 @@ export function Header() {
           <Link
             href="/"
             className="flex flex-col items-start lg:items-center gap-1.5 no-underline order-first lg:order-none"
-            aria-label={`${SITE.name} — home`}
           >
             <span className="font-display font-[560] text-brown text-xl lg:text-[26px] leading-none flex items-center gap-2.5">
               <ButterflyMark size={26} draw="load" />
