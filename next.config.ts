@@ -33,7 +33,7 @@ const nextConfig: NextConfig = {
       {
         // HIPAA-conscious hard rule (handoff p.4): no ad pixels, no session
         // replay. CSP makes any future pixel paste fail loudly. GA4 only.
-        source: "/:path*",
+        source: "/((?!keystatic|api/keystatic).*)",
         headers: [
           {
             key: "Content-Security-Policy",

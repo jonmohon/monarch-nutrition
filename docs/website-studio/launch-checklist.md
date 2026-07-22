@@ -11,7 +11,7 @@ against the live site (https://main.d1sy2oloye2x8a.amplifyapp.com) and code.
 - ✅ 03 Individual Nutrition Counseling — own URL; insurance detail ✅; "what a session looks like" ✅ (SessionCards); 🟡 self-pay package rates (structural slots; rates from Katie)
 - ✅ 04 Child & Teen Nutrition — own page + URL, standalone ad-landing discipline (credentials restated, self-contained)
 - ✅ 05 Corporate Nutrition — B2B reader, different CTA ("Email Katie about your team"), employer wellness / lunch-and-learns / group contracts (Formats browser)
-- ✅ 06 Blog — index + post template live; 🟡 content editor (Keystatic planned, not yet wired — contracted: "publish without touching code")
+- ✅ 06 Blog — index + post template live; ✅ content editor wired (Keystatic GitHub mode; 🟡 one-time GitHub App setup by Jon + Katie's account at training — see blog-editor-setup.md)
 - ✅ 07 Contact — name, email, phone. Nothing else. Verified live (extra fields rejected 400 by strict schema)
 
 ## B. Home page structure (proposal §3.01, verbatim requirements)
@@ -58,7 +58,7 @@ against the live site (https://main.d1sy2oloye2x8a.amplifyapp.com) and code.
 - 🟡 EMR & scheduling — Katie picks SimplePractice/Healthie (contact page points at portal placeholder)
 - ⬜ Domain — register in Katie's name (~$20/yr); note: monarchnutritionist.com is an unrelated business
 - ✅ Hosting — static-first on CDN (Amplify WEB_COMPUTE, effectively free tier at her traffic)
-- 🟡 Content editor — Keystatic (GitHub mode, $0) selected; wiring pending
+- ✅ Content editor — Keystatic (GitHub mode, $0) wired; 🟡 App setup + Katie invite pending (blog-editor-setup.md)
 - 🟡 Analytics — GA4 + Search Console, blocked on property + domain
 
 ## G. What we need from Katie (proposal §7 — unchanged chase list)

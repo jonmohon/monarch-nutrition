@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getAllPosts } from "@/lib/blog";
+import { getAllPosts, CATEGORIES } from "@/lib/blog";
 import { generatePageMetadata } from "@/lib/metadata";
 import { ButterflyMark } from "@/components/ui/ButterflyMark";
 import { SITE } from "@/data/site";
@@ -11,8 +11,8 @@ export const metadata = generatePageMetadata({
   path: "/blog/",
 });
 
-export default function BlogIndexPage() {
-  const posts = getAllPosts();
+export default async function BlogIndexPage() {
+  const posts = await getAllPosts();
 
   return (
     <section className="max-w-[900px] mx-auto px-5 lg:px-10 pt-20 pb-24">
@@ -74,17 +74,28 @@ export default function BlogIndexPage() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}/`}
-              className="bg-warm-white border border-border-soft rounded-[16px] px-8 py-7 no-underline shadow-warm-sm transition-all hover:-translate-y-1 hover:shadow-warm"
+              className="group bg-warm-white border border-border-soft rounded-[16px] overflow-hidden no-underline shadow-warm-sm transition-all hover:-translate-y-1 hover:shadow-warm grid sm:grid-cols-[240px_1fr]"
             >
-              <p className="text-[12px] tracking-[0.16em] uppercase font-semibold text-rose-ink mb-2">
-                {new Date(`${post.date}T12:00:00`).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </p>
-              <h2 className="font-[560] text-[24px] mb-1.5">{post.title}</h2>
-              <p className="text-[15.5px]">{post.description}</p>
+              <Image
+                src={post.coverImage ?? CATEGORIES[post.category].image}
+                alt=""
+                width={480}
+                height={360}
+                sizes="240px"
+                className="w-full h-[160px] sm:h-full object-cover"
+              />
+              <div className="px-8 py-7">
+                <p className="text-[12px] tracking-[0.16em] uppercase font-semibold text-rose-ink mb-2">
+                  {CATEGORIES[post.category].label} ·{" "}
+                  {new Date(`${post.date}T12:00:00`).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </p>
+                <h2 className="font-[560] text-[24px] mb-1.5">{post.title}</h2>
+                <p className="text-[15.5px]">{post.description}</p>
+              </div>
             </Link>
           ))}
         </div>

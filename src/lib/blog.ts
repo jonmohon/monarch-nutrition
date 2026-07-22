@@ -1,71 +1,71 @@
-import fs from "node:fs";
-import path from "node:path";
+import { cache } from "react";
+import { createReader } from "@keystatic/core/reader";
+import keystaticConfig from "../../keystatic.config";
 
-export interface BlogPost {
+/**
+ * Blog content via Keystatic's Reader API — posts live in src/content/blog
+ * as .mdoc files written by the /keystatic editor (or by hand).
+ */
+
+export const CATEGORIES = {
+  "weight-management": {
+    label: "Weight Management & Bariatric Nutrition",
+    image: "/images/blog-weight.webp",
+    link: "/services/individual-nutrition-counseling/",
+    linkLabel: "Individual Nutrition Counseling",
+  },
+  "kids-teens": {
+    label: "Feeding Kids & Teens",
+    image: "/images/blog-kids.webp",
+    link: "/services/child-teen-nutrition/",
+    linkLabel: "Child & Teen Nutrition",
+  },
+  "getting-started": {
+    label: "Insurance & Getting Started",
+    image: "/images/blog-start.webp",
+    link: "/contact/",
+    linkLabel: "Contact Katie",
+  },
+} as const;
+
+export type CategoryKey = keyof typeof CATEGORIES;
+
+export interface BlogPostMeta {
   slug: string;
   title: string;
   date: string;
   description: string;
-  body: string; // raw markdown-ish body
+  category: CategoryKey;
+  coverImage: string | null;
 }
 
-const BLOG_DIR = path.join(process.cwd(), "src", "content", "blog");
+const reader = createReader(process.cwd(), keystaticConfig);
 
-/** Minimal frontmatter + markdown reader — Keystatic writes this format too. */
-export function getAllPosts(): BlogPost[] {
-  if (!fs.existsSync(BLOG_DIR)) return [];
-  return fs
-    .readdirSync(BLOG_DIR)
-    .filter((f) => f.endsWith(".md") && !f.startsWith("_"))
-    .map((file) => parsePost(file))
-    .filter((p): p is BlogPost => p !== null)
+export const getAllPosts = cache(async (): Promise<BlogPostMeta[]> => {
+  const entries = await reader.collections.posts.all();
+  return entries
+    .map(({ slug, entry }) => ({
+      slug,
+      title: entry.title,
+      date: entry.date ?? "1970-01-01",
+      description: entry.description,
+      category: (entry.category ?? "weight-management") as CategoryKey,
+      coverImage: entry.coverImage ?? null,
+    }))
     .sort((a, b) => (a.date < b.date ? 1 : -1));
-}
+});
 
-export function getPost(slug: string): BlogPost | null {
-  const file = `${slug}.md`;
-  if (!fs.existsSync(path.join(BLOG_DIR, file))) return null;
-  return parsePost(file);
-}
-
-function parsePost(file: string): BlogPost | null {
-  const raw = fs.readFileSync(path.join(BLOG_DIR, file), "utf8");
-  const match = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
-  if (!match) return null;
-  const meta: Record<string, string> = {};
-  for (const line of match[1].split("\n")) {
-    const idx = line.indexOf(":");
-    if (idx > 0) meta[line.slice(0, idx).trim()] = line.slice(idx + 1).trim();
-  }
-  if (!meta.title || !meta.date) return null;
+export const getPost = cache(async (slug: string) => {
+  const entry = await reader.collections.posts.read(slug);
+  if (!entry) return null;
+  const { node } = await entry.body();
   return {
-    slug: file.replace(/\.md$/, ""),
-    title: meta.title,
-    date: meta.date,
-    description: meta.description ?? "",
-    body: match[2].trim(),
+    slug,
+    title: entry.title,
+    date: entry.date ?? "1970-01-01",
+    description: entry.description,
+    category: (entry.category ?? "weight-management") as CategoryKey,
+    coverImage: entry.coverImage ?? null,
+    node,
   };
-}
-
-/** Tiny markdown renderer: headings, paragraphs, lists. Enough for posts. */
-export function renderMarkdown(md: string): string {
-  const esc = (s: string) =>
-    s.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
-  const blocks = md.split(/\n\s*\n/);
-  return blocks
-    .map((block) => {
-      const b = block.trim();
-      if (!b) return "";
-      if (b.startsWith("## ")) return `<h2>${esc(b.slice(3))}</h2>`;
-      if (b.startsWith("### ")) return `<h3>${esc(b.slice(4))}</h3>`;
-      if (b.split("\n").every((l) => l.startsWith("- "))) {
-        const items = b
-          .split("\n")
-          .map((l) => `<li>${esc(l.slice(2))}</li>`)
-          .join("");
-        return `<ul>${items}</ul>`;
-      }
-      return `<p>${esc(b).replaceAll("\n", "<br>")}</p>`;
-    })
-    .join("\n");
-}
+});

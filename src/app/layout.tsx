@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { TabFavicon } from "@/components/ui/TabFavicon";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
+import { ChromeGate } from "@/components/layout/ChromeGate";
 import { SITE } from "@/data/site";
 import "./globals.css";
 
@@ -46,15 +47,20 @@ export default function RootLayout({
             __html: "document.documentElement.classList.add('js')",
           }}
         />
-        <div className="grain-layer" aria-hidden="true" />
-        <div className="progress-rail" aria-hidden="true" />
-        <TabFavicon />
-        <SmoothScroll />
-        <div className="curtain-content bg-cream flex-1 flex flex-col">
-          <Header />
-          <main className="flex-1">{children}</main>
-        </div>
-        <Footer />
+        <ChromeGate
+          header={<Header />}
+          footer={<Footer />}
+          effects={
+            <>
+              <div className="grain-layer" aria-hidden="true" />
+              <div className="progress-rail" aria-hidden="true" />
+              <TabFavicon />
+              <SmoothScroll />
+            </>
+          }
+        >
+          {children}
+        </ChromeGate>
       </body>
     </html>
   );
