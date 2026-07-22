@@ -10,8 +10,8 @@ export function ServiceHero({ service }: { service: Service }) {
         style={{ viewTransitionName: `svc-${service.slug}` }}
       >
         <Image
-          src={service.image}
-          alt={service.imageAlt}
+          src={service.heroImage}
+          alt={service.heroImageAlt}
           fill
           priority
           sizes="100vw"

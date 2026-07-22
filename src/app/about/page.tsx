@@ -55,8 +55,8 @@ export default function AboutPage() {
           <div className="relative">
             <div className="rounded-[18px] overflow-hidden shadow-warm">
               <Image
-                src="/images/about-olive.jpg"
-                alt="An olive branch in a porcelain jug against a bright window"
+                src="/images/about-desk.jpg"
+                alt="A warm desk with a steaming cup of tea, blank planner, and a vase holding an olive branch"
                 width={800}
                 height={1000}
                 sizes="(min-width: 1024px) 480px, 90vw"

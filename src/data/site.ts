@@ -37,6 +37,8 @@ export const SERVICES = [
       "One-on-one care for adults — weight management and pre- or post-bariatric nutrition, built around your actual week.",
     image: "/images/service-individual.jpg",
     imageAlt: "Hands plating roasted carrots and greens on a cream ceramic plate",
+    heroImage: "/images/hero-individual.jpg",
+    heroImageAlt: "A balanced dinner plate on a warm wooden table, hands holding fork and knife in golden light",
     heroLine: "One clinician, unhurried visits, and a plan shaped to your actual week.",
     empathy: [
       "You've tried the app, the plan, and the printout.",
@@ -59,6 +61,8 @@ export const SERVICES = [
       "Family-centered care with parents in the room — growth questions, selective eating, and teenage appetites, met calmly.",
     image: "/images/service-child.jpg",
     imageAlt: "A parent's and child's hands rolling dough together at a flour-dusted counter",
+    heroImage: "/images/hero-child.jpg",
+    heroImageAlt: "A parent and child washing colorful vegetables together at a farmhouse kitchen sink",
     heroLine: "Family-centered nutrition care, with parents in the room at every step.",
     stepsOverride: {
       2: "Your first telehealth visit happens with your kid at the table — booked through Katie's secure portal.",
@@ -83,7 +87,9 @@ export const SERVICES = [
     short:
       "Employer wellness programming, lunch-and-learns, and group contracts — delivered virtually to your team.",
     image: "/images/service-corporate.jpg",
-    imageAlt: "A bright office table set with healthy lunch bowls and citrus water",
+    imageAlt: "A healthy catering spread of grain bowls, fruit, and a grazing board on a bright office table",
+    heroImage: "/images/hero-corporate.jpg",
+    heroImageAlt: "A sunlit office lounge with a healthy breakfast spread set for a wellness session",
     heroLine: "Practical nutrition programming your team will actually use.",
     scope: [
       "Virtual lunch-and-learns on real-world nutrition topics",

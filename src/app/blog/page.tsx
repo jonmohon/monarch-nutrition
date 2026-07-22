@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getAllPosts } from "@/lib/blog";
 import { generatePageMetadata } from "@/lib/metadata";
@@ -30,19 +31,29 @@ export default function BlogIndexPage() {
         <div>
           <div className="grid sm:grid-cols-3 gap-5 mb-8">
             {[
-              ["01", "Weight Management & Bariatric Nutrition", "Before and after surgery, and the long unglamorous middle."],
-              ["02", "Feeding Kids & Teens", "Picky plates, growth questions, and calmer mealtimes."],
-              ["03", "Insurance & Getting Started", "How coverage, referrals, and first visits actually work."],
-            ].map(([n, t, d]) => (
+              ["01", "Weight Management & Bariatric Nutrition", "Before and after surgery, and the long unglamorous middle.", "/images/blog-weight.jpg", "A plate of seared salmon with roasted vegetables and lemon"],
+              ["02", "Feeding Kids & Teens", "Picky plates, growth questions, and calmer mealtimes.", "/images/blog-kids.jpg", "A colorful bento lunchbox being packed, a child's hand reaching for a strawberry"],
+              ["03", "Insurance & Getting Started", "How coverage, referrals, and first visits actually work.", "/images/blog-start.jpg", "A tidy desk with blank forms, a fountain pen, and a cup of coffee"],
+            ].map(([n, t, d, img, alt]) => (
               <div
                 key={n}
-                className="bg-warm-white border border-border-soft rounded-[16px] p-6 text-left"
+                className="bg-warm-white border border-border-soft rounded-[16px] overflow-hidden text-left"
               >
-                <div className="folio-num mb-4">{n}</div>
-                <p className="font-display font-[560] text-[19px] text-brown leading-snug mb-1.5" style={{ fontVariationSettings: '"SOFT" 80' }}>
-                  {t}
-                </p>
-                <p className="text-[14px] text-muted">{d}</p>
+                <Image
+                  src={img}
+                  alt={alt}
+                  width={600}
+                  height={400}
+                  sizes="(min-width: 640px) 300px, 90vw"
+                  className="w-full h-[150px] object-cover"
+                />
+                <div className="p-6">
+                  <div className="folio-num mb-4">{n}</div>
+                  <p className="font-display font-[560] text-[19px] text-brown leading-snug mb-1.5" style={{ fontVariationSettings: '"SOFT" 80' }}>
+                    {t}
+                  </p>
+                  <p className="text-[14px] text-muted">{d}</p>
+                </div>
               </div>
             ))}
           </div>
