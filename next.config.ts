@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: {
     formats: ["image/avif", "image/webp"],
-    qualities: [60, 70, 75],
+    qualities: [50, 60, 70, 75],
     // Transformed variants are content-addressed by source — cache long.
     minimumCacheTTL: 31536000,
   },
