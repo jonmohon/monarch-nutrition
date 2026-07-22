@@ -36,7 +36,7 @@ export const SERVICES = [
     short:
       "One-on-one care for adults — weight management and pre- or post-bariatric nutrition, built around your actual week.",
     image: "/images/service-individual.jpg",
-    imageAlt: "A woman preparing a fresh vegetarian meal at home",
+    imageAlt: "Hands plating roasted carrots and greens on a cream ceramic plate",
     heroLine: "One clinician, unhurried visits, and a plan shaped to your actual week.",
     empathy: [
       "You've tried the app, the plan, and the printout.",
@@ -58,7 +58,7 @@ export const SERVICES = [
     short:
       "Family-centered care with parents in the room — growth questions, selective eating, and teenage appetites, met calmly.",
     image: "/images/service-child.jpg",
-    imageAlt: "A child's hands pressing a cookie cutter into rolled dough",
+    imageAlt: "A parent's and child's hands rolling dough together at a flour-dusted counter",
     heroLine: "Family-centered nutrition care, with parents in the room at every step.",
     stepsOverride: {
       2: "Your first telehealth visit happens with your kid at the table — booked through Katie's secure portal.",
@@ -83,7 +83,7 @@ export const SERVICES = [
     short:
       "Employer wellness programming, lunch-and-learns, and group contracts — delivered virtually to your team.",
     image: "/images/service-corporate.jpg",
-    imageAlt: "A professional smiling on a video call at her workplace",
+    imageAlt: "A bright office table set with healthy lunch bowls and citrus water",
     heroLine: "Practical nutrition programming your team will actually use.",
     scope: [
       "Virtual lunch-and-learns on real-world nutrition topics",

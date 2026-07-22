@@ -22,13 +22,13 @@ export function StatementBands() {
       <section className="relative min-h-[78vh] flex items-center justify-center text-center overflow-hidden">
         <div className="zoom-bleed absolute inset-0">
           <Image
-            src="/images/hero-table.jpg"
+            src="/images/scene-table.jpg"
             alt=""
             role="presentation"
             fill
             sizes="100vw"
             quality={70}
-            className="object-cover object-[50%_60%]"
+            className="object-cover object-[50%_55%]"
           />
           <div
             className="absolute inset-0"

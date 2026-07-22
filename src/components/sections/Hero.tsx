@@ -11,12 +11,12 @@ export function Hero() {
       <div className="absolute inset-0 hero-parallax">
         <Image
           src="/images/hero-kitchen.jpg"
-          alt="A woman smiling while cooking fresh vegetables in a bright kitchen"
+          alt="A woman preparing fresh vegetables at a sunlit kitchen island, oranges and fresh bread on the counter"
           fill
           priority
           sizes="100vw"
           quality={70}
-          className="object-cover object-[68%_40%]"
+          className="object-cover object-[74%_42%]"
         />
         <div
           className="absolute inset-0"

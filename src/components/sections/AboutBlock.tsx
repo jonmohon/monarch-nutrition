@@ -55,7 +55,7 @@ export function AboutBlock() {
             <div className="relative overflow-hidden rounded-[16px] shadow-warm ml-auto lg:w-[92%]">
               <Image
                 src="/images/about-table.jpg"
-                alt="A ceramic plate with folded linen and a pear on a linen tablecloth"
+                alt="A pear, halved orange, and ceramic jug with an olive branch on cream linen"
                 width={800}
                 height={620}
                 sizes="(min-width: 1024px) 560px, 90vw"
