@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { BLUR } from "@/lib/blur-data";
 
 /** Small monarch glyph separator for the marquee. */
 function ButterflyGlyph() {
@@ -28,6 +29,8 @@ export function StatementBands() {
             fill
             sizes="100vw"
             quality={70}
+            placeholder="blur"
+            blurDataURL={BLUR["/images/scene-table.webp"]}
             className="object-cover object-[50%_55%]"
           />
           <div

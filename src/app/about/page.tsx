@@ -3,6 +3,7 @@ import { KatieCard } from "@/components/sections/KatieCard";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { PullQuote } from "@/components/ui/PullQuote";
 import { Reveal } from "@/components/ui/Reveal";
+import { BLUR } from "@/lib/blur-data";
 import { generatePageMetadata } from "@/lib/metadata";
 import { JsonLd, breadcrumbSchema, personSchema } from "@/lib/schema";
 import { SITE } from "@/data/site";
@@ -60,6 +61,9 @@ export default function AboutPage() {
                 width={800}
                 height={1000}
                 sizes="(min-width: 1024px) 480px, 90vw"
+                unoptimized
+                placeholder="blur"
+                blurDataURL={BLUR["/images/about-desk.webp"]}
                 className="img-zoom w-full h-[420px] lg:h-[500px] object-cover"
               />
             </div>

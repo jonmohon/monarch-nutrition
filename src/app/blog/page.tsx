@@ -45,6 +45,7 @@ export default async function BlogIndexPage() {
                   width={600}
                   height={400}
                   sizes="(min-width: 640px) 300px, 90vw"
+                  unoptimized
                   className="w-full h-[150px] object-cover"
                 />
                 <div className="p-6">
@@ -82,6 +83,7 @@ export default async function BlogIndexPage() {
                 width={480}
                 height={360}
                 sizes="240px"
+                unoptimized
                 className="w-full h-[160px] sm:h-full object-cover"
               />
               <div className="px-8 py-7">

@@ -17,6 +17,16 @@ const nextConfig: NextConfig = {
     qualities: [50, 60, 70, 75],
     // Transformed variants are content-addressed by source — cache long.
     minimumCacheTTL: 31536000,
+    // Shrink the variant space to the widths the layouts actually use:
+    // fewer variants -> far more cache hits, cheaper warming.
+    deviceSizes: [640, 828, 1200, 1600, 2048],
+    imageSizes: [240, 420, 640],
+  },
+  async redirects() {
+    return [
+      // Friendly URL for Katie's editor — "the publish page".
+      { source: "/publish", destination: "/keystatic", permanent: false },
+    ];
   },
   async headers() {
     // CSP only in production: React dev mode needs eval() for debugging.

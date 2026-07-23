@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ButterflyMark } from "@/components/ui/ButterflyMark";
 import { Reveal } from "@/components/ui/Reveal";
 import { KatieCard } from "@/components/sections/KatieCard";
+import { BLUR } from "@/lib/blur-data";
 
 /**
  * About band — split editorial (the structure Katie liked on her reference
@@ -59,6 +60,9 @@ export function AboutBlock() {
                 width={800}
                 height={620}
                 sizes="(min-width: 1024px) 560px, 90vw"
+                unoptimized
+                placeholder="blur"
+                blurDataURL={BLUR["/images/about-table.webp"]}
                 className="img-zoom w-full h-[340px] lg:h-[460px] object-cover"
               />
               <span className="absolute top-4 right-4 bg-[rgba(46,31,24,.5)] backdrop-blur-sm text-cream text-[10px] tracking-[0.26em] uppercase font-semibold px-3.5 py-1.5 rounded-full">

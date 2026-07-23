@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Service } from "@/data/site";
+import { BLUR } from "@/lib/blur-data";
 
 /** Left-composed interior hero — matches the home hero's editorial language. */
 export function ServiceHero({ service }: { service: Service }) {
@@ -16,6 +17,8 @@ export function ServiceHero({ service }: { service: Service }) {
           priority
           sizes="100vw"
           quality={70}
+          placeholder="blur"
+          blurDataURL={BLUR[service.heroImage]}
           className="object-cover object-[62%_45%]"
         />
         <div

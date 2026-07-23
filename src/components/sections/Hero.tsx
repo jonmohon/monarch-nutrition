@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { SplitWords } from "@/components/ui/SplitWords";
+import { BLUR } from "@/lib/blur-data";
 
 /** Editorial left-composed hero — headline owns the negative space, the
     photo's subject holds the right third. Server-rendered, static on paint. */
@@ -17,6 +18,8 @@ export function Hero() {
           fetchPriority="high"
           sizes="100vw"
           quality={50}
+          placeholder="blur"
+          blurDataURL={BLUR["/images/hero-kitchen.webp"]}
           className="object-cover object-[74%_42%]"
         />
         <div

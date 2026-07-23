@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SERVICES } from "@/data/site";
 import { Reveal } from "@/components/ui/Reveal";
+import { BLUR } from "@/lib/blur-data";
 
 /** Editorial tiles — no card boxes: art-direction, folio numbers, staggered
     columns. Images carry the warmth; type carries the structure. */
@@ -46,6 +47,9 @@ export function ServiceTiles() {
                     width={800}
                     height={560}
                     sizes="(min-width: 1024px) 420px, 90vw"
+                    loading={i === 0 ? "eager" : undefined}
+                    placeholder="blur"
+                    blurDataURL={BLUR[svc.image]}
                     className="tile-photo w-full h-[330px] lg:h-[380px] object-cover group-hover:scale-[1.045]"
                   />
                 </div>

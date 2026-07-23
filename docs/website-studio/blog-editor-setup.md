@@ -1,6 +1,6 @@
 # Blog Editor (Keystatic) — Setup & Handoff
 
-The blog editor lives at **`/keystatic`** on the site. Posts are `.mdoc`
+The blog editor lives at **`/keystatic`** on the site (friendly alias: **`/publish`** — use that with Katie). Posts are `.mdoc`
 files in `src/content/blog/`; publishing in the editor commits to GitHub,
 which auto-deploys. Fields: title, publish date, description, category
 (three pillars), optional cover image, body (rich text).
@@ -41,8 +41,9 @@ Settings → GitHub Apps → the Keystatic app → Callback URLs).
    `jonmohon/monarch-nutrition` (Settings → Collaborators) — or transfer
    the repo to her account at final payment per the proposal's ownership
    terms (the GitHub App then needs re-installing on the new owner).
-3. Her flow, the whole thing: site.com/keystatic → log in with GitHub →
-   Blog Posts → "+" → write → **Commit** → live in ~3 minutes.
+3. Her flow, the whole thing: **site.com/publish** → sign in → Blog Posts
+   → "+" → write → Save → live in ~3 minutes. Hand her
+   `katie-posting-guide.md` — it's written to be sent as-is.
 4. Set expectations: publishing takes a few minutes (the site rebuilds);
    Amplify emails on build completion can be enabled if she wants a "it's
    live" ping.

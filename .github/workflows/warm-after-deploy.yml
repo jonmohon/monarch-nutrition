@@ -1,0 +1,23 @@
+name: Warm image cache after deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  warm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Amplify builds take ~2-3 minutes after the push; wait it out, then
+      # warm every page + image-optimizer variant so first visitors always
+      # hit warm cache. Run twice to cover a slow build.
+      - name: Wait for Amplify deploy
+        run: sleep 240
+      - name: Warm cache
+        run: node scripts/warm-cache.mjs
+      - name: Wait and warm again (covers slow builds)
+        run: |
+          sleep 180
+          node scripts/warm-cache.mjs
