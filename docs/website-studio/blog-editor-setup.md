@@ -34,6 +34,24 @@ Note the App's callback URL must include the live domain — when the custom
 domain lands at launch, add it in the GitHub App settings (Developer
 Settings → GitHub Apps → the Keystatic app → Callback URLs).
 
+## How sign-in actually works (read this before explaining it to anyone)
+
+The site has no database — posts are files in the GitHub repo, which is
+both the storage and the identity check. Three separate one-time events:
+
+1. **Jon, before training**: create the site↔GitHub connector (the App)
+   and put its 4 keys in Amplify. Pure plumbing; nothing to do with Katie.
+   Nobody can log in until this exists.
+2. **Katie, at training (once)**: free GitHub account (email+password,
+   plus 2FA — budget for it) → accept Jon's collaborator invite from her
+   email → visit /publish → "Sign in with GitHub" → click Authorize once.
+3. **Katie, forever after**: nothing. /publish remembers her. A login
+   screen only reappears on a new device or cleared cookies, and then
+   it's an ordinary email+password login.
+
+Framing for Katie: "one account, one email invite, one Authorize button —
+all three together in five minutes at training."
+
 ## Katie onboarding (training session)
 
 1. Katie creates a free GitHub account (or brings one).
