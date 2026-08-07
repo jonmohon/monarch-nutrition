@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Next 16 blocks cross-origin dev-resource requests by default, and treats
+  // 127.0.0.1 as a different origin from localhost — which silently starves
+  // the browser of JS chunks and renders a blank page (notably on /keystatic).
+  // Dev-only; has no effect on the production build.
+  allowedDevOrigins: ["127.0.0.1"],
   experimental: {
     // Native page-to-page crossfade + shared-element morphs (wave 2 wow).
     // Degrades to instant navigation where unsupported.
@@ -25,7 +30,9 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       // Friendly URL for Katie's editor — "the publish page".
-      { source: "/publish", destination: "/keystatic", permanent: false },
+      // Trailing slash matches trailingSlash: true — without it this 302 is
+      // followed by a second 308 to /keystatic/.
+      { source: "/publish", destination: "/keystatic/", permanent: false },
     ];
   },
   async headers() {

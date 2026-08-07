@@ -27,7 +27,11 @@ against the live site (https://main.d1sy2oloye2x8a.amplifyapp.com) and code.
 - ✅ Mobile-first responsive — built & screenshot-verified at 390/768/1440 (hands-on phone+tablet pass with client at review: pending)
 - ✅ On-page SEO — unique title + meta description + single h1 on all 8 routes (verified live); header hierarchy semantic; image alt text on 100% of images (verified: 0 missing)
 - ✅ Structured data — MedicalBusiness (LocalBusiness subtype), Person, FAQPage verified in live HTML; Breadcrumbs on interior pages
-- 🟡 Google Analytics 4 install — code path ready (env-driven), no GA4 property/ID yet
+- 🟡 Google Analytics 4 install — **implemented** (inline gtag in
+  `layout.tsx`, gated on `NEXT_PUBLIC_GA_ID`; `generate_lead` fires only on a
+  confirmed send). Awaiting the GA4 property/ID + Admin config. Note: prior to
+  2026-08-05 this line claimed "code path ready" when **no GA code existed at
+  all** — the privacy page had been asserting GA4 was running since launch prep.
 - 🟡 Sitemap submission to Search Console — sitemap.xml live (8 URLs); GSC submission blocked on final domain
 - ✅ Accessibility pass — Lighthouse a11y **100** on all tested pages; contrast pairs computed (text-safe accent inks); focus states styled; semantic disclosure patterns; reduced-motion respected
 - 🟡 Editing/structuring of Katie's draft copy — awaiting the Google Doc; current copy is evidence-matrix-safe placeholder-free structure

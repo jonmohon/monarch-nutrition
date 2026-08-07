@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getAllPosts, CATEGORIES } from "@/lib/blog";
 import { generatePageMetadata } from "@/lib/metadata";
+import { JsonLd, breadcrumbSchema } from "@/lib/schema";
 import { ButterflyMark } from "@/components/ui/ButterflyMark";
 import { SITE } from "@/data/site";
 
@@ -16,6 +17,12 @@ export default async function BlogIndexPage() {
 
   return (
     <section className="max-w-[900px] mx-auto px-5 lg:px-10 pt-20 pb-24">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog/" },
+        ])}
+      />
       <p className="caps text-center mb-3.5">The Blog</p>
       <h1
         className="font-[560] text-center mb-3"
@@ -77,13 +84,16 @@ export default async function BlogIndexPage() {
               href={`/blog/${post.slug}/`}
               className="group bg-warm-white border border-border-soft rounded-[16px] overflow-hidden no-underline shadow-warm-sm transition-all hover:-translate-y-1 hover:shadow-warm grid sm:grid-cols-[240px_1fr]"
             >
+              {/* Static category fallbacks are already web-sized immutable WebP,
+                  so they skip the optimizer. Katie's uploads are arbitrary files
+                  (possibly a multi-MB phone photo) and must go through it. */}
               <Image
                 src={post.coverImage ?? CATEGORIES[post.category].image}
-                alt=""
+                alt={post.coverImageAlt}
                 width={480}
                 height={360}
                 sizes="240px"
-                unoptimized
+                unoptimized={!post.coverImage}
                 className="w-full h-[160px] sm:h-full object-cover"
               />
               <div className="px-8 py-7">

@@ -4,6 +4,16 @@ import { useEffect, useRef, useState } from "react";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
+declare global {
+  interface Window {
+    gtag?: (
+      command: "event",
+      eventName: string,
+      params?: Record<string, string | number | boolean>,
+    ) => void;
+  }
+}
+
 /**
  * HIPAA-conscious by design (handoff p.4): name, email, phone ONLY.
  * No free-text field — an open field invites PHI. Honeypot + min-submit-time
@@ -36,6 +46,13 @@ export function ContactForm() {
         }),
       });
       if (res.ok) {
+        const body = await res.json().catch(() => ({}));
+        // Only a genuine SES delivery carries `sent` — bot-trapped
+        // submissions return a bare { ok: true } and must not count as leads.
+        // No field values are ever passed to GA4: this event carries no PII.
+        if (body.sent === true) {
+          window.gtag?.("event", "generate_lead", { method: "contact_form" });
+        }
         setStatus("sent");
       } else {
         const body = await res.json().catch(() => ({}));
@@ -65,7 +82,7 @@ export function ContactForm() {
   }
 
   const field =
-    "w-full px-4 py-3.5 text-base bg-cream border border-border-strong rounded-[10px] text-brown focus:outline-2 focus:outline-brown focus:outline-offset-1";
+    "w-full px-4 py-3.5 text-base bg-cream border border-border-field rounded-[10px] text-brown focus:outline-2 focus:outline-brown focus:outline-offset-1";
 
   return (
     <form onSubmit={onSubmit} noValidate={false}>

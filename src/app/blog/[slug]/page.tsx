@@ -5,6 +5,13 @@ import Markdoc from "@markdoc/markdoc";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPost, CATEGORIES } from "@/lib/blog";
 import { generatePageMetadata } from "@/lib/metadata";
+import {
+  JsonLd,
+  blogPostingSchema,
+  breadcrumbSchema,
+  localBusinessSchema,
+  personSchema,
+} from "@/lib/schema";
 import { ButterflyMark } from "@/components/ui/ButterflyMark";
 import { DISCLAIMER, SITE } from "@/data/site";
 
@@ -23,6 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     path: `/blog/${post.slug}/`,
     ogType: "article",
     publishedTime: post.date,
+    image: post.coverImage ?? CATEGORIES[post.category].image,
   });
 }
 
@@ -35,6 +43,22 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <article className="max-w-[720px] mx-auto px-5 lg:px-8 pt-20 pb-24">
+      <JsonLd
+        data={[
+          blogPostingSchema({
+            ...post,
+            // Same fallback the page's og:image uses, so the two agree.
+            coverImage: post.coverImage ?? category.image,
+          }),
+          personSchema(),
+          localBusinessSchema(),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Blog", path: "/blog/" },
+            { name: post.title, path: `/blog/${post.slug}/` },
+          ]),
+        ]}
+      />
       <p className="text-[12px] tracking-[0.16em] uppercase font-semibold text-rose-ink mb-3 text-center">
         {category.label} ·{" "}
         {new Date(`${post.date}T12:00:00`).toLocaleDateString("en-US", {
@@ -53,7 +77,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div className="rounded-[16px] overflow-hidden shadow-warm mb-10">
           <Image
             src={post.coverImage}
-            alt=""
+            alt={post.coverImageAlt}
             width={1440}
             height={810}
             sizes="(min-width: 768px) 720px, 92vw"

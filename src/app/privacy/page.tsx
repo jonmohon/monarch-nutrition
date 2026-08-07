@@ -19,8 +19,8 @@ export default function PrivacyPage() {
         <p>
           The contact form collects three things: your name, your email address, and your phone
           number. There is no free-text field by design — this website is not the place for
-          health information. Anything clinical happens after Katie contacts you, inside her
-          secure, HIPAA-covered client portal.
+          health information. Anything clinical happens after Katie contacts you, in a secure,
+          HIPAA-covered client portal outside this website.
         </p>
         <h2>What happens to it</h2>
         <p>

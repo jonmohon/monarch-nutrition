@@ -38,7 +38,7 @@ export function Footer() {
         Telehealth Nutrition Counseling for Missouri &amp; New Jersey Residents · {SITE.city},{" "}
         {SITE.state}
         <br />
-        Physician, Therapist &amp; PT Referrals Welcome
+        Physician, Therapist, PT &amp; Chiropractor Referrals Welcome
       </p>
       <p className="mt-6 text-[12.5px] italic opacity-85 max-w-2xl mx-auto leading-relaxed">
         The contact form collects name, email &amp; phone only — no health information. Clinical

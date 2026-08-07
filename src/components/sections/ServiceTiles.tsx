@@ -47,7 +47,8 @@ export function ServiceTiles() {
                     width={800}
                     height={560}
                     sizes="(min-width: 1024px) 420px, 90vw"
-                    loading={i === 0 ? "eager" : undefined}
+                    // This tile sits below the fold, so let it lazy-load rather
+                    // than forcing eager fetch alongside the hero LCP image.
                     placeholder="blur"
                     blurDataURL={BLUR[svc.image]}
                     className="tile-photo w-full h-[330px] lg:h-[380px] object-cover group-hover:scale-[1.045]"
