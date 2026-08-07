@@ -35,7 +35,10 @@ function withPublicOrigin(
     const url = new URL(request.url);
     const publicUrl = new URL(origin);
     url.protocol = publicUrl.protocol;
-    url.host = publicUrl.host;
+    // hostname + port, not host: the WHATWG host setter leaves the existing
+    // port in place when the new value omits one, which stranded a :3000.
+    url.hostname = publicUrl.hostname;
+    url.port = publicUrl.port;
     return handler(new Request(url.toString(), request));
   };
 }
