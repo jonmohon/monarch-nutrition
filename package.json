@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "keystatic:setup": "NEXT_PUBLIC_KEYSTATIC_SETUP=1 next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

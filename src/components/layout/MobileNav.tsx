@@ -1,11 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { NAV } from "@/data/site";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  // Escape (and link taps) previously dropped focus to <body>; send it back to
+  // the toggle so keyboard users don't lose their place in the page.
+  const wasOpen = useRef(false);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -19,9 +24,46 @@ export function MobileNav() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (wasOpen.current && !open) toggleRef.current?.focus();
+    wasOpen.current = open;
+  }, [open]);
+
+  // aria-modal="true" promises assistive tech that focus is contained. Honour
+  // it: move focus in on open, and wrap Tab at both edges while open.
+  useEffect(() => {
+    if (!open) return;
+    const panel = panelRef.current;
+    if (!panel) return;
+    const focusables = () =>
+      Array.from(
+        panel.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((el) => el.offsetParent !== null);
+    focusables()[0]?.focus();
+    const onTab = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+      const items = focusables();
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onTab);
+    return () => document.removeEventListener("keydown", onTab);
+  }, [open]);
+
   return (
     <div className="lg:hidden">
       <button
+        ref={toggleRef}
         type="button"
         aria-expanded={open}
         aria-label={open ? "Close menu" : "Open menu"}
@@ -44,7 +86,13 @@ export function MobileNav() {
         </svg>
       </button>
       {open && (
-        <div className="fixed inset-0 top-[118px] z-50 bg-cream px-5 pt-6 pb-10 flex flex-col overflow-y-auto">
+        <div
+          ref={panelRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu"
+          className="fixed inset-0 top-[118px] z-50 bg-cream px-5 pt-6 pb-10 flex flex-col overflow-y-auto"
+        >
           <nav aria-label="Mobile" className="flex flex-col">
             {NAV.map((item) => (
               <Link

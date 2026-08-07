@@ -25,9 +25,14 @@ export function ChromeGate({
   return (
     <>
       {effects}
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
       <div className="curtain-content bg-cream flex-1 flex flex-col">
         {header}
-        <main className="flex-1">{children}</main>
+        <main id="main" className="flex-1">
+          {children}
+        </main>
       </div>
       {footer}
     </>

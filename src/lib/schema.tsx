@@ -29,7 +29,8 @@ export function personSchema() {
     "@context": "https://schema.org",
     "@type": "Person",
     "@id": `${SITE.url}/#katie`,
-    name: `${SITE.clinician}, ${SITE.credential}`,
+    name: SITE.clinician,
+    honorificSuffix: SITE.credential,
     jobTitle: SITE.credentialLong,
     worksFor: { "@id": `${SITE.url}/#business` },
     url: `${SITE.url}/about/`,
@@ -47,6 +48,63 @@ export function faqSchema() {
       name: f.q,
       acceptedAnswer: { "@type": "Answer", text: f.a },
     })),
+  };
+}
+
+/**
+ * Service (not MedicalTherapy/MedicalProcedure — those model specific clinical
+ * treatments, which a counseling engagement is not).
+ */
+export function serviceSchema(service: {
+  slug: string;
+  title: string;
+  short: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${SITE.url}/services/${service.slug}/#service`,
+    name: service.title,
+    serviceType: service.title,
+    description: service.short,
+    url: `${SITE.url}/services/${service.slug}/`,
+    provider: { "@id": `${SITE.url}/#business` },
+    areaServed: SITE.statesLicensed.map((s) => ({ "@type": "State", name: s })),
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceUrl: `${SITE.url}/contact/`,
+      name: "Telehealth",
+    },
+  };
+}
+
+/**
+ * BlogPosting for an individual post. Author and publisher resolve by @id to
+ * the Person/MedicalBusiness nodes, which the post page emits alongside this.
+ */
+export function blogPostingSchema(post: {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  /** Already-resolved image — pass the same value used for og:image. */
+  coverImage: string | null;
+}) {
+  const url = `${SITE.url}/blog/${post.slug}/`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${url}#post`,
+    headline: post.title,
+    description: post.description,
+    url,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    datePublished: post.date,
+    dateModified: post.date,
+    image: `${SITE.url}${post.coverImage ?? "/images/og.jpg"}`,
+    inLanguage: "en-US",
+    author: { "@id": `${SITE.url}/#katie` },
+    publisher: { "@id": `${SITE.url}/#business` },
   };
 }
 
@@ -71,7 +129,12 @@ export function JsonLd({ data }: { data: object | object[] }) {
         <script
           key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(d) }}
+          // Escape "<" so a literal </script> inside any string value can't
+          // close this tag early. Post titles and descriptions come from the
+          // CMS, so this input is no longer developer-controlled.
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(d).replace(/</g, "\\u003c"),
+          }}
         />
       ))}
     </>

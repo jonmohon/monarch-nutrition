@@ -10,7 +10,12 @@ import { TopicFormats } from "@/components/sections/TopicFormats";
 import { FaqAccordion } from "@/components/sections/FaqAccordion";
 import { Reveal } from "@/components/ui/Reveal";
 import { generatePageMetadata } from "@/lib/metadata";
-import { JsonLd, breadcrumbSchema } from "@/lib/schema";
+import {
+  JsonLd,
+  breadcrumbSchema,
+  localBusinessSchema,
+  serviceSchema,
+} from "@/lib/schema";
 
 export function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
@@ -37,10 +42,14 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   return (
     <>
       <JsonLd
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: service.title, path: `/services/${service.slug}/` },
-        ])}
+        data={[
+          serviceSchema(service),
+          localBusinessSchema(),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: service.title, path: `/services/${service.slug}/` },
+          ]),
+        ]}
       />
       <ServiceHero service={service} />
 

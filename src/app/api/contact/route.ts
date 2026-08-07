@@ -38,6 +38,9 @@ export async function POST(request: Request) {
   const { name, email, phone, company, elapsed } = parsed.data;
 
   // Spam traps: filled honeypot or sub-3s submit → pretend nothing happened.
+  // Note the absent `sent` flag: the bot sees an ordinary success, while the
+  // client can still tell this apart from a real send and skip the analytics
+  // conversion event (otherwise every trapped bot inflates the lead count).
   if (company || elapsed < 3000) {
     return NextResponse.json({ ok: true });
   }
@@ -82,7 +85,7 @@ export async function POST(request: Request) {
         { status: 502 },
       );
     }
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, sent: true });
   } catch {
     console.error("[contact] unexpected send error");
     return NextResponse.json(

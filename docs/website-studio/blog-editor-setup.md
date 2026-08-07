@@ -7,7 +7,13 @@ which auto-deploys. Fields: title, publish date, description, category
 
 ## State right now
 
-- Editor fully wired and verified (local mode + Markdoc render path).
+- Editor wired. **Verified: local mode + the full render path** — a test
+  post was built end-to-end (BlogPosting/Breadcrumb JSON-LD, canonical,
+  per-post OG image, Markdoc prose, sitemap entry) and a draft post was
+  confirmed excluded from the index, sitemap, and route generation.
+- **Not yet verified: GitHub mode** — the path Katie actually uses. That
+  cannot be tested until the one-time App setup below is done. Treat the
+  blog as "ready to publish" only after step 5 passes.
 - Production `/keystatic` shows a GitHub login that cannot complete until
   the one-time App setup below — that's intentional and safe.
 - Dev without env vars = **local mode**: run `npm run dev`, open
@@ -16,10 +22,46 @@ which auto-deploys. Fields: title, publish date, description, category
 
 ## Jon's one-time GitHub App setup (~5 minutes, browser)
 
-1. In the repo: temporarily set `NODE_ENV` aside — just run `npm run dev`
-   and open `/keystatic`, then use the **"Setup GitHub mode"** flow (or run
-   the same flow from a production visit once env placeholders are
-   replaced). Sign in as **jonmohon** (repo owner).
+1. **Create the GitHub App by hand — do NOT use Keystatic's setup wizard.**
+
+   The wizard is unreachable on this site, and cannot be made to work
+   without breaking SEO. Keystatic's client router derives its route from
+   `pathname.replace(/^\/keystatic\/?/, "").split("/")`, so with our
+   load-bearing `trailingSlash: true`, `/keystatic/setup/` becomes
+   `["setup", ""]` — length 2 — and its handler requires length 1. The
+   wizard renders "Not found". (Verified in a headless browser against
+   `node_modules/@keystatic/core/dist/index-7a35357b.js`.)
+
+   Create the App at <https://github.com/settings/apps/new> instead. It
+   produces an identical App — these values are the manifest the wizard
+   would have submitted:
+
+   | Field | Value |
+   |---|---|
+   | Name | `Monarch Nutrition Keystatic` |
+   | Homepage URL | `https://<site>/keystatic` |
+   | Callback URL | `https://<site>/api/keystatic/github/oauth/callback` |
+   | | plus `http://127.0.0.1:3000/api/keystatic/github/oauth/callback` for local |
+   | Webhook → Active | **unchecked** (Keystatic never uses webhooks) |
+   | Request user authorization (OAuth) during installation | **checked** |
+   | Expire user authorization tokens | **checked** — the OAuth callback requires `refresh_token`; unchecking causes a 401 loop |
+   | Repository permissions | Contents: **Read and write** · Metadata: **Read-only** · Pull requests: **Read-only** |
+
+   Then **Install App** → Only select repositories → `jonmohon/monarch-nutrition`.
+
+   **Expect "Authorization failed" right after installing — it is harmless
+   at this stage.** Because "Request user authorization (OAuth) during
+   installation" is enabled, GitHub installs the App and then immediately
+   tries to authorize you against the deployed site, which still holds the
+   placeholder credentials. That leg also skips
+   `/api/keystatic/github/login`, the only route that sets the `ks-<state>`
+   cookie the OAuth callback validates against. The *installation* still
+   succeeds — confirm at <https://github.com/settings/installations>.
+   Set the Amplify env vars and redeploy FIRST, then sign in via `/publish`.
+   Client ID is on the App settings page; generate the client secret there
+   (shown once); the app slug is the last path segment of
+   `github.com/settings/apps/<slug>`. Generate `KEYSTATIC_SECRET` with
+   `openssl rand -hex 40` — Keystatic rejects anything under 32 chars.
 2. Keystatic walks you through creating a GitHub App scoped to
    `jonmohon/monarch-nutrition` and writes four values to `.env`:
    `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`,

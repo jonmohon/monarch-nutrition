@@ -37,13 +37,20 @@ export interface BlogPostMeta {
   description: string;
   category: CategoryKey;
   coverImage: string | null;
+  coverImageAlt: string;
 }
 
 const reader = createReader(process.cwd(), keystaticConfig);
 
+/**
+ * Drafts are excluded everywhere — index, sitemap, static params, and the post
+ * route itself — so ticking "Draft" in the editor genuinely removes a post from
+ * the public site rather than merely hiding the card.
+ */
 export const getAllPosts = cache(async (): Promise<BlogPostMeta[]> => {
   const entries = await reader.collections.posts.all();
   return entries
+    .filter(({ entry }) => !entry.draft)
     .map(({ slug, entry }) => ({
       slug,
       title: entry.title,
@@ -51,13 +58,14 @@ export const getAllPosts = cache(async (): Promise<BlogPostMeta[]> => {
       description: entry.description,
       category: (entry.category ?? "weight-management") as CategoryKey,
       coverImage: entry.coverImage ?? null,
+      coverImageAlt: entry.coverImageAlt ?? "",
     }))
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 });
 
 export const getPost = cache(async (slug: string) => {
   const entry = await reader.collections.posts.read(slug);
-  if (!entry) return null;
+  if (!entry || entry.draft) return null;
   const { node } = await entry.body();
   return {
     slug,
@@ -66,6 +74,7 @@ export const getPost = cache(async (slug: string) => {
     description: entry.description,
     category: (entry.category ?? "weight-management") as CategoryKey,
     coverImage: entry.coverImage ?? null,
+    coverImageAlt: entry.coverImageAlt ?? "",
     node,
   };
 });
