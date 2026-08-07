@@ -47,7 +47,7 @@ export function ContactForm() {
       });
       if (res.ok) {
         const body = await res.json().catch(() => ({}));
-        // Only a genuine Resend delivery carries `sent` — bot-trapped
+        // Only a genuine SES delivery carries `sent` — bot-trapped
         // submissions return a bare { ok: true } and must not count as leads.
         // No field values are ever passed to GA4: this event carries no PII.
         if (body.sent === true) {
