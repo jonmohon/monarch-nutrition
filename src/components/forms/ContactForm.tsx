@@ -17,7 +17,7 @@ declare global {
 /**
  * HIPAA-conscious by design (handoff p.4): name, email, phone ONLY.
  * No free-text field — an open field invites PHI. Honeypot + min-submit-time
- * for spam. Clinical intake happens in Katie's EMR, never here.
+ * for spam. Clinical intake happens in the EMR, never here.
  */
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -74,8 +74,8 @@ export function ContactForm() {
       >
         <p className="font-display font-[560] text-[22px] text-brown mb-2">Sent.</p>
         <p className="text-[15.5px]">
-          Katie will reach out by phone or email to talk through what you&rsquo;re looking for,
-          verify insurance benefits, and get scheduling started in her secure client portal.
+          I&rsquo;ll reach out by phone or email to talk through what you&rsquo;re looking for,
+          verify your insurance benefits, and get scheduling started in my secure client portal.
         </p>
       </div>
     );
@@ -127,7 +127,7 @@ export function ContactForm() {
         {status === "sending" ? "Sending…" : "Send to Katie"}
       </button>
       <p className="mt-3.5 text-[13px] text-muted text-center">
-        Katie replies personally, by phone or email.
+        I reply personally, by phone or email.
       </p>
     </form>
   );

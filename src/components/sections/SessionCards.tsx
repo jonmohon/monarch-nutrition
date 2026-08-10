@@ -30,7 +30,7 @@ export function SessionCards() {
         ))}
       </div>
       <p className="mt-6 text-[13px] italic text-muted">
-        Session lengths and visit cadence publish here from Katie&rsquo;s practice details.
+        Session lengths and visit cadence publish here from my practice details.
       </p>
     </section>
   );

@@ -7,7 +7,7 @@ import { SITE } from "@/data/site";
 
 export const metadata = generatePageMetadata({
   title: "Contact Katie · Referrals & New Clients",
-  description: `Contact ${SITE.name} — name, email, and phone is all it takes. Katie verifies coverage and handles intake in her secure client portal.`,
+  description: `Contact ${SITE.name} — name, email, and phone is all it takes. Coverage is verified before anything is scheduled, and appointment times fit around your week.`,
   path: "/contact/",
 });
 
@@ -32,7 +32,7 @@ export default function ContactPage() {
             </h1>
             <p className="text-[15.5px] max-w-[46ch]">
               This form doesn&rsquo;t ask about your health — that conversation happens privately
-              after Katie reaches out. Clinical intake lives in her secure client portal, never on
+              after I reach out. Clinical intake lives in my secure client portal, never on
               this website.
             </p>
             <div
@@ -44,12 +44,12 @@ export default function ContactPage() {
               </p>
               <p className="text-[14.5px] text-brown">
                 The same three fields work for your office — send your patient&rsquo;s name and
-                best contact. Katie handles consent and intake herself once she calls, and closes
-                the loop with your office.
+                best contact. I handle consent and intake myself once I call, and I close the
+                loop with your office.
               </p>
             </div>
             <p className="mt-4 text-[13.5px] italic text-muted max-w-[46ch]">
-              Referring your child? Same three fields — Katie reaches out to set up the
+              Referring your child? Same three fields — I&rsquo;ll reach out to set up the
               family&rsquo;s first visit.
             </p>
             <div className="mt-7 border-t border-border-soft pt-5">

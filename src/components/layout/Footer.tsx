@@ -1,18 +1,18 @@
 import Link from "next/link";
 import { SITE, NAV, DISCLAIMER } from "@/data/site";
-import { ButterflyMark } from "@/components/ui/ButterflyMark";
+import { MonarchOutline } from "@/components/ui/MonarchMark";
 
 export function Footer() {
   return (
     <footer className="curtain-footer relative bg-brown text-[#D9C6B4] text-center px-6 pt-20 pb-12 overflow-hidden">
       <div className="drift-slow absolute left-1/2 -translate-x-1/2 top-14 pointer-events-none">
-        <ButterflyMark size={520} color="#F7F0E4" strokeWidth={0.35} className="opacity-[0.07]" />
+        <MonarchOutline size={520} color="#FDF8EF" strokeWidth={0.3} className="opacity-[0.09]" />
       </div>
       <div
         className="relative font-display font-[440] text-cream leading-none"
         style={{ fontSize: "clamp(3.4rem, 2.4rem + 5.5vw, 7.5rem)", fontVariationSettings: '"SOFT" 80' }}
       >
-        {SITE.shortName}
+        {SITE.wordmark}
       </div>
       <div className="relative text-[10px] tracking-[0.42em] uppercase text-[#B99F8A] mt-3 font-semibold">
         Nutrition Counseling
@@ -42,7 +42,7 @@ export function Footer() {
       </p>
       <p className="mt-6 text-[12.5px] italic opacity-85 max-w-2xl mx-auto leading-relaxed">
         The contact form collects name, email &amp; phone only — no health information. Clinical
-        intake and scheduling live in Katie&rsquo;s secure client portal. {DISCLAIMER}
+        intake and scheduling live in my secure client portal. {DISCLAIMER}
       </p>
       <p className="mt-6 text-[11px] opacity-60">
         © {new Date().getFullYear()} {SITE.name}

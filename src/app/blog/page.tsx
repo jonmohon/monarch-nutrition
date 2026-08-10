@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getAllPosts, CATEGORIES } from "@/lib/blog";
 import { generatePageMetadata } from "@/lib/metadata";
 import { JsonLd, breadcrumbSchema } from "@/lib/schema";
-import { ButterflyMark } from "@/components/ui/ButterflyMark";
+import { MonarchOutline } from "@/components/ui/MonarchMark";
 import { SITE } from "@/data/site";
 
 export const metadata = generatePageMetadata({
@@ -66,12 +66,12 @@ export default async function BlogIndexPage() {
             ))}
           </div>
           <div className="bg-warm-white border border-border-soft rounded-[18px] px-8 py-10 text-center">
-            <ButterflyMark size={40} color="var(--color-olive)" className="mx-auto mb-4 opacity-70" />
+            <MonarchOutline size={40} color="var(--color-sage-ink)" className="mx-auto mb-4 opacity-70" />
             <p className="font-display font-[560] text-[20px] text-brown mb-2" style={{ fontVariationSettings: '"SOFT" 80' }}>
               First posts arrive with launch — these are the shelves they&rsquo;ll fill.
             </p>
             <p className="text-[15px] max-w-[46ch] mx-auto">
-              Katie publishes here herself — the blog is wired to a lightweight editor, no code
+              I publish here myself — the blog is wired to a lightweight editor, no code
               required.
             </p>
           </div>

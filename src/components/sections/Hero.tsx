@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { SplitWords } from "@/components/ui/SplitWords";
 import { BLUR } from "@/lib/blur-data";
+import { COVERAGE, SITE } from "@/data/site";
 
 /** Editorial left-composed hero — headline owns the negative space, the
     photo's subject holds the right third. Server-rendered, static on paint. */
@@ -22,11 +23,14 @@ export function Hero() {
           blurDataURL={BLUR["/images/hero-kitchen.webp"]}
           className="object-cover object-[74%_42%]"
         />
+        {/* Scrim lightened from .72/.45/.12 so the photo's own daylight comes
+            through instead of reading as a brown wash. The headline keeps its
+            text-shadow, which is what carries contrast at the lighter setting. */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(100deg, rgba(46,31,24,.72) 0%, rgba(46,31,24,.45) 38%, rgba(46,31,24,.12) 68%, rgba(46,31,24,.18) 100%), linear-gradient(180deg, rgba(46,31,24,0) 55%, rgba(46,31,24,.45) 100%)",
+              "linear-gradient(100deg, rgba(46,31,24,.62) 0%, rgba(46,31,24,.34) 38%, rgba(46,31,24,.06) 68%, rgba(46,31,24,.12) 100%), linear-gradient(180deg, rgba(46,31,24,0) 55%, rgba(46,31,24,.4) 100%)",
           }}
           aria-hidden="true"
         />
@@ -35,30 +39,31 @@ export function Hero() {
         <div className="max-w-[680px] text-left">
           <p className="flex items-center gap-4 text-[11px] sm:text-xs tracking-[0.3em] uppercase font-semibold text-[#F5E7D6] mb-7">
             <span className="inline-block w-11 h-px bg-rose" aria-hidden="true" />
-            Katie Sengheiser, RD
+            {SITE.clinician}, {SITE.credential}
           </p>
           <h1
             className="font-display text-warm-white font-[440] leading-[1.03] mb-6"
             style={{
               fontSize: "clamp(2.9rem, 1.9rem + 4.6vw, 5.7rem)",
               letterSpacing: "-0.01em",
-              textShadow: "0 2px 34px rgba(46,31,24,.45)",
+              textShadow: "0 2px 34px rgba(46,31,24,.55)",
             }}
           >
             <SplitWords
-              text="Nutrition counseling from your own kitchen table."
-              italicWords={["own"]}
+              text="Start your transformation at your own kitchen table."
+              italicWords={["transformation"]}
               startDelay={120}
             />
           </h1>
           <p className="text-[16.5px] sm:text-[18px] leading-[1.7] max-w-[46ch] mb-9 text-[#F4EADD]">
             Virtual nutrition care for adults, children &amp; teens, and workplaces — licensed in
-            Missouri and New Jersey, with in-network insurance billing.
+            Missouri and New Jersey, with in-network billing and appointment times that fit
+            around your week.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center">
             <MagneticButton>
               <Link href="/contact/" className="btn btn-orange w-full sm:w-auto">
-                Contact Katie
+                Start Your Transformation
               </Link>
             </MagneticButton>
             <MagneticButton>
@@ -83,11 +88,11 @@ export function Hero() {
           <span className="text-rose" aria-hidden="true">
             ·
           </span>
-          <span>Licensed MO + NJ</span>
+          <span>{COVERAGE.short}</span>
           <span className="text-rose" aria-hidden="true">
             ·
           </span>
-          <span>In-Network Billing</span>
+          <span>Convenient Appointment Times</span>
           <span className="text-rose hidden sm:inline" aria-hidden="true">
             ·
           </span>

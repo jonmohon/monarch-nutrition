@@ -23,8 +23,8 @@ export function ServiceTiles() {
         </Reveal>
         <Reveal delay={1} className="reveal-micro">
           <p className="max-w-[34ch] text-[15.5px] text-muted lg:text-right lg:pb-2">
-            Reach out, get clear answers about coverage, and book your first telehealth visit in
-            Katie&rsquo;s secure client portal.
+            Reach out, get clear answers about what your plan covers, and book your first
+            telehealth visit at a time that works for you.
           </p>
         </Reveal>
       </div>

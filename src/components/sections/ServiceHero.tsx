@@ -25,26 +25,29 @@ export function ServiceHero({ service }: { service: Service }) {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(100deg, rgba(46,31,24,.74) 0%, rgba(46,31,24,.44) 42%, rgba(46,31,24,.12) 72%), linear-gradient(180deg, rgba(46,31,24,0) 45%, rgba(46,31,24,.5) 100%)",
+              "linear-gradient(100deg, rgba(46,31,24,.64) 0%, rgba(46,31,24,.34) 42%, rgba(46,31,24,.06) 72%), linear-gradient(180deg, rgba(46,31,24,0) 45%, rgba(46,31,24,.44) 100%)",
           }}
           aria-hidden="true"
         />
       </div>
       <div className="relative z-10 w-full max-w-[1340px] mx-auto px-5 lg:px-10 pb-12 lg:pb-14">
         <div className="max-w-[640px] text-left">
+          {/* The eyebrow carries the searchable service name so the H1 is free
+              to be the emotional promise ("Raise a confident, intuitive
+              eater") without costing the page its keyword. */}
           <p className="flex items-center gap-4 text-[11px] sm:text-xs tracking-[0.28em] uppercase font-semibold text-[#F5E7D6] mb-5">
             <span className="inline-block w-11 h-px bg-rose" aria-hidden="true" />
-            {service.audience}
+            {service.heroEyebrow}
           </p>
           <h1
             className="font-display text-warm-white font-[440] leading-[1.06]"
             style={{
               fontSize: "clamp(2.3rem, 1.5rem + 3.2vw, 4.1rem)",
               letterSpacing: "-0.01em",
-              textShadow: "0 2px 28px rgba(46,31,24,.45)",
+              textShadow: "0 2px 28px rgba(46,31,24,.55)",
             }}
           >
-            {service.title}
+            {"heroHeading" in service ? service.heroHeading : service.title}
           </h1>
           <p className="mt-4 text-[16.5px] max-w-[46ch] text-[#F4EADD]">{service.heroLine}</p>
         </div>

@@ -1,6 +1,11 @@
-import { ButterflyMark } from "@/components/ui/ButterflyMark";
+import { MonarchMark } from "@/components/ui/MonarchMark";
 import { SITE } from "@/data/site";
 
+/**
+ * Four rows, deliberately. On the home page this card is absolutely positioned
+ * over the About photo — a fifth row makes it taller than the 460px image and
+ * swallows it. Scheduling and coverage are carried by the bands around it.
+ */
 const FACTS = [
   { k: "Licensed", v: "Missouri + New Jersey" },
   { k: "Visits", v: "Telehealth only" },
@@ -12,7 +17,7 @@ const FACTS = [
 export function KatieCard() {
   return (
     <div className="bg-warm-white border border-border-soft rounded-[18px] p-8 lg:p-9 shadow-warm relative z-10">
-      <ButterflyMark size={40} color="var(--color-orange)" strokeWidth={1.5} className="mb-4" />
+      <MonarchMark size={38} className="mb-4" />
       <div className="font-display font-[560] text-[25px] text-brown">{SITE.clinician}</div>
       <div className="text-[11.5px] tracking-[0.2em] uppercase font-semibold text-rose-ink mt-1 mb-2">
         {SITE.credentialLong} ({SITE.credential})
@@ -50,7 +55,7 @@ export function KatieCard() {
         </a>
       </div>
       <p className="mt-4 text-[12.5px] italic text-muted">
-        Katie&rsquo;s headshot from her shoot drops in here.
+        Katie&rsquo;s headshot from the shoot drops in here.
       </p>
     </div>
   );

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { ButterflyMark } from "@/components/ui/ButterflyMark";
+import { MonarchMark } from "@/components/ui/MonarchMark";
 import { MobileNav } from "@/components/layout/MobileNav";
-import { SITE } from "@/data/site";
+import { SITE, SCHEDULING } from "@/data/site";
 
 const NAV_LEFT = [
   { label: "About Katie", href: "/about/" },
@@ -19,9 +19,23 @@ const navLink =
 export function Header() {
   return (
     <>
-      <div className="bg-brown text-cream text-center px-4 py-2.5 text-[11px] tracking-[0.22em] uppercase font-semibold">
-        Registered Dietitian <span className="text-rose px-2">·</span> Licensed in Missouri &amp;
-        New Jersey <span className="text-rose px-2">·</span> Virtual Nutrition Counseling
+      {/* Monarch orange, not brown: this strip runs across the top of every
+          page, so it was the single largest contributor to the "a lot of
+          brown" read. Brown text on orange is 5.77:1. */}
+      {/* Flex-wrapped rather than inline text: each phrase stays whole and the
+          line breaks between items. Inline spans would not work here — JSX
+          drops the whitespace between sibling elements, so the row becomes one
+          unbreakable run and "In-Network Billing" clips off a phone screen. */}
+      <div className="bg-orange text-brown px-4 py-2.5 text-[11px] tracking-[0.22em] uppercase font-semibold flex flex-wrap justify-center items-center gap-x-1 gap-y-0.5">
+        <span className="whitespace-nowrap">Licensed in Missouri &amp; New Jersey</span>
+        <span className="opacity-45 px-1" aria-hidden="true">
+          ·
+        </span>
+        <span className="whitespace-nowrap">In-Network Billing</span>
+        <span className="opacity-45 px-1 hidden sm:inline" aria-hidden="true">
+          ·
+        </span>
+        <span className="whitespace-nowrap hidden sm:inline">{SCHEDULING.short}</span>
       </div>
       <header
         className="bg-cream border-b border-border-soft sticky top-0 z-40"
@@ -39,9 +53,9 @@ export function Header() {
             href="/"
             className="flex flex-col items-start lg:items-center gap-1.5 no-underline order-first lg:order-none"
           >
-            <span className="font-display font-[560] text-brown text-xl lg:text-[26px] leading-none flex items-center gap-2.5">
-              <ButterflyMark size={26} draw="load" />
-              {SITE.shortName}
+            <span className="font-display font-[560] text-brown text-lg lg:text-[23px] leading-none flex items-center gap-2.5 tracking-[0.13em]">
+              <MonarchMark size={26} />
+              {SITE.wordmark}
             </span>
             <span className="text-[8.5px] lg:text-[9.5px] tracking-[0.42em] uppercase text-label font-semibold">
               Nutrition Counseling

@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ButterflyMark } from "@/components/ui/ButterflyMark";
+import { MonarchOutline } from "@/components/ui/MonarchMark";
 import { Reveal } from "@/components/ui/Reveal";
 import { KatieCard } from "@/components/sections/KatieCard";
 import { BLUR } from "@/lib/blur-data";
+import { ABOUT_PRACTICE } from "@/data/site";
 
 /**
  * About band — split editorial (the structure Katie liked on her reference
@@ -14,31 +15,26 @@ export function AboutBlock() {
   return (
     <div className="bg-tint border-y border-border-soft relative overflow-hidden" id="about">
       <Reveal className="absolute top-8 -left-16 pointer-events-none hidden xl:block">
-        <ButterflyMark
+        <MonarchOutline
           size={340}
-          color="var(--color-olive)"
+          color="var(--color-sage-ink)"
           strokeWidth={0.5}
           draw="view"
-          className="opacity-[0.14]"
+          className="opacity-[0.16]"
         />
       </Reveal>
       <section className="max-w-[1240px] mx-auto px-5 lg:px-10 py-24 lg:py-32 grid lg:grid-cols-[1fr_1.05fr] gap-14 lg:gap-20 items-center relative">
         <Reveal>
           <div className="relative z-10">
-            <p className="caps !text-rose-ink mb-4">About Katie</p>
+            <p className="caps !text-rose-ink mb-4">The Practice</p>
             <h2
               className="font-[560] leading-[1.08] mb-5 max-w-[16ch]"
               style={{ fontSize: "clamp(2rem, 1.3rem + 2.6vw, 3.4rem)", letterSpacing: "-0.01em" }}
             >
-              A dietitian your practice can refer to.
+              Nutrition is more than <span className="accent-word accent-sweep">knowing what to eat.</span>
             </h2>
-            <p className="text-[16.5px] max-w-[52ch]">
-              Katie Sengheiser is a Registered Dietitian licensed in Missouri and New Jersey,
-              practicing entirely by telehealth from St. Peters, Missouri. Her clinical focus is
-              weight management and bariatric nutrition, with a genuine interest in helping
-              children and teens build a workable relationship with food.
-            </p>
-            <p className="text-[16.5px] max-w-[52ch] mt-3.5">
+            <p className="text-[16.5px] max-w-[52ch]">{ABOUT_PRACTICE.body}</p>
+            <p className="text-[15.5px] max-w-[52ch] mt-3.5 text-muted">
               The practice is deliberately solo: the clinician who takes your call, verifies your
               coverage, and sits across the screen at every visit is the same person. Physician,
               therapist, and PT referrals are welcome.

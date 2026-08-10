@@ -12,7 +12,7 @@ import {
   localBusinessSchema,
   personSchema,
 } from "@/lib/schema";
-import { ButterflyMark } from "@/components/ui/ButterflyMark";
+import { MonarchMark } from "@/components/ui/MonarchMark";
 import { DISCLAIMER, SITE } from "@/data/site";
 
 export async function generateStaticParams() {
@@ -90,7 +90,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </div>
       <footer className="mt-12 border-t border-border-soft pt-7">
         <div className="flex items-center gap-4">
-          <ButterflyMark size={34} color="var(--color-orange)" />
+          <MonarchMark size={32} />
           <div>
             <p
               className="font-display font-[560] text-[18px] text-brown m-0"

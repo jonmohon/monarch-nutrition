@@ -10,7 +10,7 @@ import { SITE } from "@/data/site";
 
 export const metadata = generatePageMetadata({
   title: `About ${SITE.clinician}, ${SITE.credential} · Registered Dietitian in Missouri & New Jersey`,
-  description: `${SITE.clinician} is a Registered Dietitian licensed in Missouri and New Jersey, providing telehealth nutrition counseling with a focus on weight management, bariatric nutrition, and child & teen nutrition.`,
+  description: `${SITE.clinician} is a Registered Dietitian licensed in Missouri and New Jersey, providing telehealth nutrition counseling for weight management, chronic conditions and abnormal labs, gut health, and child & teen nutrition.`,
   path: "/about/",
 });
 
@@ -33,22 +33,25 @@ export default function AboutPage() {
             className="font-[560] leading-[1.1] max-w-[16ch]"
             style={{ fontSize: "clamp(2.2rem, 1.5rem + 2.6vw, 3.4rem)" }}
           >
-            Written for the clinician doing the referring.
+            Hi — I&rsquo;m Katie.
           </h1>
           <div className="editorial-intro">
           <p className="mt-5 text-[16.5px] max-w-[56ch]">
-            Katie Sengheiser is a Registered Dietitian licensed in Missouri and New Jersey. Her
-            clinical focus is weight management and bariatric nutrition; her favorite work is
-            helping children and teens build an easy, workable relationship with food.
+            I&rsquo;m {SITE.clinician}, a Registered Dietitian licensed in Missouri and New
+            Jersey. I work with adults on weight management, abnormal labs and chronic
+            conditions, gut health, and performance — and my favorite work is helping children
+            and teens build an easy, confident relationship with food.
           </p>
           <p className="mt-3.5 text-[16.5px] max-w-[56ch]">
-            The practice runs entirely by telehealth from St. Peters, Missouri, and it is
-            deliberately solo: the clinician who takes the referral, verifies the coverage, and
-            sits across the screen at every visit is the same person.
+            I run the practice entirely by telehealth from St. Peters, Missouri, and it is
+            deliberately solo: the person who takes your call, verifies your coverage, and sits
+            across the screen at every visit is me. That also means I can offer appointment times
+            that fit around your work and your kids&rsquo; school day, instead of whatever slot
+            an office has left.
           </p>
           <p className="mt-3.5 text-[13px] italic text-muted max-w-[56ch]">
-            Katie&rsquo;s training and clinical background, in her own words, land here from her
-            draft copy — this page is structured for it.
+            Katie&rsquo;s training and clinical background, in her own words, land here from
+            her draft copy — this page is structured for it.
           </p>
           </div>
         </div>
@@ -68,7 +71,7 @@ export default function AboutPage() {
               />
             </div>
             <p className="mt-3 text-[12.5px] italic text-muted text-center">
-              Katie&rsquo;s headshot from her shoot replaces this image.
+              Katie&rsquo;s headshot from the shoot replaces this image.
             </p>
           </div>
         </Reveal>
@@ -83,12 +86,13 @@ export default function AboutPage() {
               className="font-[560] max-w-[26ch] mx-auto mb-4"
               style={{ fontSize: "clamp(1.8rem, 1.3rem + 1.8vw, 2.7rem)" }}
             >
-              Send a name and a number — <span className="accent-word accent-sweep">Katie takes it from there.</span>
+              Send a name and a number — <span className="accent-word accent-sweep">I take it from there.</span>
             </h2>
             <p className="max-w-[58ch] mx-auto">
-              Physicians, physical therapists, chiropractors, and therapists: coverage
-              verification, intake, and scheduling all happen in Katie&rsquo;s secure client
-              portal, and your office gets a clear answer instead of a black hole.
+              Physicians, physical therapists, chiropractors, and therapists: I verify
+              coverage, run intake and scheduling in my secure client portal, and close the loop
+              back to your office instead of leaving it a black hole. Most referrals come to me
+              for abnormal labs, hypertension, hyperlipidemia, prediabetes, and diabetes.
             </p>
           </Reveal>
         </div>
@@ -112,7 +116,10 @@ export default function AboutPage() {
             {[
               ["Credential", "Registered Dietitian (RD) — verify with the state boards at right"],
               ["Licensure", "Missouri + New Jersey, current"],
-              ["Clinical focus", "Weight management · bariatric nutrition · child & teen nutrition"],
+              [
+              "Clinical focus",
+              "Weight management · chronic conditions & abnormal labs · bariatric nutrition · gut health · child & teen nutrition",
+            ],
               ["Practice model", "Solo, telehealth-only — one clinician at every step"],
             ].map(([k, v]) => (
               <li key={k} className="flex gap-5 items-baseline py-4 border-b border-border-soft">
@@ -122,8 +129,8 @@ export default function AboutPage() {
             ))}
           </ul>
           <p className="mt-4 text-[13px] italic text-muted">
-            Education, training sites, and credential history land here from Katie&rsquo;s draft
-            copy.
+            Education, training sites, and credential history land here from Katie&rsquo;s
+            draft copy.
           </p>
         </div>
         <KatieCard />

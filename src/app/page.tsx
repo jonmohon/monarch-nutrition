@@ -14,7 +14,7 @@ import { SITE } from "@/data/site";
 export const metadata = generatePageMetadata({
   title: `${SITE.name} · ${SITE.clinician}, ${SITE.credential} · Telehealth Dietitian in Missouri & New Jersey`,
   description:
-    "Virtual nutrition counseling for adults, children & teens, and workplaces from Katie Sengheiser, RD — licensed in Missouri and New Jersey, with in-network insurance billing.",
+    "Virtual nutrition counseling for adults, children & teens, and workplaces from Katie Sprock, RD — licensed in Missouri and New Jersey, with in-network billing and convenient appointment times.",
   path: "/",
 });
 
@@ -51,10 +51,7 @@ export default function HomePage() {
           </Reveal>
         </div>
       </section>
-      <CtaBand
-        heading="Ready when you are."
-        body="Three fields, one conversation, clear answers about coverage — that's the whole first step."
-      />
+      <CtaBand />
     </>
   );
 }

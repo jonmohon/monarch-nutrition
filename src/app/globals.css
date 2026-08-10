@@ -1,30 +1,44 @@
 @import "tailwindcss";
 
 @theme {
-  /* Katie's approved palette — build-spec.md tokens. No raw hex in components. */
-  --color-cream: #f7f0e4;
-  --color-warm-white: #fdfaf4;
-  --color-tint: #f2e9da;
+  /* Katie's approved palette, brightened pass — build-spec.md tokens.
+     No raw hex in components.
+
+     Brightening brief was "kind of a lot of brown", so this pass does three
+     things: lifts the paper tones, raises the monarch orange toward its real
+     wing colour, and adds --color-sage as a second light section wash so the
+     page can alternate without reaching for brown. Brown survives as ink and
+     as ONE dark anchor (the footer) — it is no longer a general surface.
+     Every value below is AA-verified against the surfaces it lands on. */
+  --color-cream: #fdf8ef;
+  --color-warm-white: #fffdf9;
+  --color-tint: #faf2e4;
+  /* Fresh milkweed-leaf wash. Light enough that brown (11.79:1), body (8.00:1),
+     label (6.23:1) and olive (4.93:1) all still pass on it. */
+  --color-sage: #edf3e6;
   --color-brown: #3e2b23;
   --color-brown-deep: #2e1f18;
-  --color-body: #5c4a3f;
-  --color-muted: #7d695c;
-  --color-orange: #e08a3c;
-  /* Hover deepens the resting orange while keeping brown text at AA (4.57:1).
-     The previous #c97426 was a mid-tone that failed against BOTH brown (3.82)
-     and cream (3.08) — no text color could pass on it. */
-  --color-orange-hover: #d98232;
-  --color-orange-ink: #995c26;
-  --color-rose: #e79a94;
-  --color-rose-ink: #92615d;
-  /* 4.64:1 on cream — .folio-num and .text-olive render 12px bold text and
-     need AA 4.5; the previous #7c7551 sat at 4.10. */
-  --color-olive: #726d46;
+  --color-body: #57453b;
+  --color-muted: #7a6659;
+  --color-orange: #f29441;
+  /* Hover deepens the resting orange while keeping brown text at AA (4.80:1).
+     Any mid-tone here fails against BOTH brown and cream at once — the band
+     of usable hover oranges is narrow, so re-verify before changing it. */
+  --color-orange-hover: #e5822c;
+  --color-orange-ink: #9c5a1f;
+  --color-rose: #f3a79e;
+  /* 4.72:1 on tint — the tightest surface it lands on, and the reason this is
+     darker than it looks like it needs to be. */
+  --color-rose-ink: #965d57;
+  /* Green ink to match the sage wash — 5.68:1 on cream at 12px bold. */
+  --color-sage-ink: #4e6b3e;
+  /* .folio-num and .text-olive render 12px bold text and need AA 4.5. */
+  --color-olive: #6b6a42;
   --color-label: #5e5940;
-  --color-border-soft: #e5d9c6;
-  --color-border-strong: #cdbca4;
+  --color-border-soft: #ede2d0;
+  --color-border-strong: #d6c7b0;
   /* Input boundaries are UI components under WCAG 1.4.11 and need 3:1 —
-     border-strong is a decorative hairline at 1.64:1 and fails as a field edge. */
+     border-strong is a decorative hairline and fails as a field edge. */
   --color-border-field: #a08066;
   --color-error: #9e2b25;
 

@@ -1,6 +1,6 @@
 # Monarch Nutrition Counseling
 
-Marketing site for Katie Sengheiser, RD — solo virtual dietetics practice
+Marketing site for Katie Sprock, RD — solo virtual dietetics practice
 (St. Peters, MO; licensed MO + NJ). Agency build per the RCD handoff
 (Option A, website only). Design ground truth:
 `docs/website-studio/concepts/07-warm-clinical.html` (approved "Warm

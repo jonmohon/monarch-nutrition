@@ -37,7 +37,7 @@ export function StatementBands() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(46,31,24,.5) 0%, rgba(46,31,24,.42) 50%, rgba(46,31,24,.55) 100%)",
+                "linear-gradient(180deg, rgba(46,31,24,.42) 0%, rgba(46,31,24,.32) 50%, rgba(46,31,24,.46) 100%)",
             }}
             aria-hidden="true"
           />
@@ -49,7 +49,7 @@ export function StatementBands() {
             style={{
               fontSize: "clamp(28px, 1.4rem + 2.6vw, 52px)",
               letterSpacing: "-0.005em",
-              textShadow: "0 2px 30px rgba(46,31,24,.4)",
+              textShadow: "0 2px 30px rgba(46,31,24,.5)",
             }}
           >
             Real nutrition care,
@@ -63,12 +63,18 @@ export function StatementBands() {
         style={{ fontSize: "clamp(13px, 0.8rem + 0.6vw, 18px)", letterSpacing: "0.18em" }}
       >
         <p className="sr-only">
-          Expert nutrition care · In network and online · Referrals welcome
+          Expert nutrition care · Covered by most plans · Appointments that fit your week ·
+          Referrals welcome
         </p>
         <div className="marquee-track" aria-hidden="true">
           {[0, 1].map((n) => (
             <span key={n} className="marquee-seq">
-              {["Expert nutrition care", "In network and online", "Referrals welcome"].map(
+              {[
+                "Expert nutrition care",
+                "Covered by most plans",
+                "Appointments that fit your week",
+                "Referrals welcome",
+              ].map(
                 (t) => (
                   <span key={t} className="inline-flex items-center">
                     <span className="px-6">{t}</span>

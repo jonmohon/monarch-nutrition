@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { FAQ, SERVICES, SITE } from "@/data/site";
+import { COVERAGE, SERVICES, SITE, pickFaq } from "@/data/site";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { Steps } from "@/components/sections/Steps";
 import { CtaBand } from "@/components/sections/CtaBand";
@@ -38,6 +38,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   if (!service) notFound();
   const siblings = SERVICES.filter((s) => s.slug !== service.slug);
   const isCorporate = service.slug === "corporate-nutrition";
+  const isChild = service.slug === "child-teen-nutrition";
 
   return (
     <>
@@ -57,7 +58,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       <section className="bg-warm-white border-b border-border-soft text-center px-6 py-8">
         <p className="text-[11px] sm:text-xs tracking-[0.22em] uppercase font-semibold text-label leading-[2.2]">
           {SITE.clinician}, {SITE.credential} · Licensed {SITE.statesShort} · Telehealth ·
-          In-Network Billing
+          In-Network Billing · Convenient Appointment Times
         </p>
       </section>
 
@@ -65,13 +66,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       <section className="max-w-[1080px] mx-auto px-5 lg:px-10 pt-20 pb-6 grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-20">
         <Reveal>
           <div>
-            <p className="caps mb-3.5">
-              {service.slug === "child-teen-nutrition"
-                ? "Sound Familiar?"
-                : isCorporate
-                  ? "For Your Team"
-                  : "What We Work On"}
-            </p>
+            <p className="caps mb-3.5">{isCorporate ? "For Your Team" : "What We Work On"}</p>
             <h2
               className="font-[560] leading-[1.12] max-w-[18ch]"
               style={{ fontSize: "clamp(1.8rem, 1.3rem + 1.8vw, 2.7rem)" }}
@@ -80,13 +75,19 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 <>
                   Programming that <span className="accent-word accent-sweep">earns its calendar slot.</span>
                 </>
+              ) : isChild ? (
+                <>
+                  Care built around <span className="accent-word accent-sweep">your whole family.</span>
+                </>
               ) : (
                 <>
                   Care built around <span className="accent-word accent-sweep">your actual week.</span>
                 </>
               )}
             </h2>
-            <p className="mt-4 max-w-[46ch]">{service.short}</p>
+            <p className="mt-4 max-w-[46ch]">
+              {"scopeLead" in service ? service.scopeLead : service.short}
+            </p>
           </div>
         </Reveal>
         <Reveal delay={1}>
@@ -106,11 +107,52 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </Reveal>
       </section>
 
+      {/* Why physicians refer — the individual page's actual front door.
+          Most adults arrive here because a doctor looked at their labs. */}
+      {"referralReasons" in service ? (
+        <section className="bg-sage border-y border-border-soft">
+          <div className="max-w-[1080px] mx-auto px-5 lg:px-10 py-16 lg:py-20 grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-start">
+            <Reveal>
+              <div>
+                <p className="caps !text-sage-ink mb-3.5">Referred by Your Doctor?</p>
+                <h2
+                  className="font-[560] leading-[1.12] max-w-[20ch]"
+                  style={{ fontSize: "clamp(1.7rem, 1.25rem + 1.6vw, 2.4rem)" }}
+                >
+                  Most people land here because of <span className="accent-word accent-sweep">a number on a lab report.</span>
+                </h2>
+                <p className="mt-4 max-w-[48ch] text-[16px]">
+                  Physicians refer patients to me every week — usually after labs come back off,
+                  or when a chronic condition needs a nutrition plan behind the prescription. You
+                  don&rsquo;t need a referral to book, but if you have one, send it along and
+                  I&rsquo;ll close the loop with your provider.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={1}>
+              <ul className="border-t border-border-strong">
+                {service.referralReasons.map((item) => (
+                  <li
+                    key={item}
+                    className="flex gap-4 items-baseline py-4 border-b border-border-soft text-[16px] text-brown"
+                  >
+                    <span className="text-sage-ink font-display italic" aria-hidden="true">
+                      —
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+        </section>
+      ) : null}
+
       {"empathy" in service ? (
         <EmpathyList
           items={service.empathy}
           closer={
-            service.slug === "child-teen-nutrition"
+            isChild
               ? "Nothing on that list means you're doing it wrong — and neither is your kid. It's exactly where the work starts."
               : undefined
           }
@@ -143,47 +185,45 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       {/* Insurance & fees */}
       <section id="insurance" className="max-w-[1080px] mx-auto px-5 lg:px-10 py-16">
         <Reveal>
-          <div className="bg-brown text-cream rounded-[22px] px-7 py-10 lg:px-12 lg:py-12 grid lg:grid-cols-[1.15fr_0.85fr] gap-8 lg:gap-14 shadow-warm-lg">
+          {/* Was a solid dark-brown card. Now warm-white with an orange rule —
+              same emphasis, none of the weight. */}
+          <div className="bg-warm-white border border-border-soft border-t-[3px] border-t-orange rounded-[22px] px-7 py-10 lg:px-12 lg:py-12 grid lg:grid-cols-[1.15fr_0.85fr] gap-8 lg:gap-14 shadow-warm">
             <div>
-              <p className="caps !text-rose mb-3">Insurance</p>
+              <p className="caps !text-orange-ink mb-3">Insurance</p>
               <h2
-                className="font-[440] !text-warm-white leading-snug"
+                className="font-[440] leading-snug"
                 style={{ fontSize: "clamp(1.4rem, 1.1rem + 1vw, 1.9rem)" }}
               >
-                In-network billing, verified up front.
+                Often covered in full — and for more visits than you&rsquo;d think.
               </h2>
-              <p className="mt-3 text-[15.5px] text-[#D9C6B4] max-w-[52ch]">
-                Monarch Nutrition Counseling bills participating insurance plans directly. Coverage
-                for nutrition counseling varies by plan — you&rsquo;ll get clear answers about
-                benefits before any appointment is scheduled.
-              </p>
-              <p className="mt-3 text-[12.5px] italic text-rose">
-                Full plan list published at launch, from Katie&rsquo;s credentialing.
+              <p className="mt-3 text-[15.5px] text-body max-w-[52ch]">{COVERAGE.long}</p>
+              <p className="mt-3 text-[12.5px] italic text-muted">
+                Full plan list published at launch, from my credentialing.
               </p>
             </div>
             <div>
-              <p className="caps !text-rose mb-3">Self-Pay</p>
+              <p className="caps !text-orange-ink mb-3">Self-Pay</p>
               <h2
-                className="font-[440] !text-warm-white leading-snug"
+                className="font-[440] leading-snug"
                 style={{ fontSize: "clamp(1.4rem, 1.1rem + 1vw, 1.9rem)" }}
               >
                 Clear rates for out-of-network plans.
               </h2>
-              <p className="mt-3 text-[15.5px] text-[#D9C6B4] max-w-[52ch]">
+              <p className="mt-3 text-[15.5px] text-body max-w-[52ch]">
                 {isCorporate
                   ? "Corporate programs are scoped and quoted per engagement — formats, group size, and cadence set with you."
                   : "Initial consultations, follow-up visits, and multi-visit packages at published rates."}
               </p>
               {!isCorporate && (
                 <>
-                  <p className="mt-3 text-[12.5px] italic text-rose">
-                    Rates publish here the day Katie confirms her fee schedule.
+                  <p className="mt-3 text-[12.5px] italic text-muted">
+                    Rates publish here the day my fee schedule is confirmed.
                   </p>
                   <Link
                     href="/contact/"
-                    className="inline-block mt-3 text-[13.5px] font-semibold text-rose underline decoration-[rgba(231,154,148,.5)] underline-offset-4 hover:decoration-rose transition-colors"
+                    className="inline-block mt-3 text-[13.5px] font-semibold text-orange-ink underline decoration-[rgba(156,90,31,.4)] underline-offset-4 hover:decoration-orange-ink transition-colors"
                   >
-                    Ask Katie for current self-pay rates →
+                    Ask me for current self-pay rates →
                   </Link>
                 </>
               )}
@@ -205,10 +245,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <FaqAccordion
             items={
               isCorporate
-                ? [FAQ[1], FAQ[2]]
-                : service.slug === "child-teen-nutrition"
-                  ? [FAQ[3], FAQ[1], FAQ[2]]
-                  : [FAQ[0], FAQ[2], FAQ[5]]
+                ? pickFaq("states", "virtual", "appointment-times")
+                : isChild
+                  ? pickFaq("kids", "appointment-times", "visit-count", "states")
+                  : pickFaq("insurance", "visit-count", "appointment-times", "refer")
             }
           />
         </Reveal>
@@ -235,14 +275,16 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
       <CtaBand
         heading={
-          isCorporate ? "Tell us who to reach — Katie will follow up." : "Ready when you are."
+          isCorporate
+            ? "Tell me who to reach — I'll follow up."
+            : "Ready to start your transformation?"
         }
         body={
           isCorporate
-            ? "Send a name and an email through the contact form, and Katie will schedule a scoping call."
+            ? "Send a name and an email through the contact form, and I'll schedule a scoping call."
             : "Three fields, one conversation, clear answers about coverage — that's the whole first step."
         }
-        label={isCorporate ? "Email Katie About Your Team" : "Contact Katie"}
+        label={isCorporate ? "Email Katie About Your Team" : "Start Your Transformation"}
       />
     </>
   );

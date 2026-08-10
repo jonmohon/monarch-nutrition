@@ -19,12 +19,12 @@ export default function PrivacyPage() {
         <p>
           The contact form collects three things: your name, your email address, and your phone
           number. There is no free-text field by design — this website is not the place for
-          health information. Anything clinical happens after Katie contacts you, in a secure,
+          health information. Anything clinical happens after I contact you, in a secure,
           HIPAA-covered client portal outside this website.
         </p>
         <h2>What happens to it</h2>
         <p>
-          Form submissions are emailed directly to Katie and are not stored in a database on this
+          Form submissions are emailed directly to me and are not stored in a database on this
           website. They are used to contact you back, and for nothing else — no marketing lists,
           no sharing, no selling.
         </p>
@@ -39,7 +39,7 @@ export default function PrivacyPage() {
         <p>{DISCLAIMER}</p>
         <h2>Questions</h2>
         <p>
-          Reach out through the contact form and Katie will be glad to answer questions about any
+          Reach out through the contact form and I&rsquo;ll be glad to answer questions about any
           of the above.
         </p>
       </div>
