@@ -48,13 +48,23 @@ export function Footer() {
         © {new Date().getFullYear()} {SITE.name}
       </p>
       <p className="mt-2 text-[11px] opacity-80">
+        Powered by{" "}
+        <a
+          href="https://www.rivercitydigitalco.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#D9C6B4] hover:text-cream no-underline transition-colors"
+        >
+          River City Digital
+        </a>{" "}
+        &amp;{" "}
         <a
           href="https://www.nexvato.com/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-[#D9C6B4] hover:text-cream no-underline transition-colors"
         >
-          Powered by Nexvato
+          Nexvato
         </a>
       </p>
     </footer>
