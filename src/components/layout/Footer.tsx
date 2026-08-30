@@ -47,6 +47,16 @@ export function Footer() {
       <p className="mt-6 text-[11px] opacity-60">
         © {new Date().getFullYear()} {SITE.name}
       </p>
+      <p className="mt-2 text-[11px] opacity-80">
+        <a
+          href="https://www.nexvato.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#D9C6B4] hover:text-cream no-underline transition-colors"
+        >
+          Powered by Nexvato
+        </a>
+      </p>
     </footer>
   );
 }
